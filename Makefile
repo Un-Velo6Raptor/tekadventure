@@ -5,7 +5,7 @@
 ## Login   <hugo.cousin@epitech.eu>
 ## 
 ## Started on  Wed Apr 12 15:45:03 2017 Hugo Cousin
-## Last update Thu Apr 13 15:28:52 2017 Hugo Cousin
+## Last update Thu Apr 13 16:27:50 2017 Hugo Cousin
 ##
 
 SRC	=	src/main.c		\
@@ -30,7 +30,7 @@ lib:
 	$(MAKE) -C lib/my
 
 clib:
-	$(MAKE) -C lib/my
+	$(MAKE) -C lib/my clean
 
 $(NAME):$(OBJ)
 	@if ! [ -f lib/libmy.a ]; then $(MAKE) -C lib/my; fi;
