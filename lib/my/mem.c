@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon Feb 13 11:48:22 2017 Hugo Cousin
-** Last update Thu Apr 13 15:28:25 2017 Hugo Cousin
+** Last update Thu Apr 13 16:56:05 2017 Hugo Cousin
 */
 
 #include <string.h>

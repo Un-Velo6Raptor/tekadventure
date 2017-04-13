@@ -1,3 +1,4 @@
+
 /*
 ** free_players.c for tekadventure in /home/heychsea/MUL/ceciesttemporaire
 ** 
@@ -5,7 +6,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:03:36 2017 Hugo Cousin
-** Last update Thu Apr 13 15:22:37 2017 Hugo Cousin
+** Last update Thu Apr 13 17:24:51 2017 Hugo Cousin
 */
 
 #include <stdlib.h>
@@ -15,11 +16,15 @@
 void		free_players(t_player *players)
 {
   size_t	i;
+  size_t	j;
 
   i = 0;
   while (players && i < 4)
     {
-      tabfree(players[i].sentences);
+      j = 0;
+      while (players[i].text[j].sentence)
+	free(players[i].text[j++].sentence);
+      free(players[i].text);
       free(players[i].name);
       i++;
     }

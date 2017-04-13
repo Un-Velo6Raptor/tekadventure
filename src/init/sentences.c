@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Thu Apr 13 15:22:05 2017 Hugo Cousin
+** Last update Thu Apr 13 17:31:43 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -39,30 +39,44 @@ size_t		count_files(void)
   return (files_number);
 }
 
-int		fill_player(t_player *players, char *path, char *name, int pos)
+int		get_text(int fd, t_player *player)
+{
+  size_t	size;
+  char		*tmp;
+
+  size = 0;
+  player->text = malloc(sizeof(t_text) * 2);
+  if (!player->text)
+    return (0);
+  tmp = get_next_line(fd);
+  while (tmp)
+    {
+      player->text = my_realloc(player->text, sizeof(t_text) * size,
+				sizeof(t_text) * (size + 2));
+      if (!player->text || !my_strchr(tmp, ':'))
+	return (0);
+      player->text[size].level = u_getnb(tmp);
+      player->text[size].sentence = my_strdup(tmp + (CHAR_POS(tmp, ':') + 1));
+      if (!player->text[size].sentence || player->text[size].level == -1)
+	return (0);
+      free(tmp);
+      size++;
+      tmp = get_next_line(fd);
+    }
+  player->text[size] = (t_text) {-1, NULL};
+  return (1);
+}
+
+int		fill_player(t_player *player, char *path, char *name)
 {
   int		fd;
-  size_t	size;
 
   fd = open(path, O_RDONLY);
   if (fd == -1)
     return (0);
-  size = 1;
-  players[pos].name = my_strdup(name);
-  players[pos].sentences = malloc(sizeof(char *) * 2);
-  if (!players[pos].sentences || !players[pos].name)
+  player->name = my_strdup(name);
+  if (get_text(fd, player) == 0)
     return (0);
-  players[pos].sentences[0] = get_next_line(fd);
-  players[pos].sentences[1] = NULL;
-  while (players[pos].sentences[size])
-    {
-      players[pos].sentences =
-	my_realloc(players[pos].sentences, size, size + 2);
-      if (!players[pos].sentences)
-	return (0);
-      players[pos].sentences[size + 1] = NULL;
-      players[pos].sentences[size++] = get_next_line(fd);
-    }
   close(fd);
   return (1);
 }
@@ -81,13 +95,12 @@ int		loop_directory(DIR *directory, t_player *players)
 	{
 	  my_strcpy(path, "ressources/players/");
 	  my_strcat(path, files->d_name);
-	  if (fill_player(players, path, files->d_name, pos) == 0)
+	  if (fill_player(&(players[pos]), path, files->d_name) == 0)
 	    return (0);
+	  pos++;
 	}
       files = readdir(directory);
-      pos++;
     }
-  free_players(players);
   closedir(directory);
   return (1);
 }
