@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Thu Apr 13 17:31:43 2017 Hugo Cousin
+** Last update Thu Apr 13 19:31:40 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -55,9 +55,9 @@ int		get_text(int fd, t_player *player)
 				sizeof(t_text) * (size + 2));
       if (!player->text || !my_strchr(tmp, ':'))
 	return (0);
-      player->text[size].level = u_getnb(tmp);
+      player->text[size].level = getnb(tmp) % 11;
       player->text[size].sentence = my_strdup(tmp + (CHAR_POS(tmp, ':') + 1));
-      if (!player->text[size].sentence || player->text[size].level == -1)
+      if (!player->text[size].sentence || player->text[size].level < 0)
 	return (0);
       free(tmp);
       size++;
