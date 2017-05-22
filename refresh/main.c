@@ -5,7 +5,7 @@
 ** Login   <rome157@epitech.net>
 ** 
 ** Started on  Mon May 22 14:38:03 2017 Romain Melin
-** Last update Mon May 22 15:15:11 2017 Romain Melin
+** Last update Mon May 22 15:43:32 2017 Hugo Cousin
 */
 
 # define                SCREEN_WIDTH 600
@@ -34,16 +34,16 @@ void                    the_window(sfRenderWindow *window, sfWindow *relative_to
   sfVector2i            pos_mouse;
   sfTexture		*image;
   sfSprite		*sprite;
-  sfBool		resetRect;
 
   image = sfTexture_createFromFile("magic_mike_tek_ad.png", NULL);
   sprite = sfSprite_create();
-  sfSprite_setTexture(sprite, image, resetRect);
+  sfSprite_setTexture(sprite, image, sfTrue);
   sfWindow_setVisible(relative_to, sfFalse);
   while (sfRenderWindow_isOpen(window))
     {
       sfWindow_setPosition(relative_to, sfRenderWindow_getPosition(window));
       sfRenderWindow_clear(window, sfBlack);
+      refresh_sprite(sprite, (sfVector2f){0, 0}, 11, 9);
       pos_mouse = sfMouse_getPosition(relative_to);
       sfRenderWindow_drawSprite(window, sprite, NULL);
       sfRenderWindow_display(window);
