@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Tue May 23 17:43:35 2017 Martin Januario
+** Last update Tue May 23 17:48:27 2017 Hugo Cousin
 */
 
 #include	<math.h>
@@ -32,7 +32,7 @@ int		check_path(t_map *map, sfVector2i from,
   sfVector2i	err;
 
   delta.y = abs(to.y - from.y);
-  delta.x =  abs(to.x - from.x);
+  delta.x = abs(to.x - from.x);
   err.x = (delta.x > delta.y ? delta.x : -delta.y) / 2;
   while (1)
     {
@@ -45,11 +45,11 @@ int		check_path(t_map *map, sfVector2i from,
         {
           err.x -= delta.y;
           from.x += (from.x < to.x) ? 1 : -1;
-	  if (err.y < delta.y)
-	    {
-	      err.x += delta.x;
-	      from.y += (from.y < to.y) ? 1 : -1;
-	    }
+	}
+      if (err.y < delta.y)
+	{
+	  err.x += delta.x;
+	  from.y += (from.y < to.y) ? 1 : -1;
 	}
     }
   return (1);

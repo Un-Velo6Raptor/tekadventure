@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon May 22 14:34:35 2017 Hugo Cousin
-** Last update Mon May 22 15:26:56 2017 Hugo Cousin
+** Last update Tue May 23 17:52:57 2017 Hugo Cousin
 */
 
 #ifndef REFRESH_H_
@@ -17,7 +17,7 @@ typedef struct	s_refresh
 {
   sfSprite	*sprite;
   sfIntRect	rect;
-  int		step;
+  float		step;
   int		mode;
 }		t_refresh;
 

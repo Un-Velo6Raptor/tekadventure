@@ -5,7 +5,7 @@
 ** Login   <rome157@epitech.net>
 ** 
 ** Started on  Mon May 22 14:38:03 2017 Romain Melin
-** Last update Mon May 22 15:43:32 2017 Hugo Cousin
+** Last update Tue May 23 17:57:18 2017 Hugo Cousin
 */
 
 # define                SCREEN_WIDTH 600
@@ -76,6 +76,7 @@ sfRenderWindow          *display_window(char *name, int width, int height)
   window = sfRenderWindow_create(mode, name, sfClose, NULL);
   if (window == NULL)
     return (NULL);
+  sfRenderWindow_setFramerateLimit(window, 30);
   return (window);
 }
 
