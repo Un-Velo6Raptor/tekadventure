@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 11:55:52 2017 Hugo Cousin
-** Last update Thu Apr 13 16:39:03 2017 Hugo Cousin
+** Last update Tue May 23 16:38:17 2017 Martin Januario
 */
 
 #ifndef STRUCT_H_
@@ -16,7 +16,6 @@ typedef struct	s_text
   int		level;
   char		*sentence;
 }		t_text;
-
 
 typedef struct s_player
 {

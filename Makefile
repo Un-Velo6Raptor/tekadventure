@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Tue May 23 11:27:56 2017 Hugo Cousin
+## Last update Tue May 23 17:22:26 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -18,6 +18,7 @@ SRC	=	src/main.c			\
 		src/init/sentences.c
 
 DISPLAY	=	src/display/window_menu.c	\
+		src/display/window_game.c	\
 		src/display/create_window.c
 
 MENU	=	src/menu/loop_menu.c		\
@@ -31,9 +32,15 @@ MENU	=	src/menu/loop_menu.c		\
 		src/menu/music_pause.c		\
 		src/menu/ini_sprite_menu.c
 
+GAME	=	src/game/loop_game.c		\
+
+MECHS	=	src/moves/moves.c		\
+
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\
 		$(MENU:.c=.o)			\
+		$(GAME:.c=.o)			\
+		$(MECHS:.c=.o)			\
 		$(LIB:.c=.o)
 
 CFLAGS	=	-g -Wall -Wextra -I include

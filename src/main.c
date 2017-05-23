@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 19 15:58:32 2017 Martin Januario
+** Last update Tue May 23 17:13:58 2017 Martin Januario
 */
 
 #include	"display.h"
@@ -20,5 +20,5 @@ int		main(int __attribute__ ((unused)) argc,
     return (my_puterror("Error in ENV.\n"));
   if (window_menu(&mode) == 84)
     return (my_puterror("See you later !"));
-  return (0);
+  return (window_game(&mode));
 }
