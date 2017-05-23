@@ -1,16 +1,16 @@
 /*
-** my_put_nbr_base.c for printf in /home/heychsea/MUL/tekadventure
+** my_putnbr.c for tekadventure in /home/heychsea/MUL/tekadventure
 ** 
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Wed Nov  9 17:38:17 2016 Hugo Cousin
-** Last update Sun Apr  9 19:56:00 2017 Hugo Cousin
+** Started on  Tue May 23 11:19:06 2017 Hugo Cousin
+** Last update Tue May 23 11:19:07 2017 Hugo Cousin
 */
 
-#include "my.h"
+#include	"lib.h"
 
-void	putnb(int fd,  int nb)
+void		putnb(int fd,  int nb)
 {
   if (nb >= 10)
     {

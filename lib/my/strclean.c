@@ -4,17 +4,46 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 16:07:02 2017 Hugo Cousin
-** Last update Thu Apr  6 22:55:30 2017 Hugo Cousin
+** Started on  Tue May 23 11:16:20 2017 Hugo Cousin
+** Last update Tue May 23 11:19:30 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
+#include	<stdlib.h>
+#include	"lib.h"
 
-void	shift(char *str, size_t i)
+void		shaft(char **t, size_t i)
 {
-  while (str[i] != 0)
+  while (t[i])
+    {
+      t[i] = t[i + 1];
+      i++;
+    }
+}
+
+void		shift(char *str, size_t i)
+{
+  while (str[i])
     {
       str[i] = str[i + 1];
+      i++;
+    }
+}
+
+void		tabclean(char **tab)
+{
+  size_t	i;
+  char		*tmp;
+
+  i = 0;
+  while (tab[i])
+    {
+      strclean(tab[i]);
+      if (!my_strlen(tab[i]))
+	{
+	  tmp = tab[i];
+	  shaft(tab, i--);
+	  free(tmp);
+	}
       i++;
     }
 }

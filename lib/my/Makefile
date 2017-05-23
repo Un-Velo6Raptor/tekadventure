@@ -1,11 +1,11 @@
 ##
-## Makefile for my in /home/heychsea/MUL/ceciesttemporaire
+## Makefile for LIB in /home/heychsea/PSU/PSU_2016_minishell2/lib/min
 ## 
 ## Made by Hugo Cousin
 ## Login   <hugo.cousin@epitech.eu>
 ## 
-## Started on  Wed Apr 12 15:46:22 2017 Hugo Cousin
-## Last update Wed Apr 12 15:46:41 2017 Hugo Cousin
+## Started on  Wed Apr 19 18:24:42 2017 Hugo Cousin
+## Last update Tue May 23 11:23:34 2017 Hugo Cousin
 ##
 
 SRC	=	my_putchar.c		\
@@ -21,16 +21,17 @@ SRC	=	my_putchar.c		\
 		my_strdup.c		\
 		my_show_wordtab.c	\
 		my_str_to_wordtab.c	\
-		get_next_line.c		\
 		char_test.c		\
-		gnlfix.c		\
 		strclean.c		\
 		mem.c			\
+		gnl.c			\
 		tab.c
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	libmy.a
+
+CFLAGS	=	-W -Wall -Wextra
 
 all:	$(NAME)
 
@@ -46,5 +47,8 @@ clean:
 
 fclean: clean
 	rm -f $(NAME) ../$(NAME)
+
+debug: CFLAGS += -ggdb3
+debug: re
 
 re: fclean all

@@ -114,7 +114,7 @@ static int	create_text_sound(t_text_menu *menu_text)
 int		ini_text_menu(t_text_menu *menu_text,
 			      t_core __attribute__ ((unused)) *needs)
 {
-  menu_text->font = sfFont_createFromFile("library/font/FFF_Tusj.ttf");
+  menu_text->font = sfFont_createFromFile("ressources/font/FFF_Tusj.ttf");
   if (menu_text->font == NULL)
     return (84);
   if (create_text_difficult(menu_text) == 84 ||

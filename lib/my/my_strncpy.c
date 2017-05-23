@@ -1,25 +1,22 @@
 /*
-** my_strncpy.c for my_strncpy.c in /home/Heychsea/CPool_Day06
+** my_strncpy.c for tekadventure in /home/heychsea/MUL/tekadventure
 ** 
-** Made by Cousin Hugo
-** Login   <Heychsea@epitech.net>
+** Made by Hugo Cousin
+** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Mon Oct 10 09:43:32 2016 Cousin Hugo
-** Last update Wed Apr  5 11:15:14 2017 Hugo Cousin
+** Started on  Tue May 23 11:17:31 2017 Hugo Cousin
+** Last update Tue May 23 11:17:32 2017 Hugo Cousin
 */
 
-#include "my.h"
+#include	"lib.h"
 
 char		*my_strncpy(char *dest, const char *src, size_t n)
 {
-  size_t	i;
-
-  i = 0;
-  while (i < n && src[i])
+  if (src)
     {
-      dest[i] = src[i];
-      i++;
+      while (n-- && *src)
+	*dest++ = *src++;
+      *dest = 0;
     }
-  dest[i] = 0;
   return (dest);
 }

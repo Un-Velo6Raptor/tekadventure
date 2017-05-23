@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 16:39:40 2017 Martin Januario
-** Last update Sat May 20 21:07:10 2017 Martin Januario
+** Last update Tue May 23 11:21:15 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -14,13 +14,13 @@
 int			loop_menu(t_mode_game *mode, t_core *needs)
 {
   t_text_menu		menu_text;
-  t_sprite_menu		menu_sprite;	
+  t_sprite_menu		menu_sprite;
   sfEvent		event;
 
   if (ini_sprite_menu(&menu_sprite, needs) == 84 ||
       ini_text_menu(&menu_text, needs) == 84 ||
       ini_music_menu(needs) == 84)
-    return (my_puterror("Error while loading the library.\n"));
+    return (my_puterror("Error while loading the ressources.\n"));
   place_sprite_menu(&menu_sprite);
   while (sfRenderWindow_isOpen(needs->window))
     {

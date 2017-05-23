@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Thu Apr 13 19:31:40 2017 Hugo Cousin
+** Last update Tue May 23 11:28:27 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -48,7 +48,7 @@ int		get_text(int fd, t_player *player)
   player->text = malloc(sizeof(t_text) * 2);
   if (!player->text)
     return (0);
-  tmp = get_next_line(fd);
+  tmp = gnl(fd);
   while (tmp)
     {
       player->text = my_realloc(player->text, sizeof(t_text) * size,
@@ -61,7 +61,7 @@ int		get_text(int fd, t_player *player)
 	return (0);
       free(tmp);
       size++;
-      tmp = get_next_line(fd);
+      tmp = gnl(fd);
     }
   player->text[size] = (t_text) {-1, NULL};
   return (1);

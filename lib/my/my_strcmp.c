@@ -4,8 +4,8 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 15:03:26 2017 Hugo Cousin
-** Last update Tue Apr  4 15:16:08 2017 Hugo Cousin
+** Started on  Tue May 23 11:18:30 2017 Hugo Cousin
+** Last update Tue May 23 11:18:31 2017 Hugo Cousin
 */
 
 int	my_strcmp(const char *s1, const char *s2)
@@ -26,6 +26,7 @@ char	my_low(char c)
 {
   if (c >= 'A' && c <= 'Z')
     return (c + 32);
+  return (c);
 }
 
 int	my_strcasecmp(const char *s1, const char *s2)

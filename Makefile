@@ -1,51 +1,59 @@
 ##
-## Makefile for tekadventure in /home/heychsea/MUL/tekadventure
+## Makefile for  in /home/januar_m/delivery/graphical/tekadventure
 ## 
-## Made by Hugo Cousin
-## Login   <hugo.cousin@epitech.eu>
+## Made by Martin Januario
+## Login   <martin.januario@epitech.eu>
 ## 
-## Started on  Wed Apr 12 15:45:03 2017 Hugo Cousin
-## Last update Thu Apr 13 16:27:50 2017 Hugo Cousin
+## Started on  Fri May 19 15:09:40 2017 Martin Januario
+## Last update Tue May 23 11:27:56 2017 Hugo Cousin
 ##
 
-SRC	=	src/main.c		\
-		src/init/sentences.c	\
-		src/end/free_players.c
+.PHONY:		all clean fclean re
 
-OBJ	=	$(SRC:.c=.o)
+SRC	=	src/main.c			\
+		src/check_env.c			\
+		src/create_vector.c		\
+		src/create_color.c		\
+		src/match.c			\
+		src/init/sentences.c
+
+DISPLAY	=	src/display/window_menu.c	\
+		src/display/create_window.c
+
+MENU	=	src/menu/loop_menu.c		\
+		src/menu/draw_sprite_menu.c	\
+		src/menu/place_sprite_menu.c	\
+		src/menu/destroy_menu.c		\
+		src/menu/ini_text_menu.c	\
+		src/menu/gest_mouse_menu.c	\
+		src/menu/ini_music_menu.c	\
+		src/menu/music_or_not.c		\
+		src/menu/music_pause.c		\
+		src/menu/ini_sprite_menu.c
+
+OBJ	=	$(SRC:.c=.o)			\
+		$(DISPLAY:.c=.o)		\
+		$(MENU:.c=.o)			\
+		$(LIB:.c=.o)
+
+CFLAGS	=	-g -Wall -Wextra -I include
+
+LDFLAGS	=	-L lib -lmy -lc_graph_prog_full -lm
 
 NAME	=	tekadventure
 
-CFLAGS	=	-W -Wall -Wextra -I ./include
+all:		$(NAME)
 
-LDFLAGS	=	-Llib -lmy
-
-CC	=	gcc
-
-RM	=	rm
-
-all:	$(NAME)
+$(NAME):	$(OBJ)
+		gcc -o $(NAME) $(OBJ) $(LDFLAGS)
 
 lib:
-	$(MAKE) -C lib/my
-
-clib:
-	$(MAKE) -C lib/my clean
-
-$(NAME):$(OBJ)
-	@if ! [ -f lib/libmy.a ]; then $(MAKE) -C lib/my; fi;
-	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
+		$(MAKE) -C lib/my re
 
 clean:
-	$(RM) -rf $(OBJ)
+		rm -f $(OBJ)
 
-fclean:	clean
-	$(RM) -rf $(NAME)
+fclean:		clean
+		rm -f $(NAME)
 
-re: fclean all
-
-debug: override CFLAGS := -ggdb3 $(CFLAGS)
-debug: fclean clib lib $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
-
-.PHONY: all lib clib clean fclean re full
+re:		fclean all

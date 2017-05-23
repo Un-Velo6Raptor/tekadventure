@@ -4,15 +4,22 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 15:04:06 2017 Hugo Cousin
-** Last update Tue Apr  4 15:57:10 2017 Hugo Cousin
+** Started on  Tue May 23 11:18:59 2017 Hugo Cousin
+** Last update Tue May 23 11:20:40 2017 Hugo Cousin
 */
 
-#include <unistd.h>
-#include "my.h"
+#include	<unistd.h>
+#include	"lib.h"
 
-void	my_putstr(const char *s, int fd)
+void		my_putstr(int fd, const char *s)
 {
   if (s)
     write(fd, s, my_strlen(s));
+}
+
+int		my_puterror(char *s)
+{
+  if (s)
+    write(2, s, my_strlen(s));
+  return (1);
 }
