@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Tue May 23 17:12:47 2017 Hugo Cousin
+** Last update Tue May 23 17:19:57 2017 Hugo Cousin
 */
 
 #include	<math.h>
@@ -15,12 +15,11 @@
 static int		check_color(t_map *map, sfVector2i pos)
 {
   sfColor		color;
-  static sfColor	white = {255, 255, 255, 255};
 
   if (pos.x < 0 || pos.x >= map->size.x || pos.y < 0 || pos.y >= map->size.y)
     return (0);
   color = sfImage_getPixel(map->map, pos.x, pos.y);
-  if (color != white)
+  if (color != sfWhite)
     return (0);
   return (1);
 }
