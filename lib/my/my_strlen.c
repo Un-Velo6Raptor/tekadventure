@@ -4,28 +4,32 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 14:42:23 2017 Hugo Cousin
-** Last update Wed Apr  5 10:29:09 2017 Hugo Cousin
+** Started on  Tue May 23 11:17:54 2017 Hugo Cousin
+** Last update Tue May 23 11:17:55 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
+#include	<stdlib.h>
 
 size_t		my_strlen(const char *s)
 {
-  size_t	i;
+  const char	*save;
 
-  i = 0;
-  while (s && s[i])
-    i++;
-  return (i);
+  if (!s)
+    return (0);
+  save = s;
+  while (*s)
+    s++;
+  return (s - save);
 }
 
 size_t		tablen(char **t)
 {
-  size_t	i;
+  char		**save;
 
-  i = 0;
-  while (t && t[i])
-    i++;
-  return (i);
+  if (!t)
+    return (0);
+  save = t;
+  while (*t)
+    t++;
+  return (t - save);
 }

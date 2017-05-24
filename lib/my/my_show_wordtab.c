@@ -4,22 +4,25 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 15:05:04 2017 Hugo Cousin
-** Last update Sat Apr  8 13:53:24 2017 Hugo Cousin
+** Started on  Tue May 23 11:18:51 2017 Hugo Cousin
+** Last update Tue May 23 11:23:06 2017 Hugo Cousin
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "my.h"
+#include	<unistd.h>
+#include	<stdlib.h>
+#include	"lib.h"
 
 void		my_show_wordtab(int fd, char **array, char *s)
 {
   size_t	i;
 
   i = 0;
-  while (array[i])
+  if (array)
     {
-      my_putstr(array[i++], fd);
-      my_putstr(s, fd);
+      while (array[i])
+	{
+	  my_putstr(fd, array[i++]);
+	  my_putstr(fd, s);
+	}
     }
 }

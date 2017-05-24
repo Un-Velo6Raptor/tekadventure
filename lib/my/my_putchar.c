@@ -4,13 +4,13 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 15:03:46 2017 Hugo Cousin
-** Last update Sun Apr  9 19:52:46 2017 Hugo Cousin
+** Started on  Tue May 23 11:19:15 2017 Hugo Cousin
+** Last update Tue May 23 11:19:16 2017 Hugo Cousin
 */
 
-#include <unistd.h>
+#include	<unistd.h>
 
-void	my_putchar(int fd, char c)
+void		my_putchar(int fd, char c)
 {
   write(fd, &c, 1);
 }

@@ -1,19 +1,19 @@
 /*
-** my_getnbr.c for getnnb in /home/heychsea/MUL/tekadventure
+** my_getnbr.c for tekadventure in /home/heychsea/MUL/tekadventure
 ** 
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Tue Feb 21 14:41:20 2017 Hugo Cousin
-** Last update Tue Apr  4 15:57:38 2017 Hugo Cousin
+** Started on  Tue May 23 11:16:53 2017 Hugo Cousin
+** Last update Tue May 23 11:17:01 2017 Hugo Cousin
 */
 
-#include "my.h"
+#include	"lib.h"
 
-int	get_sign(const char *s)
+int		get_sign(const char *s)
 {
-  int	sign;
-  int	i;
+  int		sign;
+  int		i;
 
   sign = 1;
   i = 0;
@@ -26,11 +26,11 @@ int	get_sign(const char *s)
   return (sign);
 }
 
-int	getnb(const char *s)
+int		getnb(const char *s)
 {
-  int	nb;
-  int	i;
-  int	sign;
+  int		nb;
+  int		i;
+  int		sign;
 
   nb = 0;
   i = 0;
@@ -43,15 +43,15 @@ int	getnb(const char *s)
   return (nb);
 }
 
-int	u_getnb(const char *s)
+int		u_getnb(const char *s)
 {
-  int	nb;
+  int		nb;
   unsigned int	i;
 
   nb = 0;
   i = 0;
   if ((my_strlen(s) == 10 &&
-      my_strcmp(s, "2147483647") > 0)
+       my_strcmp(s, "2147483647") > 0)
       || my_strlen(s) > 10 || str_num(s) == -1)
     return (-1);
   while (s[i] >= 48 && s[i] <= 57)

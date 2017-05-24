@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Sat May 20 21:51:14 2017 Martin Januario
+** Last update Tue May 23 17:21:02 2017 Martin Januario
 */
 
 #ifndef			DISPLAY_H_
@@ -27,6 +27,21 @@ typedef struct		s_core
   sfMusic		*music[6];
 }			t_core;
 
+typedef struct		s_map
+{
+  sfImage		*map;
+  sfVector2u		size;
+  struct s_map		*next;
+}			t_map;
+
+typedef struct		s_needs
+{
+  sfRenderWindow	*window;
+  sfTexture		*texture;
+  sfSprite		*sprite;
+  t_map			map;		
+}			t_needs;
+
 typedef struct		s_mode_game
 {
   int			difficult;
@@ -40,6 +55,7 @@ typedef struct		s_mode_game
 **			Prototypes of file's display
 */
 int			window_menu(t_mode_game *);
+int			window_game(t_mode_game *);
 sfRenderWindow		*create_window(char *, int, int);
 
 /*

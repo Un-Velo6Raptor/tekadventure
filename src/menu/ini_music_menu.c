@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Sat May 20 20:07:46 2017 Martin Januario
-** Last update Sat May 20 21:51:52 2017 Martin Januario
+** Last update Tue May 23 11:10:17 2017 Hugo Cousin
 */
 
 #include	"menu.h"
@@ -38,11 +38,12 @@ static int	check_music_menu(t_core *needs)
 
 int		ini_music_menu(t_core *needs)
 {
-  needs->music[THEME_MENU] = music_create("library/menu/theme.ogg", 2);
-  needs->music[JOKE_MENU] = music_create("library/menu/diabolic_joke.ogg", 0);
-  needs->music[EASY_MENU] = music_create("library/menu/easy.ogg", 0);
-  needs->music[HARD_MENU] = music_create("library/menu/hard.ogg", 0);
-  needs->music[NORMAL_MENU] = music_create("library/menu/normal.ogg", 0);
+  needs->music[THEME_MENU] = music_create("ressources/menu/theme.ogg", 2);
+  needs->music[JOKE_MENU] =
+    music_create("ressources/menu/diabolic_joke.ogg", 0);
+  needs->music[EASY_MENU] = music_create("ressources/menu/easy.ogg", 0);
+  needs->music[HARD_MENU] = music_create("ressources/menu/hard.ogg", 0);
+  needs->music[NORMAL_MENU] = music_create("ressources/menu/normal.ogg", 0);
   needs->music[MAX_SONG_MENU] = NULL;
   return (check_music_menu(needs));
 }

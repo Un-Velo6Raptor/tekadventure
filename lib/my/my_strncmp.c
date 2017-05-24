@@ -4,22 +4,22 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Thu Jan 12 15:05:41 2017 Hugo Cousin
-** Last update Tue Apr  4 15:17:14 2017 Hugo Cousin
+** Started on  Tue May 23 11:17:44 2017 Hugo Cousin
+** Last update Tue May 23 11:17:46 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
+#include	<stdlib.h>
 
 int		my_strncmp(const char *s1, const char *s2, size_t n)
 {
-  size_t	i;
-
-  i = 0;
-  while (i < n)
+  if (!s1 || !s2)
+    return (0);
+  while (n--)
     {
-      if (s1[i] != s2[i])
-	return (s1[i] - s2[i]);
-      i++;
+      if (*s1 != *s2)
+	return (*s1 - *s2);
+      s1++;
+      s2++;
     }
   return (0);
 }

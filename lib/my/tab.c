@@ -4,23 +4,25 @@
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
-** Started on  Wed Apr  5 11:10:27 2017 Hugo Cousin
-** Last update Wed Apr  5 21:18:08 2017 Hugo Cousin
+** Started on  Tue May 23 11:16:08 2017 Hugo Cousin
+** Last update Tue May 23 11:16:09 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
-#include "my.h"
+#include	<stdlib.h>
+#include	"lib.h"
 
-void	tabfree(char **t)
+void		tabfree(char **t)
 {
-  int	i;
+  char		**save;
 
-  i = 0;
-  while (t && t[i] != NULL)
-    free(t[i++]);
   if (t)
-    free(t[i]);
-  free(t);
+    {
+      save = t;
+      while (*t)
+	free(*t++);
+      free(*t);
+      free(save);
+    }
 }
 
 char		**my_tabdup(char **t, int mode)
@@ -28,11 +30,14 @@ char		**my_tabdup(char **t, int mode)
   size_t	i;
   char		**dest;
 
+  if (!t)
+    return (NULL);
   i = tablen(t) + 1;
-  if ((dest = malloc(sizeof(char*) * i)) == NULL)
+  dest = malloc(sizeof(char*) * i);
+  if (!dest)
     return (NULL);
   i = 0;
-  while (t[i] != NULL)
+  while (t[i])
     {
       dest[i] = my_strdup(t[i]);
       i++;
@@ -49,9 +54,11 @@ char		**my_tabrea(char **t, char *s)
   char		**dest;
 
   i = tablen(t);
-  if ((dest = malloc(sizeof(char*) * (i + 2))) == NULL)
+  dest = malloc(sizeof(char*) * (i + 2));
+  if (!dest)
     return (NULL);
-  my_memcpy(dest, t, sizeof(char*) * (i + 1));
+  if (t)
+    my_memcpy(dest, t, sizeof(char*) * (i + 1));
   dest[i] = my_strdup(s);
   dest[i + 1] = NULL;
   free(t);

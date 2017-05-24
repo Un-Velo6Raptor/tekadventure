@@ -42,9 +42,9 @@ int			ini_sprite_menu(t_sprite_menu *menu_sprite,
 					t_core *core)
 {
   menu_sprite->m_sprite[TITLE_M] = create_sprite(core, menu_sprite,
-					      "library/menu/title.png", 0);
+					      "ressources/menu/title.png", 0);
   menu_sprite->m_sprite[BUTTON_PLAY] = create_sprite(core, menu_sprite,
-					      "library/menu/button_play.png",
+					      "ressources/menu/button_play.png",
 						 0);
   menu_sprite->m_sprite[MAX_SPRITE_MENU] = NULL;
   return (check_sprite(menu_sprite));
