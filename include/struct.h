@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 11:55:52 2017 Hugo Cousin
-** Last update Tue May 23 16:38:17 2017 Martin Januario
+** Last update Tue May 23 19:37:16 2017 Martin Januario
 */
 
 #ifndef STRUCT_H_

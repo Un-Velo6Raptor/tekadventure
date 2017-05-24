@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Tue May 23 18:30:46 2017 Hugo Cousin
+** Last update Wed May 24 15:17:31 2017 Martin Januario
 */
 
 #include	<math.h>
@@ -55,7 +55,7 @@ int		check_path(t_map *map, sfVector2i from,
   return (1);
 }
 
-static void	update_rect(sfSprite *sprite, sfVector2i pos)
+void		update_rect(sfSprite *sprite, sfVector2i pos)
 {
   sfIntRect	rect;
 
@@ -65,14 +65,18 @@ static void	update_rect(sfSprite *sprite, sfVector2i pos)
   sfSprite_setTextureRect(sprite, rect);
 }
 
-sfVector2i	move_map(sfSprite *sprite, sfVector2i from, sfVector2i to)
+sfVector2i		move_map(sfSprite *sprite, sfVector2i from, sfVector2i to, int reset)
 {
-  sfVector2i	delta;
-  sfVector2i	err;
+  static sfVector2i	delta;
+  static sfVector2i	err;
 
   delta.y = abs(to.y - from.y);
   delta.x = abs(to.x - from.x);
-  err.x = (delta.x > delta.y ? delta.x : -delta.y) / 2;
+  if (reset)
+    {
+      err.x = (delta.x > delta.y ? delta.x : -delta.y) / 2;
+      return (from);
+    }
   err.y = err.x;
   if (err.y > -delta.x)
     {
