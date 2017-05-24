@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Wed May 24 15:17:31 2017 Martin Januario
+** Last update Wed May 24 16:10:23 2017 Hugo Cousin
 */
 
 #include	<math.h>
@@ -25,8 +25,8 @@ static int		check_color(t_map *map, sfVector2i pos)
   return (1);
 }
 
-int		check_path(t_map *map, sfVector2i from,
-			   sfVector2i to)
+int			check_path(t_map *map, sfVector2i from,
+				   sfVector2i to)
 {
   sfVector2i	delta;
   sfVector2i	err;
@@ -55,9 +55,9 @@ int		check_path(t_map *map, sfVector2i from,
   return (1);
 }
 
-void		update_rect(sfSprite *sprite, sfVector2i pos)
+void			update_rect(sfSprite *sprite, sfVector2i pos)
 {
-  sfIntRect	rect;
+  sfIntRect		rect;
 
   rect = sfSprite_getTextureRect(sprite);
   rect.top = pos.y;
@@ -65,9 +65,10 @@ void		update_rect(sfSprite *sprite, sfVector2i pos)
   sfSprite_setTextureRect(sprite, rect);
 }
 
-sfVector2i		move_map(sfSprite *sprite, sfVector2i from, sfVector2i to, int reset)
+sfVector2i		move_map(sfSprite *sprite, sfVector2i from,
+				 sfVector2i to, int reset)
 {
-  static sfVector2i	delta;
+  sfVector2i		delta;
   static sfVector2i	err;
 
   delta.y = abs(to.y - from.y);
@@ -90,4 +91,29 @@ sfVector2i		move_map(sfSprite *sprite, sfVector2i from, sfVector2i to, int reset
     }
   update_rect(sprite, from);
   return (from);
+}
+
+#define UP 8
+#define DOWN 10
+#define LEFT 9
+#define RIGHT 11
+
+void			player_refresh(sfSprite *sprite, sfVector2f pos,
+				       sfVector2i from, sfVector2i to)
+
+{
+  sfVector2i		delta;
+
+  delta.y = to.y - from.y;
+  delta.x = to.x - from.x;
+  if (abs(delta.x) > abs(delta.y) && delta.x > 0)
+    refresh_sprite(sprite, pos, RIGHT, 9);
+  else if (abs(delta.x) > abs(delta.y) && delta.x < 0)
+    refresh_sprite(sprite, pos, LEFT, 9);
+  else if (abs(delta.x) < abs(delta.y) && delta.y > 0)
+    refresh_sprite(sprite, pos, DOWN, 9);
+  else if (abs(delta.x) < abs(delta.y) && delta.y < 0)
+    refresh_sprite(sprite, pos, UP, 9);
+  else
+    refresh_sprite(sprite, pos, 2, 0);
 }

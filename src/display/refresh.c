@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon May 22 14:43:49 2017 Hugo Cousin
-** Last update Tue May 23 17:57:48 2017 Hugo Cousin
+** Last update Wed May 24 16:04:59 2017 Hugo Cousin
 */
 
 #include		<stdlib.h>
@@ -105,7 +105,7 @@ void			refresh_sprite(sfSprite *sprite,
   else
     keep = update_tab(keep, sprite, mode, &ptr);
   ptr->rect.left = SPRITE_W * (int)ptr->step;
-  ptr->step += 0.25;
+  ptr->step += 0.1;
   if (ptr->step >= step)
     ptr->step = 0;
   sfSprite_setTextureRect(sprite, ptr->rect);

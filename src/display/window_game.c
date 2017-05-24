@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Tue May 23 18:00:35 2017 Martin Januario
+** Last update Wed May 24 16:04:25 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -27,7 +27,7 @@ int		window_game(t_mode_game *mode)
   needs.window = create_window("Game <-> Move Backward.", WIDTH, HEIGHT);
   if (needs.window == NULL)
     return (my_puterror("Can't create the window.\n"));
-  sfRenderWindow_setFramerateLimit(needs.window, 30);
+  sfRenderWindow_setFramerateLimit(needs.window, 60);
   needs.sprite = sfSprite_create();
   needs.texture = NULL;
   if (ini_map_game(&needs) == 84)

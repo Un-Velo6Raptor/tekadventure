@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Tue May 23 19:34:51 2017 Martin Januario
+## Last update Wed May 24 15:31:56 2017 Hugo Cousin
 ##
 
 .PHONY:		all clean fclean re
@@ -19,7 +19,8 @@ SRC	=	src/main.c			\
 
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/window_game.c	\
-		src/display/create_window.c
+		src/display/create_window.c	\
+		src/display/refresh.c
 
 MENU	=	src/menu/loop_menu.c		\
 		src/menu/draw_sprite_menu.c	\
