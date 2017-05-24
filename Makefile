@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Wed May 24 15:31:56 2017 Hugo Cousin
+## Last update Wed May 24 16:58:31 2017 Sahel Lucas--Saoudi
 ##
 
 .PHONY:		all clean fclean re
@@ -15,7 +15,10 @@ SRC	=	src/main.c			\
 		src/create_vector.c		\
 		src/create_color.c		\
 		src/match.c			\
-		src/init/sentences.c
+		src/init/sentences.c		\
+		src/init/boss.c			\
+		src/init/character.c		\
+		src/init/player.c
 
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/window_game.c	\
