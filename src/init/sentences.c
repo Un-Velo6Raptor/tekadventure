@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Tue May 23 11:28:27 2017 Hugo Cousin
+** Last update Thu May 25 17:50:14 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -17,27 +17,6 @@
 #include <unistd.h>
 #include "funcs.h"
 #include "lib.h"
-
-size_t		count_files(void)
-{
-  struct dirent	*files;
-  DIR		*directory;
-  size_t	files_number;
-
-  directory = opendir("ressources/players/");
-  if (!directory)
-    return (84);
-  files_number = 0;
-  files = readdir(directory);
-  while (files)
-    {
-      if (files->d_name[0] != '.')
-	files_number++;
-      files = readdir(directory);
-    }
-  closedir(directory);
-  return (files_number);
-}
 
 int		get_text(int fd, t_player *player)
 {
@@ -111,7 +90,7 @@ t_player	*get_sentences(void)
   size_t	files_number;
   t_player	*players;
 
-  files_number = count_files();
+  files_number = count_files("ressources/players/");
   if (files_number != 4)
     return (NULL);
   players = malloc(sizeof(t_player) * 4);
