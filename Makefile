@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Wed May 24 16:58:31 2017 Sahel Lucas--Saoudi
+## Last update Thu May 25 14:10:39 2017 Romain Melin
 ##
 
 .PHONY:		all clean fclean re
@@ -36,6 +36,11 @@ MENU	=	src/menu/loop_menu.c		\
 		src/menu/music_pause.c		\
 		src/menu/ini_sprite_menu.c
 
+TUTO	=	src/tuto/clean_tuto.c		\
+		src/tuto/init_tuto.c		\
+		src/tuto/my_sleep.c		\
+		src/tuto/tuto.c
+
 GAME	=	src/game/loop_game.c		\
 
 MECHS	=	src/moves/moves.c		\
@@ -45,7 +50,8 @@ OBJ	=	$(SRC:.c=.o)			\
 		$(MENU:.c=.o)			\
 		$(GAME:.c=.o)			\
 		$(MECHS:.c=.o)			\
-		$(LIB:.c=.o)
+		$(LIB:.c=.o)			\
+		$(TUTO:.c=.o)
 
 CFLAGS	=	-g -Wall -Wextra -I include
 
