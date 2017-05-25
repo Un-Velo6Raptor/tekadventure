@@ -5,7 +5,7 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Wed May 24 15:24:31 2017 Romain Melin
-** Last update Thu May 25 14:19:19 2017 Romain Melin
+** Last update Thu May 25 15:18:52 2017 Romain Melin
 */
 
 # define		SCREEN_WIDTH 1300
@@ -17,21 +17,7 @@
 #include		<SFML/Audio.h>
 #include		<unistd.h>
 #include		"tuto.h"
-
-static sfRenderWindow	*create_window(char *name)
-{
-  sfVideoMode		mode;
-  sfRenderWindow	*window;
-
-  mode.width = SCREEN_WIDTH;
-  mode.height = SCREEN_HEIGHT;
-  mode.bitsPerPixel = 32;
-  window = sfRenderWindow_create(mode, name, sfClose, NULL);
-  if (window == NULL)
-    return (NULL);
-  sfRenderWindow_setFramerateLimit(window, 1);
-  return (window);
-}
+#include		"display.h"
 
 static void	       	display_window(sfRenderWindow *window, sfTexture **image, sfSprite *sprite)
 {
@@ -49,10 +35,13 @@ static void	       	display_window(sfRenderWindow *window, sfTexture **image, sf
 	  i++;
 	  if (i > 7)
 	    sfRenderWindow_close(window);
-	  sfSprite_setTexture(sprite, image[i], sfTrue);
-	  sfRenderWindow_drawSprite(window, sprite, NULL);
-	  sfRenderWindow_display(window);
-	  my_sleep();
+	  else
+	    {
+	      sfSprite_setTexture(sprite, image[i], sfTrue);
+	      sfRenderWindow_drawSprite(window, sprite, NULL);
+	      sfRenderWindow_display(window);
+	      my_sleep();
+	    }
 	}
       is_closed(window);
     }
@@ -77,29 +66,38 @@ static int		the_window(sfRenderWindow *window)
   return (0);
 }
 
-int			tuto()
+static int		music_fail_tuto(sfRenderWindow *window)
+{
+  sfRenderWindow_close(window);
+  write(2, "music file is not found\n", 24);
+  return (84);
+}
+
+int			tuto(t_mode_game mode)
 {
   sfRenderWindow	*window;
   sfMusic		*music;
 
-  window = create_window("SFML Winodw");
+  window = create_window("SFML Winodw", SCREEN_WIDTH, SCREEN_HEIGHT);
+  sfRenderWindow_setFramerateLimit(window, 1);
   if (window == NULL)
     return (84);
-  music = sfMusic_createFromFile
-    ("ressources/tuto/Undertale_OST_-_Temmie_Village_Extended.ogg");
-  if (music == NULL)
+  if (mode.sound == 0)
     {
-      sfRenderWindow_close(window);
-      write(2, "music file is not found\n", 24);
-      return (84);
+      music = sfMusic_createFromFile
+	("ressources/tuto/Undertale_OST_-_Temmie_Village_Extended.ogg");
+      if (music == NULL)
+	return (music_fail_tuto(window));
+      sfMusic_play(music);
     }
-  sfMusic_play(music);
   if (the_window(window) == 84)
     {
-      sfMusic_destroy(music);
+      if (mode.sound == 0)
+	sfMusic_destroy(music);
       write(2, "image file is not found\n", 24);
       return (84);
     }
-  sfMusic_destroy(music);
+  if (mode.sound == 0)
+    sfMusic_destroy(music);
   return (0);
 }
