@@ -1,11 +1,11 @@
 /*
 ** sentences.c for tekadventure in /home/heychsea/MUL/ceciesttemporaire
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Fri May 26 14:07:36 2017 Hugo Cousin
+** Last update Fri May 26 16:00:08 2017 Sahel Lucas--Saoudi
 */
 
 #include <dirent.h>
@@ -92,13 +92,17 @@ t_player	*get_sentences(const char *dir_path, size_t nb_players)
   t_player	*players;
 
   files_number = count_files(dir_path);
+  printf("%s | %i\n", dir_path, files_number);
   if (files_number != nb_players)
     return (NULL);
+  printf("prout\n");
   players = malloc(sizeof(t_player) * nb_players);
   directory = opendir(dir_path);
   if (!directory || !players)
     return (NULL);
+  printf("pipi\n");
   if (loop_directory(directory, players, dir_path) == 0)
     return (NULL);
+  printf("qsdqsdqsd\n");
   return (players);
 }

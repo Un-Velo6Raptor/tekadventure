@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 26 15:47:06 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 16:16:50 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -19,9 +19,8 @@
 static t_needs	*ini_needs(t_mode_game *mode)
 {
   t_needs	*needs;
-  char          *name[5] = {"Martin", "Charlotte", "Hugo", "Sahel", NULL};
-  char          *path[5] = {"ressource/sentences", "ressources/music/", "ressources/select", "ressource\
-s/player", NULL};
+  char          *name[5] = {"Martin", "Romain", "Hugo", "Sahel", NULL};
+  char          *path[5] = {"ressources/sentences/", "ressources/music/", "ressources/select/", "ressources/player/", NULL};
 
   needs = malloc(sizeof(t_needs) * 1);
   if (needs == NULL)
@@ -34,7 +33,6 @@ s/player", NULL};
     return (NULL);
   if ((needs->map = ini_all_map(needs->dirs[MAP])) == NULL)
     return (NULL);
-  needs->player = init_player(path, name);
   needs->mode = mode;
   return (needs);
 }

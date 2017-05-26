@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 15:34:53 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 16:21:52 2017 Sahel Lucas--Saoudi
 */
 
 #include <stdlib.h>
@@ -13,6 +13,7 @@
 #include <SFML/Graphics.h>
 #include "player.h"
 #include "lib.h"
+#include "funcs.h"
 
 char		*concat(int nb_str, ...)
 {
@@ -51,6 +52,7 @@ t_text		*get_player_text(t_player *sentences, char *name)
   i = 0;
   while (i < NB_PLAYER)
     {
+      printf("%s\n", sentences[i].name);
       if (match(sentences[i].name, name))
 	return (sentences[i].text);
       i++;
@@ -63,10 +65,12 @@ int		set_music_and_select(t_char *player, char *music, char *select)
   char		*new_path;
   sfTexture	*texture;
 
+  if (!player)
+    return (1);
   new_path = concat(3, music, player->name, ".ogg");
   player->music = sfMusic_createFromFile(new_path);
   free(new_path);
-  new_path = concat(3, select, player->name, ".png");
+  new_path = concat(3, select, player->name, "_select.png");
   texture = sfTexture_createFromFile(new_path, NULL);
   free(new_path);
   if (!texture || !player->music)
@@ -95,19 +99,19 @@ t_char		**init_player(char **path, char **name)
   if (!player)
     return (NULL);
   new_path = concat(2, path[3], "martin_tek_ad.png");
-  player[MARTIN] = new_char(new_path, name[MARTIN], pos, get_player_text(sentences, "Martin"));
+  player[MARTIN] = new_char(new_path, name[MARTIN], pos, get_player_text(sentences, "martin"));
   if (set_music_and_select(player[MARTIN], path[1], path[2]))
     return (NULL);
-  new_path = concat(2, path[3], "charlotte_tek_ad.png");
-  player[CHARLOTTE] = new_char(new_path, name[CHARLOTTE], pos, get_player_text(sentences, "Charlotte"));
+  new_path = concat(2, path[3], "romain_tek_ad.png");
+  player[CHARLOTTE] = new_char(new_path, name[CHARLOTTE], pos, get_player_text(sentences, "romain"));
   if (set_music_and_select(player[CHARLOTTE], path[1], path[2]))
     return (NULL);
   new_path = concat(2, path[3], "hugo_tek_ad.png");
-  player[HUGO] = new_char(new_path, name[HUGO], pos, get_player_text(sentences, "Hugo"));
+  player[HUGO] = new_char(new_path, name[HUGO], pos, get_player_text(sentences, "hugo"));
   if (set_music_and_select(player[HUGO], path[1], path[2]))
     return (NULL);
   new_path = concat(2, path[3], "sahel_tek_ad.png");
-  player[SAHEL] = new_char(new_path, name[SAHEL], pos, get_player_text(sentences, "Sahel"));
+  player[SAHEL] = new_char(new_path, name[SAHEL], pos, get_player_text(sentences, "sahel"));
   if (set_music_and_select(player[SAHEL], path[1], path[2]))
     return (NULL);
   free(sentences);
