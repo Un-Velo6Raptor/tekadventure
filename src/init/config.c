@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 10:41:55 2017 Hugo Cousin
-** Last update Fri May 26 12:06:44 2017 Hugo Cousin
+** Last update Fri May 26 13:37:05 2017 Hugo Cousin
 */
 
 #include	<dirent.h>
@@ -17,17 +17,6 @@
 #include	"lib.h"
 #include	"config.h"
 #include	"display.h"
-
-t_config cmds[CONFIG_DIR + 1] =
-  {
-    {"MAP_DIR", &check_dir},
-    {"MAP_BACK_DIR", &check_dir},
-    {"BOSS_DIR", &check_dir},
-    {"PLAYER_SPRITE_DIR", &check_dir},
-    {"PLAYER_MENU_DIR", &check_dir},
-    {"PLAYER_TEXT_DIR", &check_dir},
-    {NULL, NULL}
-  };
 
 int		check_dir(char *cmd, size_t line, size_t index, char **tab)
 {
@@ -41,12 +30,16 @@ int		check_dir(char *cmd, size_t line, size_t index, char **tab)
       write(2, ".\n", 2);
       return (0);
     }
-  tab[index] = my_strdup(cmd);
+  if (cmd[my_strlen(cmd) - 1] != '/')
+    tab[index] = my_allocat(cmd, "/", 0);
+  else
+    tab[index] = my_strdup(cmd);
   closedir(dir);
   return (1);
 }
 
-int		check_cmd(char **cmd, size_t line, char **tab)
+int		check_cmd(char **cmd, size_t line, char **tab,
+			  t_config config[CONFIG_DIR + 1])
 {
   size_t	index;
 
@@ -58,10 +51,10 @@ int		check_cmd(char **cmd, size_t line, char **tab)
       write(2, ".\n", 2);
       return (0);
     }
-  while (cmds[index].name)
+  while (config[index].name)
     {
-      if (!my_strcmp(cmds[index].name, cmd[0]))
-	return (cmds[index].func(cmd[1], line, index, tab));
+      if (!my_strcmp(config[index].name, cmd[0]))
+	return (config[index].func(cmd[1], line, index, tab));
       index++;
     }
   my_putstr(2, "Wrong variable at line: ");
@@ -70,7 +63,8 @@ int		check_cmd(char **cmd, size_t line, char **tab)
   return (0);
 }
 
-int		read_config(int fd, char **dirs)
+int		read_config(int fd, char **dirs,
+			    t_config config[CONFIG_DIR + 1])
 {
   char		*cmd;
   size_t	line;
@@ -84,7 +78,7 @@ int		read_config(int fd, char **dirs)
       if (cmd[0] != '#' && cmd[0])
 	{
 	  tab = my_str_to_wordtab(cmd, '=');
-	  ret = check_cmd(tab, line, dirs);
+	  ret = check_cmd(tab, line, dirs, config);
 	  tabfree(tab);
 	}
       line++;
@@ -93,9 +87,22 @@ int		read_config(int fd, char **dirs)
   return (ret);
 }
 
+void		init_config(t_config config[CONFIG_DIR + 1])
+{
+  config[0] = (t_config){"MAP_DIR", &check_dir};
+  config[1] = (t_config){"MAP_BACK_DIR", &check_dir};
+  config[2] = (t_config){"BOSS_DIR", &check_dir};
+  config[3] = (t_config){"PLAYER_SPRITE_DIR", &check_dir};
+  config[4] = (t_config){"PLAYER_MENU_DIR", &check_dir};
+  config[5] = (t_config){"PLAYER_TEXT_DIR", &check_dir};
+  config[6] = (t_config){NULL, NULL};
+
+}
+
 int		config(t_needs *needs)
 {
   int		fd;
+  t_config	config[CONFIG_DIR + 1];
 
   fd = open("config.tk", O_RDONLY);
   if (fd == -1)
@@ -103,7 +110,8 @@ int		config(t_needs *needs)
       my_putstr(2, "Error while opening config file.\n");
       return (84);
     }
-  read_config(fd, needs->dirs);
+  init_config(config);
+  read_config(fd, needs->dirs, config);
   close(fd);
   return (0);
 }
