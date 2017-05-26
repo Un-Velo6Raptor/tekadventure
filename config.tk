@@ -4,5 +4,10 @@
 # 	       PLAYER_MENU_DIR, PLAYER_TEXT_DIR
 
 MAP_DIR=.
-MAP_DIR=..
+MAP_DIR=ressources/map
+PLAYER_SPRITE_DIR=ressources/character
+MAP_BACK_DIR=ressources/map
+BOSS_DIR=ressources/boss
+PLAYER_MENU_DIR=ressources/menu
+PLAYER_TEXT_DIR=ressources/players
 # END OF FILE

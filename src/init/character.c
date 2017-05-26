@@ -5,48 +5,32 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:08:44 2017 Sahel Lucas--Saoudi
-** Last update Thu May 25 17:51:52 2017 Martin Januario
+** Last update Fri May 26 15:47:51 2017 Sahel Lucas--Saoudi
 */
 
-#include	<stdlib.h>
-#include	"character.h"
-#include	"boss.h"
-#include	"player.h"
-#include	"lib.h"
+#include <stdlib.h>
+#include "character.h"
+#include "boss.h"
+#include "player.h"
 
-t_char  *new_char(char *path, char *name, int x, int y)
+t_char  *new_char(char *path, char *name, sfVector2i pos, t_text *text)
 {
-  t_char        *boss;
+  t_char        *character;
   sfTexture     *texture;
 
-  boss = malloc(sizeof(t_char));
-  if (!boss)
+  character = malloc(sizeof(t_char));
+  if (!character || !text)
     return (NULL);
-  boss->pos.x = x;
-  boss->pos.y = y;
-  boss->name = my_strdup(name);
+  character->pos = pos;
+  character->name = strdup(name);
   texture = sfTexture_createFromFile(path, NULL);
-  if (!texture || !boss->name)
+  if (!texture || !character->name)
     return (NULL);
-  boss->sprite = sfSprite_create();
-  sfSprite_setTexture(boss->sprite, texture, sfTrue);
-  if (!boss->sprite)
+  character->sprite = sfSprite_create();
+  sfSprite_setTexture(character->sprite, texture, sfTrue);
+  if (!character->sprite)
     return (NULL);
-  return (boss);
-}
-
-t_character	*init_character()
-{
-  t_character	*character;
-
-  character = malloc(sizeof(t_character));
-  if (!character)
-    return (NULL);
-  character->boss = init_boss();
-  if (!character->boss)
-    return (NULL);
-  character->player = init_player();
-  if (!character->player)
-    return (NULL);
+  character->phrase = text;
+  character->death = ALIVE;
   return (character);
 }

@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:34:05 2017 Sahel Lucas--Saoudi
-** Last update Wed May 24 16:50:23 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 14:54:51 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef BOSS_H_
@@ -16,10 +16,6 @@
 # endif /* !NB_BOSS */
 
 # include <SFML/Graphics.h>
-# include "mike.h"
-# include "chloe.h"
-# include "malex.h"
-# include "remi.h"
 # include "character.h"
 
 t_char			**init_boss();

@@ -1,11 +1,11 @@
 /*
 ** display.h for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Fri May 26 14:17:57 2017 Martin Januario
+** Last update Fri May 26 15:46:19 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef			DISPLAY_H_
@@ -19,6 +19,7 @@
 # include		<SFML/Audio.h>
 # include		<SFML/Graphics.h>
 # include		"config.h"
+# include		"character.h"
 
 typedef struct  s_map
 {
@@ -38,6 +39,8 @@ typedef struct		s_needs
   t_map			**map;
   int			current_map;
   int			current_player;
+  t_char		**player;
+  t_char		**boss;
   struct s_mode_game	*mode;
 }			t_needs;
 
