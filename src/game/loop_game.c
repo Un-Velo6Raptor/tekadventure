@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Wed May 24 16:08:45 2017 Hugo Cousin
+** Last update Thu May 25 16:10:05 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -58,7 +58,7 @@ int                     loop_game(t_mode_game __attribute__ ((unused))  *mode, t
   pos = vector_2i(138, 1476);
   to = vector_2i(138, 1476);
   needs->texture = sfTexture_createFromFile("ressources/map/map.png", NULL);
-  texture = sfTexture_createFromFile("magic_mike_tek_ad.png", NULL);
+  texture = sfTexture_createFromFile("ressources/boss/magic_mike_tek_ad.png", NULL);
   sprite = sfSprite_create();
   sfSprite_setTexture(sprite, texture, sfTrue);
   sfSprite_setTexture(needs->sprite, needs->texture, sfTrue);

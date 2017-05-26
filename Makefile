@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Thu May 25 14:10:39 2017 Romain Melin
+## Last update Thu May 25 16:15:03 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -45,12 +45,20 @@ GAME	=	src/game/loop_game.c		\
 
 MECHS	=	src/moves/moves.c		\
 
+BAR	=	src/bar/bar_create.c            \
+		src/bar/my_framebuffer_create.c \
+		src/bar/get_set_pixel.c         \
+		src/bar/fill_square.c           \
+		src/bar/update_sprite_bar.c     \
+		src/bar/reset_frame.c
+
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\
 		$(MENU:.c=.o)			\
 		$(GAME:.c=.o)			\
 		$(MECHS:.c=.o)			\
 		$(LIB:.c=.o)			\
+		$(BAR:.c=.o)			\
 		$(TUTO:.c=.o)
 
 CFLAGS	=	-g -Wall -Wextra -I include
