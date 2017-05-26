@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 26 17:07:45 2017 Martin Januario
+** Last update Fri May 26 20:58:28 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -37,7 +37,7 @@ static t_needs	*ini_needs(t_mode_game *mode)
   needs->current_player = 0;
   needs->current_map = 0;
   needs->pos = vector_2i(138, 1476);
-
+  needs->current_veleda = 4;
   return (needs);
 }
 
@@ -54,9 +54,9 @@ int		main(int __attribute__ ((unused)) argc,
     return (my_puterror("Error in ENV.\n"));
   if (window_menu(&mode) == 84)
     return (my_puterror("See you later !"));
+  if (mode.play != 1)
+    return (0);
   if (tuto(mode) == 84)
     return (my_puterror("Error\n"));
-  if (mode.play == 1)
-    return (window_game(needs));
-  return (0);
+  return (window_game(needs));
 }

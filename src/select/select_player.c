@@ -5,22 +5,48 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu May 25 17:08:39 2017 Martin Januario
-** Last update Thu May 25 23:29:49 2017 Martin Januario
+** Last update Fri May 26 19:57:19 2017 Martin Januario
 */
 
 #include	<stdlib.h>
 #include	"select.h"
+#include	"lib.h"
 
-static void	display_select(t_needs *needs, sfSprite **sprite)
+static char	*center_text(char *name)
 {
+  char		*tmp;
+
+  tmp = malloc(10);
+  if (tmp == NULL)
+    return (name);
+  my_strncpy(tmp, "                 ", 6 - my_strlen(name));
+  my_strcat(tmp, name);
+  return (tmp);
+}
+
+static void	display_select(t_needs *needs, sfSprite **sprite, int opt)
+{
+  sfFont	*font;
+  sfText	*text;
   int		idx;
 
   idx = 0;
+  font = sfFont_createFromFile("ressources/font/FFF_Tusj.ttf");
+  text = sfText_create();
   while (sprite[idx] != NULL)
     {
       sfRenderWindow_drawSprite(needs->window, sprite[idx], NULL);
       idx++;
     }
+  if (opt >= 0 && font != NULL && text != NULL)
+    {
+      sfText_setString(text, center_text(needs->player[opt]->name));
+      sfText_setFont(text, font);
+      sfText_setCharacterSize(text, 80);
+      sfText_setColor(text, sfBlack);
+      sfText_setPosition(text, vector_2f(320, 600));
+    }
+  sfRenderWindow_drawText(needs->window, text, NULL);
   sfRenderWindow_display(needs->window);
 }
 
@@ -50,10 +76,10 @@ static sfSprite	**ini_sprite_select(t_needs *needs)
   if (sprite == NULL)
     return (NULL);
   sprite[0] = create_sprite("ressources/character/plage.jpg");
-  sprite[1] = create_sprite("ressources/character/hugo_select.png");
-  sprite[2] = create_sprite("ressources/character/charlotte_select.png");
-  sprite[3] = create_sprite("ressources/character/martin_select.png");
-  sprite[4] = create_sprite("ressources/character/sahel_select.png");
+  sprite[1] = needs->player[2]->select;
+  sprite[2] = needs->player[1]->select;
+  sprite[3] = needs->player[0]->select;
+  sprite[4] = needs->player[3]->select;
   sprite[5] = create_sprite("ressources/character/select_title.png");
   sprite[6] = create_sprite("ressources/character/confirm.png");
   sprite[7] = NULL;
@@ -70,15 +96,15 @@ static sfSprite	**ini_sprite_select(t_needs *needs)
   return (sprite);
 }
 
-int		select_player(t_needs *needs, t_mode_game *mode)
+int		select_player(t_needs *needs)
 {
   sfSprite	**sprite;
   sfEvent	event;
   int		current;
   int		tmp;
 
-  current = 0;
-  tmp = 0;
+  current = -2;
+  tmp = -1;
   if ((sprite = ini_sprite_select(needs)) == NULL)
     return (0);
   while (sfRenderWindow_isOpen(needs->window) && current != -1)
@@ -93,9 +119,9 @@ int		select_player(t_needs *needs, t_mode_game *mode)
 	  else if (event.type == sfEvtMouseButtonPressed &&
 		   event.mouseButton.button == sfMouseLeft)
 	    current = click_select(vector_2i(event.mouseButton.x,
-					     event.mouseButton.y), needs);
+					     event.mouseButton.y), needs, tmp);
 	}
-      display_select(needs, sprite);
+      display_select(needs, sprite, current);
     }
-  return (tmp);
+  return ((tmp == -1) ? 0 : tmp);
 }

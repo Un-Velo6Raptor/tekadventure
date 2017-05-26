@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Fri May 26 17:03:25 2017 Martin Januario
+## Last update Fri May 26 18:33:17 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -56,9 +56,9 @@ BAR	=	src/bar/bar_create.c            \
 		src/bar/update_sprite_bar.c     \
 		src/bar/reset_frame.c
 
-SELECT	=	## src/select/select_player.c	\
-		## src/select/click_select.c	\
-		## src/select/place_select.c
+SELECT	=	src/select/select_player.c	\
+		src/select/click_select.c	\
+		src/select/place_select.c
 
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\

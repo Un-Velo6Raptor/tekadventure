@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Fri May 26 17:00:59 2017 Martin Januario
+** Last update Fri May 26 20:48:08 2017 Martin Januario
 */
 
 #ifndef			DISPLAY_H_
@@ -40,6 +40,7 @@ typedef struct		s_needs
   t_map			**map;
   int			current_map;
   int			current_player;
+  int			current_veleda;
   sfVector2i		pos;
   t_char		**player;
   t_char		**boss;
