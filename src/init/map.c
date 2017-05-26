@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:52:16 2017 Martin Januario
-** Last update Fri May 26 17:03:15 2017 Martin Januario
+** Last update Fri May 26 21:51:18 2017 Martin Januario
 */
 
 #include	"map.h"
@@ -85,18 +85,19 @@ t_map		**ini_all_map(char *path)
   int		idx;
 
   idx = 0;
-  map = malloc(sizeof(t_map *) * 6);
+  map = malloc(sizeof(t_map *) * 7);
   if (map == NULL)
     return (NULL);
-  map[0] = ini_map(path, "turing");
+  map[0] = ini_map(path, "couloir");
   map[1] = ini_map(path, "pascal");
   map[2] = ini_map(path, "babbage");
   map[3] = ini_map(path, "cray");
   map[4] = ini_map(path, "byron");
-  map[5] = NULL;
+  map[5] = ini_map(path, "turing");
+  map[6] = NULL;
   while (map[idx] != NULL)
     idx++;
-  if (idx != 5)
+  if (idx != 6)
     return (NULL);
   return (map);
 }
