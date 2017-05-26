@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Thu May 25 16:15:03 2017 Martin Januario
+## Last update Fri May 26 14:16:27 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -18,12 +18,18 @@ SRC	=	src/main.c			\
 		src/init/sentences.c		\
 		src/init/boss.c			\
 		src/init/character.c		\
+		src/init/map.c			\
+		src/init/config.c		\
 		src/init/player.c
 
 DISPLAY	=	src/display/window_menu.c	\
-		src/display/window_game.c	\
 		src/display/create_window.c	\
-		src/display/refresh.c
+		src/display/refresh.c		\
+		src/display/anim.c		\
+		src/display/utils.c
+
+##		src/display/window_game.c	\
+
 
 MENU	=	src/menu/loop_menu.c		\
 		src/menu/draw_sprite_menu.c	\
@@ -41,9 +47,9 @@ TUTO	=	src/tuto/clean_tuto.c		\
 		src/tuto/my_sleep.c		\
 		src/tuto/tuto.c
 
-GAME	=	src/game/loop_game.c		\
+GAME	=	## src/game/loop_game.c		\
 
-MECHS	=	src/moves/moves.c		\
+MECHS	=	## src/moves/moves.c		\
 
 BAR	=	src/bar/bar_create.c            \
 		src/bar/my_framebuffer_create.c \
@@ -52,6 +58,10 @@ BAR	=	src/bar/bar_create.c            \
 		src/bar/update_sprite_bar.c     \
 		src/bar/reset_frame.c
 
+SELECT	=	## src/select/select_player.c	\
+		## src/select/click_select.c	\
+		## src/select/place_select.c
+
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\
 		$(MENU:.c=.o)			\
@@ -59,6 +69,7 @@ OBJ	=	$(SRC:.c=.o)			\
 		$(MECHS:.c=.o)			\
 		$(LIB:.c=.o)			\
 		$(BAR:.c=.o)			\
+		$(SELECT:.c=.o)			\
 		$(TUTO:.c=.o)
 
 CFLAGS	=	-g -Wall -Wextra -I include

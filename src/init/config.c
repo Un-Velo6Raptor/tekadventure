@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 10:41:55 2017 Hugo Cousin
-** Last update Fri May 26 14:42:56 2017 Hugo Cousin
+** Last update Fri May 26 15:07:59 2017 Martin Januario
 */
 
 #include	<dirent.h>
@@ -101,7 +101,7 @@ void		init_config(t_config config[CONFIG_DIR + 1], char **dirs)
   config[5] = (t_config){"PLAYER_TEXT_DIR", &check_dir};
   config[6] = (t_config){NULL, NULL};
   while (index <= CONFIG_DIR)
-    needs[index] = NULL;
+    dirs[index] = NULL;
 }
 
 int		config(t_needs *needs)
@@ -117,7 +117,7 @@ int		config(t_needs *needs)
       my_putstr(2, "Error while opening config file.\n");
       return (84);
     }
-  init_config(config);
+  init_config(config, needs->dirs);
   ret = read_config(fd, needs->dirs, config);
   close(fd);
   if (ret != 1)

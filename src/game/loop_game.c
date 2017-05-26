@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Thu May 25 16:10:05 2017 Martin Januario
+** Last update Thu May 25 17:08:08 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -72,7 +72,9 @@ int                     loop_game(t_mode_game __attribute__ ((unused))  *mode, t
           if (event.type == sfEvtClosed ||
               sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
             sfRenderWindow_close(needs->window);
-	  if (event.type == sfEvtMouseButtonPressed &&
+	  if (sfKeyboard_isKeyPressed(sfKeyDown) == sfTrue)
+	    select_player(needs, mode);
+	  else if (event.type == sfEvtMouseButtonPressed &&
               event.mouseButton.button == sfMouseLeft)
 	    to = check_move_map(vector_2i(event.mouseButton.x, event.mouseButton.y),
 				needs, pos, to);

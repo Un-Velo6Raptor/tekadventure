@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 16:37:41 2017 Martin Januario
-** Last update Sat May 20 21:51:34 2017 Martin Januario
+** Last update Fri May 26 11:28:12 2017 Martin Januario
 */
 
 #ifndef		MENU_H_
@@ -47,7 +47,15 @@ typedef struct		s_text_menu
   sfText		*keyboard[3];
   sfText		*title_sound;
   sfText		*sound[3];
-}		t_text_menu;
+}			t_text_menu;
+
+typedef struct          s_core
+{
+  sfRenderWindow        *window;
+  sfTexture             *texture;
+  sfSprite              *sprite;
+  sfMusic               *music[6];
+}                       t_core;
 
 int		loop_menu(t_mode_game *, t_core *);
 int		ini_sprite_menu(t_sprite_menu *, t_core *);

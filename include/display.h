@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Tue May 23 17:21:02 2017 Martin Januario
+** Last update Fri May 26 14:17:57 2017 Martin Januario
 */
 
 #ifndef			DISPLAY_H_
@@ -18,28 +18,27 @@
 # include		<SFML/System.h>
 # include		<SFML/Audio.h>
 # include		<SFML/Graphics.h>
+# include		"config.h"
 
-typedef struct		s_core
+typedef struct  s_map
 {
-  sfRenderWindow       	*window;
-  sfTexture		*texture;
-  sfSprite		*sprite;
-  sfMusic		*music[6];
-}			t_core;
-
-typedef struct		s_map
-{
-  sfImage		*map;
-  sfVector2u		size;
-  struct s_map		*next;
-}			t_map;
+  char          *name;
+  sfSprite      *map;
+  sfImage       *image;
+  sfVector2i    pos_map;
+  int           veleda;
+  int           boss;
+  sfMusic       *theme;
+}               t_map;
 
 typedef struct		s_needs
 {
+  char			*dirs[CONFIG_DIR + 1];
   sfRenderWindow	*window;
-  sfTexture		*texture;
-  sfSprite		*sprite;
-  t_map			map;		
+  t_map			**map;
+  int			current_map;
+  int			current_player;
+  struct s_mode_game	*mode;
 }			t_needs;
 
 typedef struct		s_mode_game
@@ -66,5 +65,6 @@ int			check_env(char **);
 sfVector2f		vector_2f(float, float);
 sfVector2i		vector_2i(int, int);
 sfColor			color(int, int, int);
+int			config(t_needs *);
 
 #endif			/* !DISPLAY_H_ */
