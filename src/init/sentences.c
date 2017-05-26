@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Thu May 25 17:50:14 2017 Hugo Cousin
+** Last update Fri May 26 13:47:46 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -60,7 +60,8 @@ int		fill_player(t_player *player, char *path, char *name)
   return (1);
 }
 
-int		loop_directory(DIR *directory, t_player *players)
+int		loop_directory(DIR *directory, t_player *players,
+			       const char *dir_path)
 {
   struct dirent	*files;
   char		path[PATH_MAX];
@@ -72,7 +73,7 @@ int		loop_directory(DIR *directory, t_player *players)
     {
       if (files->d_name[0] != '.')
 	{
-	  my_strcpy(path, "ressources/players/");
+	  my_strcpy(path, dir_path);
 	  my_strcat(path, files->d_name);
 	  if (fill_player(&(players[pos]), path, files->d_name) == 0)
 	    return (0);
@@ -84,20 +85,20 @@ int		loop_directory(DIR *directory, t_player *players)
   return (1);
 }
 
-t_player	*get_sentences(void)
+t_player	*get_sentences(const char *dir_path)
 {
   DIR		*directory;
   size_t	files_number;
   t_player	*players;
 
-  files_number = count_files("ressources/players/");
+  files_number = count_files(dir_path);
   if (files_number != 4)
     return (NULL);
   players = malloc(sizeof(t_player) * 4);
-  directory = opendir("ressources/players/");
+  directory = opendir(dir_path);
   if (!directory || !players)
     return (NULL);
-  if (loop_directory(directory, players) == 0)
+  if (loop_directory(directory, players, dir_path) == 0)
     return (NULL);
   return (players);
 }
