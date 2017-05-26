@@ -5,13 +5,14 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:08:44 2017 Sahel Lucas--Saoudi
-** Last update Wed May 24 16:58:14 2017 Sahel Lucas--Saoudi
+** Last update Thu May 25 17:51:52 2017 Martin Januario
 */
 
-#include <stdlib.h>
-#include "character.h"
-#include "boss.h"
-#include "player.h"
+#include	<stdlib.h>
+#include	"character.h"
+#include	"boss.h"
+#include	"player.h"
+#include	"lib.h"
 
 t_char  *new_char(char *path, char *name, int x, int y)
 {
@@ -23,7 +24,7 @@ t_char  *new_char(char *path, char *name, int x, int y)
     return (NULL);
   boss->pos.x = x;
   boss->pos.y = y;
-  boss->name = strdup(name);
+  boss->name = my_strdup(name);
   texture = sfTexture_createFromFile(path, NULL);
   if (!texture || !boss->name)
     return (NULL);
