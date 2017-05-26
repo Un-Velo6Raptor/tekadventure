@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:52:16 2017 Martin Januario
-** Last update Fri May 26 14:03:20 2017 Martin Januario
+** Last update Fri May 26 17:03:15 2017 Martin Januario
 */
 
 #include	"map.h"
@@ -73,6 +73,7 @@ static t_map	*ini_map(char *path, char *name)
   map->pos_map = vector_2i(0, 0);
   map->veleda = (my_strcmp(name, "byron") != 0) ? 1 : 0;
   map->boss = (my_strcmp(name, "pascal") != 0) ? 1 : 0;
+  map->size = sfImage_getSize(map->image);
   if (ini_music_map(map, path, name) == 84)
     return (NULL);
   return (map);

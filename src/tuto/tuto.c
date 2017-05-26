@@ -5,10 +5,10 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Wed May 24 15:24:31 2017 Romain Melin
-** Last update Thu May 25 15:18:52 2017 Romain Melin
+** Last update Fri May 26 17:08:55 2017 Martin Januario
 */
 
-# define		SCREEN_WIDTH 1300
+# define		SCREEN_WIDTH 1163
 # define		SCREEN_HEIGHT 800
 
 #include		<stdlib.h>

@@ -5,12 +5,13 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Wed May 24 16:10:23 2017 Hugo Cousin
+** Last update Fri May 26 17:05:51 2017 Martin Januario
 */
 
 #include	<math.h>
 #include	"lib.h"
 #include	"game.h"
+#include	"refresh.h"
 
 static int		check_color(t_map *map, sfVector2i pos)
 {
@@ -19,7 +20,7 @@ static int		check_color(t_map *map, sfVector2i pos)
   if (pos.x < 0 || pos.x >= (int) map->size.x ||
       pos.y < 0 || pos.y >= (int) map->size.y)
     return (0);
-  color = sfImage_getPixel(map->map, pos.x, pos.y);
+  color = sfImage_getPixel(map->image, pos.x, pos.y);
   if (color.r != 255 || color.g != 255 || color.b != 255)
     return (0);
   return (1);

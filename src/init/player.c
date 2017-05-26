@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 16:21:52 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 16:29:33 2017 Martin Januario
 */
 
 #include <stdlib.h>
@@ -14,6 +14,7 @@
 #include "player.h"
 #include "lib.h"
 #include "funcs.h"
+#include "display.h"
 
 char		*concat(int nb_str, ...)
 {
@@ -42,6 +43,7 @@ char		*concat(int nb_str, ...)
       my_strcat(str, va_arg(ap, char *));
       idx++;
     }
+  va_end(ap);
   return (str);
 }
 
@@ -52,7 +54,6 @@ t_text		*get_player_text(t_player *sentences, char *name)
   i = 0;
   while (i < NB_PLAYER)
     {
-      printf("%s\n", sentences[i].name);
       if (match(sentences[i].name, name))
 	return (sentences[i].text);
       i++;

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 26 16:16:50 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 17:07:45 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -15,6 +15,7 @@
 #include	"tuto.h"
 #include	"map.h"
 #include	"config.h"
+#include	"player.h"
 
 static t_needs	*ini_needs(t_mode_game *mode)
 {
@@ -28,12 +29,15 @@ static t_needs	*ini_needs(t_mode_game *mode)
   needs->player = init_player(path, name);
   if (!needs->player)
     return (NULL);
-  printf("CACA %s\n", needs->player[0]->name);
   if (config(needs) == 84)
     return (NULL);
   if ((needs->map = ini_all_map(needs->dirs[MAP])) == NULL)
     return (NULL);
   needs->mode = mode;
+  needs->current_player = 0;
+  needs->current_map = 0;
+  needs->pos = vector_2i(138, 1476);
+
   return (needs);
 }
 
@@ -50,9 +54,9 @@ int		main(int __attribute__ ((unused)) argc,
     return (my_puterror("Error in ENV.\n"));
   if (window_menu(&mode) == 84)
     return (my_puterror("See you later !"));
-  //  if (tuto(mode) == 84)
-  //    return (my_puterror("Error\n"));
-  //  if (mode.play == 1)
-  //    return (window_game(&mode));
+  if (tuto(mode) == 84)
+    return (my_puterror("Error\n"));
+  if (mode.play == 1)
+    return (window_game(needs));
   return (0);
 }

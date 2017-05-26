@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Fri May 26 14:16:27 2017 Martin Januario
+## Last update Fri May 26 17:03:25 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -25,11 +25,9 @@ SRC	=	src/main.c			\
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/create_window.c	\
 		src/display/refresh.c		\
+		src/display/window_game.c	\
 		src/display/anim.c		\
 		src/display/utils.c
-
-##		src/display/window_game.c	\
-
 
 MENU	=	src/menu/loop_menu.c		\
 		src/menu/draw_sprite_menu.c	\
@@ -47,9 +45,9 @@ TUTO	=	src/tuto/clean_tuto.c		\
 		src/tuto/my_sleep.c		\
 		src/tuto/tuto.c
 
-GAME	=	## src/game/loop_game.c		\
+GAME	=	src/game/loop_game.c		\
 
-MECHS	=	## src/moves/moves.c		\
+MECHS	=	src/moves/moves.c		\
 
 BAR	=	src/bar/bar_create.c            \
 		src/bar/my_framebuffer_create.c \

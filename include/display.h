@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Fri May 26 15:46:19 2017 Sahel Lucas--Saoudi
+** Last update Fri May 26 17:00:59 2017 Martin Januario
 */
 
 #ifndef			DISPLAY_H_
@@ -29,6 +29,7 @@ typedef struct  s_map
   sfVector2i    pos_map;
   int           veleda;
   int           boss;
+  sfVector2u	size;
   sfMusic       *theme;
 }               t_map;
 
@@ -39,6 +40,7 @@ typedef struct		s_needs
   t_map			**map;
   int			current_map;
   int			current_player;
+  sfVector2i		pos;
   t_char		**player;
   t_char		**boss;
   struct s_mode_game	*mode;
@@ -57,7 +59,7 @@ typedef struct		s_mode_game
 **			Prototypes of file's display
 */
 int			window_menu(t_mode_game *);
-int			window_game(t_mode_game *);
+int			window_game(t_needs *);
 sfRenderWindow		*create_window(char *, int, int);
 
 /*
