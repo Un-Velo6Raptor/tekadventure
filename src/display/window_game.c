@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Fri May 26 20:46:48 2017 Martin Januario
+** Last update Fri May 26 22:07:31 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -17,7 +17,7 @@ int		start_select(t_needs *needs)
   sfMusic	*music;
 
   music = NULL;
-  if (needs->mode->sound == 1)
+  if (needs->mode->sound == 0)
     {
       music = sfMusic_createFromFile("ressources/menu/theme.ogg");
       if (music != NULL)

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu May 25 17:08:39 2017 Martin Januario
-** Last update Fri May 26 19:57:19 2017 Martin Januario
+** Last update Fri May 26 22:08:09 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -123,5 +123,5 @@ int		select_player(t_needs *needs)
 	}
       display_select(needs, sprite, current);
     }
-  return ((tmp == -1) ? 0 : tmp);
+  return ((tmp <= -1) ? 0 : tmp);
 }

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 26 20:58:28 2017 Martin Januario
+** Last update Fri May 26 22:04:58 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -56,6 +56,7 @@ int		main(int __attribute__ ((unused)) argc,
     return (my_puterror("See you later !"));
   if (mode.play != 1)
     return (0);
+  needs->mode = &mode;
   if (tuto(mode) == 84)
     return (my_puterror("Error\n"));
   return (window_game(needs));
