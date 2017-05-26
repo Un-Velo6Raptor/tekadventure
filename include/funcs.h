@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:17:59 2017 Hugo Cousin
-** Last update Fri May 26 13:48:15 2017 Hugo Cousin
+** Last update Fri May 26 14:08:30 2017 Hugo Cousin
 */
 
 #ifndef FUNC_H_
@@ -18,6 +18,6 @@
 # endif /* ! CHAR_POS */
 
 void		free_players(t_player *);
-t_player	*get_sentences(const char *);
+t_player	*get_sentences(const char *, size_t);
 
 #endif /* ! FUNC_H_ */

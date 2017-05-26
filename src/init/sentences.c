@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Fri May 26 13:47:46 2017 Hugo Cousin
+** Last update Fri May 26 14:07:36 2017 Hugo Cousin
 */
 
 #include <dirent.h>
@@ -85,16 +85,16 @@ int		loop_directory(DIR *directory, t_player *players,
   return (1);
 }
 
-t_player	*get_sentences(const char *dir_path)
+t_player	*get_sentences(const char *dir_path, size_t nb_players)
 {
   DIR		*directory;
   size_t	files_number;
   t_player	*players;
 
   files_number = count_files(dir_path);
-  if (files_number != 4)
+  if (files_number != nb_players)
     return (NULL);
-  players = malloc(sizeof(t_player) * 4);
+  players = malloc(sizeof(t_player) * nb_players);
   directory = opendir(dir_path);
   if (!directory || !players)
     return (NULL);
