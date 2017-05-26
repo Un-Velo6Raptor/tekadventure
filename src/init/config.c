@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 10:41:55 2017 Hugo Cousin
-** Last update Fri May 26 14:13:24 2017 Hugo Cousin
+** Last update Fri May 26 14:42:56 2017 Hugo Cousin
 */
 
 #include	<dirent.h>
@@ -84,11 +84,15 @@ int		read_config(int fd, char **dirs,
       line++;
       free(cmd);
     }
+  line = 0;
   return (ret);
 }
 
-void		init_config(t_config config[CONFIG_DIR + 1])
+void		init_config(t_config config[CONFIG_DIR + 1], char **dirs)
 {
+  size_t	index;
+
+  index = 0;
   config[0] = (t_config){"MAP_DIR", &check_dir};
   config[1] = (t_config){"MAP_BACK_DIR", &check_dir};
   config[2] = (t_config){"BOSS_DIR", &check_dir};
@@ -96,7 +100,8 @@ void		init_config(t_config config[CONFIG_DIR + 1])
   config[4] = (t_config){"PLAYER_MENU_DIR", &check_dir};
   config[5] = (t_config){"PLAYER_TEXT_DIR", &check_dir};
   config[6] = (t_config){NULL, NULL};
-
+  while (index <= CONFIG_DIR)
+    needs[index] = NULL;
 }
 
 int		config(t_needs *needs)
@@ -104,6 +109,7 @@ int		config(t_needs *needs)
   int		fd;
   int		ret;
   t_config	config[CONFIG_DIR + 1];
+  size_t	index;
 
   fd = open("config.tk", O_RDONLY);
   if (fd == -1)
@@ -116,5 +122,12 @@ int		config(t_needs *needs)
   close(fd);
   if (ret != 1)
     return (84);
+  index = 0;
+  while (index < CONFIG_DIR)
+    {
+      if (!needs->dirs[index])
+	return (84);
+      index++;
+    }
   return (0);
 }
