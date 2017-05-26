@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 10:41:55 2017 Hugo Cousin
-** Last update Fri May 26 13:37:05 2017 Hugo Cousin
+** Last update Fri May 26 14:13:24 2017 Hugo Cousin
 */
 
 #include	<dirent.h>
@@ -73,7 +73,7 @@ int		read_config(int fd, char **dirs,
 
   line = 0;
   ret = 1;
-  while ((cmd = gnl(fd)) && ret)
+  while (ret && (cmd = gnl(fd)))
     {
       if (cmd[0] != '#' && cmd[0])
 	{
@@ -102,6 +102,7 @@ void		init_config(t_config config[CONFIG_DIR + 1])
 int		config(t_needs *needs)
 {
   int		fd;
+  int		ret;
   t_config	config[CONFIG_DIR + 1];
 
   fd = open("config.tk", O_RDONLY);
@@ -111,7 +112,9 @@ int		config(t_needs *needs)
       return (84);
     }
   init_config(config);
-  read_config(fd, needs->dirs, config);
+  ret = read_config(fd, needs->dirs, config);
   close(fd);
+  if (ret != 1)
+    return (84);
   return (0);
 }
