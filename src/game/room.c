@@ -5,11 +5,13 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sat May 27 18:20:08 2017 Hugo Cousin
+** Last update Sat May 27 19:06:35 2017 Hugo Cousin
 */
 
 #include	"lib.h"
 #include	"display.h"
+#include	"refresh.h"
+#include	"game.h"
 
 void		change_sprite(t_needs *needs, int mode)
 {
@@ -53,12 +55,15 @@ sfVector2i	room_move(t_needs *needs, sfEvent event)
   t_char	*player;
   t_map		*map;
   sfVector2i	to;
+  sfVector2i	from;;
 
   map = needs->map[needs->current_map];
   player = needs->player[needs->current_player];
   to.x = event.mouseButton.x;
   to.y = event.mouseButton.y;
-  if (check_path(map, player->pos, to) != 0)
+  from.x = player->pos.x;
+  from.y = player->pos.y;
+  if (check_path(map, from, to) != 0)
     return (to);
   to.x = player->pos.x;
   to.y = player->pos.y;
@@ -121,7 +126,7 @@ int		room_main(t_needs *needs)
   sfVector2i	to;
 
   change_sprite(needs, 0);
-  to.x = needs->player[needs->current_player]->pos.x;
+  to.x = needs->player[needs->current_player]->pos.x + 1;
   to.y = needs->player[needs->current_player]->pos.y;
   while (needs->current_map != 0 &&
 	 sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)

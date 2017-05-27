@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sat May 27 18:10:00 2017 Hugo Cousin
+** Last update Sat May 27 19:09:59 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -69,7 +69,7 @@ int                     loop_game(t_needs *needs)
 	    to = check_move_map(vector_2i(event.mouseButton.x, event.mouseButton.y),
 				needs, needs->pos, to);
 	}
-      check_room(needs);
+      to = check_room(needs, needs->pos, to);
       needs->pos = get_map_move(needs->map[needs->current_map]->map,
 				needs->pos, to, needs->player[needs->current_player]->sprite);
       sfRenderWindow_drawSprite(needs->window, needs->map[needs->current_map]->map, NULL);

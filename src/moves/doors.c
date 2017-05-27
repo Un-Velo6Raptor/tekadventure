@@ -5,19 +5,21 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 17:54:15 2017 Hugo Cousin
-** Last update Sat May 27 18:14:13 2017 Hugo Cousin
+** Last update Sat May 27 19:04:15 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
 #include	"display.h"
 #include	"lib.h"
 #include	"anim.h"
+#include	"game.h"
+#include	"refresh.h"
 
 int			choose_room(t_needs *needs, sfColor color)
 {
   size_t		index;
 
-  index = 0;
+  index = 1;
   while (needs->map[index])
     {
       if (index == (size_t)color.b)
@@ -39,22 +41,25 @@ static int		diff_color(sfColor a, sfColor b)
   return (1);
 }
 
-int			check_room(t_needs *needs)
+sfVector2i		check_room(t_needs *needs,
+				   sfVector2i last, sfVector2i to)
 {
   sfColor		color;
-  int			ret;
   static sfColor	save = {255, 255, 255, 255};
 
   if (needs->pos.x < 0 || needs->pos.y < 0 ||
       needs->pos.x >= (int)needs->map[needs->current_map]->size.x ||
       needs->pos.y >= (int)needs->map[needs->current_map]->size.y)
-    return (0);
+    return (to);
   color = sfImage_getPixel(needs->map[needs->current_map]->image,
 			   needs->pos.x, needs->pos.y);
-  ret = 0;
   if (color.r == 255 && color.g == 0 && !diff_color(save, color))
-    ret = choose_room(needs, color);
+    {
+      choose_room(needs, color);
+      to.x = last.x;
+      to.y = last.y;
+    }
   if (!diff_color(save, color))
     save = color;
-  return (ret);
+  return (to);
 }

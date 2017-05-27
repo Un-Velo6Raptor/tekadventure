@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 14:16:34 2017 Hugo Cousin
-** Last update Fri May 26 21:39:57 2017 Hugo Cousin
+** Last update Sat May 27 19:03:21 2017 Hugo Cousin
 */
 
 #include	<SFML/Graphics.h>
@@ -94,10 +94,9 @@ sfTexture	**get_textures(const char *dir_path,
 }
 
 void		display_textures(sfRenderWindow *window, sfTexture **textures,
-				 sfSprite *sprite, int sleep)
+				 sfSprite *sprite)
 {
   size_t	index;
-  int		timer;
 
   index = 0;
   while (textures[index] && sfRenderWindow_isOpen(window) &&
@@ -113,8 +112,7 @@ void		display_textures(sfRenderWindow *window, sfTexture **textures,
   free(textures);
 }
 
-int		launch_anim(sfRenderWindow *window, const char *dir_path,
-			    int sleep)
+int		launch_anim(sfRenderWindow *window, const char *dir_path)
 {
   sfSprite	*sprite;
   sfTexture	**textures;
@@ -134,7 +132,7 @@ int		launch_anim(sfRenderWindow *window, const char *dir_path,
     return (0);
   sprite = sfSprite_create();
   back_music(dir_path, files);
-  display_textures(window, textures, sprite, sleep);
+  display_textures(window, textures, sprite);
   back_music(dir_path, files);
   sfSprite_destroy(sprite);
   tabfree(files);
