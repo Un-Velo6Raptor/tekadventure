@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sat May 27 17:58:34 2017 Hugo Cousin
+** Last update Sat May 27 18:20:08 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -97,6 +97,7 @@ void		get_player_move(t_needs *needs, sfVector2i to)
 {
   t_char	*player;
   sfVector2i	pos;
+  sfColor	color;
 
   player = needs->player[needs->current_player];
   pos.x = player->pos.x;
@@ -108,6 +109,10 @@ void		get_player_move(t_needs *needs, sfVector2i to)
   player->pos.x = pos.x;
   player->pos.y = pos.y;
   sfSprite_setPosition(player->sprite, player->pos);
+  color = sfImage_getPixel(needs->map[needs->current_map]->image,
+			   pos.x, pos.y);
+  if (color.r == 255 && color.g == 0)
+    needs->current_map = 0;
 }
 
 int		room_main(t_needs *needs)

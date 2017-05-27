@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 17:54:15 2017 Hugo Cousin
-** Last update Fri May 26 21:55:01 2017 Hugo Cousin
+** Last update Sat May 27 18:14:13 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -20,10 +20,10 @@ int			choose_room(t_needs *needs, sfColor color)
   index = 0;
   while (needs->map[index])
     {
-      if (1)//index == (size_t)color.b)
+      if (index == (size_t)color.b)
 	{
 	  //launch_anim(needs->window, "ressources/tuto/", 1);
-	  needs->current_map = 1;
+	  needs->current_map = index;
 	  room_main(needs);
 	  return (1);
 	}
@@ -52,7 +52,7 @@ int			check_room(t_needs *needs)
   color = sfImage_getPixel(needs->map[needs->current_map]->image,
 			   needs->pos.x, needs->pos.y);
   ret = 0;
-  if (color.r == 119 && color.g == 119 && !diff_color(save, color))
+  if (color.r == 255 && color.g == 0 && !diff_color(save, color))
     ret = choose_room(needs, color);
   if (!diff_color(save, color))
     save = color;
