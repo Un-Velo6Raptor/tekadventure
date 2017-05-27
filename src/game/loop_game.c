@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Fri May 26 17:06:20 2017 Martin Januario
+** Last update Sat May 27 18:10:00 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -20,7 +20,7 @@ static sfVector2i	check_move_map(sfVector2i to, t_needs *needs, sfVector2i from,
 
   rect = sfSprite_getTextureRect(needs->map[needs->current_map]->map);
   to.x += rect.left;
-  to.y += rect.top ;
+  to.y += rect.top;
   if (check_path(needs->map[needs->current_map], from, to) != 0)
       return (to);
   return (last);
@@ -40,7 +40,7 @@ static sfVector2i	get_map_move(sfSprite *map, sfVector2i from, sfVector2i to,
     from = move_map(map, from, tmp, 0);
   else
     {
-      player_refresh(player, vector_2f(418, 418), from, tmp);
+      player_refresh(player, vector_2f(450, 450), from, tmp);
       move_map(map, from, tmp, 1);
     }
   from.x += WIDTH / 2;
@@ -57,7 +57,7 @@ int                     loop_game(t_needs *needs)
   update_rect(needs->map[needs->current_map]->map, vector_2i(needs->pos.x - WIDTH / 2, needs->pos.y - HEIGHT / 2));
   while (sfRenderWindow_isOpen(needs->window))
     {
-      player_refresh(needs->player[needs->current_player]->sprite, vector_2f(418, 418), needs->pos, to);
+      player_refresh(needs->player[needs->current_player]->sprite, vector_2f(450, 450), needs->pos, to);
       sfRenderWindow_clear(needs->window, sfBlack);
       while (sfRenderWindow_pollEvent(needs->window, &event))
         {
@@ -69,6 +69,7 @@ int                     loop_game(t_needs *needs)
 	    to = check_move_map(vector_2i(event.mouseButton.x, event.mouseButton.y),
 				needs, needs->pos, to);
 	}
+      check_room(needs);
       needs->pos = get_map_move(needs->map[needs->current_map]->map,
 				needs->pos, to, needs->player[needs->current_player]->sprite);
       sfRenderWindow_drawSprite(needs->window, needs->map[needs->current_map]->map, NULL);

@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 16:29:33 2017 Martin Januario
+** Last update Fri May 26 22:16:06 2017 Hugo Cousin
 */
 
 #include <stdlib.h>
@@ -86,7 +86,7 @@ int		set_music_and_select(t_char *player, char *music, char *select)
 t_char		**init_player(char **path, char **name)
 {
   t_char	**player;
-  sfVector2i	pos;
+  sfVector2f	pos;
   char		*new_path;
   t_player	*sentences;
 

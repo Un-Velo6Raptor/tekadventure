@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:52:16 2017 Martin Januario
-** Last update Fri May 26 21:51:18 2017 Martin Januario
+** Last update Sat May 27 17:45:38 2017 Hugo Cousin
 */
 
 #include	"map.h"
@@ -34,7 +34,7 @@ static int	ini_image_map(t_map *map, char *path, char *name)
 
   if ((tmp = my_allocat(path, name, 0)) == NULL)
     return (84);
-  if ((tmp = my_allocat(tmp, "_map.png", 0)) == NULL)
+  if ((tmp = my_allocat(tmp, "_back.png", 0)) == NULL)
     return (84);
   map->image = sfImage_createFromFile(tmp);
   if (map->map == NULL)

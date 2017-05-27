@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 14:16:34 2017 Hugo Cousin
-** Last update Thu May 25 17:45:31 2017 Hugo Cousin
+** Last update Fri May 26 21:39:57 2017 Hugo Cousin
 */
 
 #include	<SFML/Graphics.h>
@@ -104,12 +104,7 @@ void		display_textures(sfRenderWindow *window, sfTexture **textures,
 	 sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
     {
       sfSprite_setTexture(sprite, textures[index], sfTrue);
-      sfRenderWindow_clear(window, sfBlack);
-      sfRenderWindow_drawSprite(window, sprite, NULL);
-      sfRenderWindow_display(window);
-      timer = time(NULL);
-      while (time(NULL) != timer + sleep &&
-	     sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse);
+      shade_sprite(window, sprite);
       index++;
     }
   index = 0;

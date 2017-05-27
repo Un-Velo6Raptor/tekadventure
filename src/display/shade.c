@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 19:29:11 2017 Hugo Cousin
-** Last update Fri May 26 19:31:54 2017 Hugo Cousin
+** Last update Fri May 26 21:47:07 2017 Hugo Cousin
 */
 
 #include	"display.h"
@@ -14,25 +14,19 @@ void		shade_sprite(sfRenderWindow *window, sfSprite *sprite)
 {
   int		color;
 
-  color = 255;
-  while (color)
+  color = 0;
+  while (color < 254 && sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
     {
       sfSprite_setColor(sprite, (sfColor){color, color, color, 255});
-      sfRenderWindow_draw_Sprite(window, sprite, NULL);
-      sfRenderWindow_display(window);
-      color -= 2;
-    }
-  while (color < 254)
-    {
-      sfSprite_setColor(sprite, (sfColor){color, color, color, 255});
-      sfRenderWindow_draw_Sprite(window, sprite, NULL);
+      sfRenderWindow_drawSprite(window, sprite, NULL);
       sfRenderWindow_display(window);
       color += 2;
     }
-  while (color)
+  color = 255;
+  while (color > 1 && sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
     {
       sfSprite_setColor(sprite, (sfColor){color, color, color, 255});
-      sfRenderWindow_draw_Sprite(window, sprite, NULL);
+      sfRenderWindow_drawSprite(window, sprite, NULL);
       sfRenderWindow_display(window);
       color -= 2;
     }

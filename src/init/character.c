@@ -5,16 +5,17 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:08:44 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 16:28:29 2017 Martin Januario
+** Last update Sat May 27 18:08:53 2017 Hugo Cousin
 */
 
 #include <stdlib.h>
 #include "character.h"
 #include "boss.h"
 #include "player.h"
+#include	"display.h"
 #include "lib.h"
 
-t_char  *new_char(char *path, char *name, sfVector2i pos, t_text *text)
+t_char  *new_char(char *path, char *name, sfVector2f pos, t_text *text)
 {
   t_char        *character;
   sfTexture     *texture;
@@ -31,6 +32,7 @@ t_char  *new_char(char *path, char *name, sfVector2i pos, t_text *text)
   sfSprite_setTexture(character->sprite, texture, sfTrue);
   if (!character->sprite)
     return (NULL);
+  sfSprite_setOrigin(character->sprite, vector_2f(32, 64));
   character->phrase = text;
   character->death = ALIVE;
   return (character);

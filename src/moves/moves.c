@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Fri May 26 17:05:51 2017 Martin Januario
+** Last update Sat May 27 18:04:14 2017 Hugo Cousin
 */
 
 #include	<math.h>
@@ -21,7 +21,7 @@ static int		check_color(t_map *map, sfVector2i pos)
       pos.y < 0 || pos.y >= (int) map->size.y)
     return (0);
   color = sfImage_getPixel(map->image, pos.x, pos.y);
-  if (color.r != 255 || color.g != 255 || color.b != 255)
+  if (color.r == color.g && color.g == color.b && color.r < 255)
     return (0);
   return (1);
 }
