@@ -1,11 +1,11 @@
 /*
-1;4803;0c** character.h for TekAdventure in /home/sahel/rendu/InfoGraphie/tekadventure
+** character.h for TekAdventure in /home/sahel/rendu/InfoGraphie/tekadventure
 **
 ** Made by Sahel Lucas--Saoudi
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:04 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 22:16:27 2017 Hugo Cousin
+** Last update Sat May 27 22:49:45 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef CHARACTER_H_

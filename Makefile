@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Fri May 26 21:49:04 2017 Hugo Cousin
+## Last update Sat May 27 22:39:58 2017 Sahel Lucas--Saoudi
 ##
 
 .PHONY:		all clean fclean re
@@ -20,7 +20,8 @@ SRC	=	src/main.c			\
 		src/init/character.c		\
 		src/init/map.c			\
 		src/init/config.c		\
-		src/init/player.c
+		src/init/player.c		\
+		src/concat.c
 
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/create_window.c	\
@@ -61,7 +62,8 @@ BAR	=	src/bar/bar_create.c            \
 
 SELECT	=	src/select/select_player.c	\
 		src/select/click_select.c	\
-		src/select/place_select.c
+		src/select/place_select.c	\
+		src/select/init_sprite.c
 
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\

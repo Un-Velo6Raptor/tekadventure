@@ -1,24 +1,24 @@
 /*
 ** map.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Fri May 26 11:52:16 2017 Martin Januario
-** Last update Sat May 27 17:45:38 2017 Hugo Cousin
+** Last update Sat May 27 22:55:51 2017 Sahel Lucas--Saoudi
 */
 
 #include	"map.h"
 #include	"lib.h"
+#include	"funcs.h"
 
 static int	ini_sprite_map(t_map *map, char *path, char *name)
 {
   sfTexture	*texture;
   char		*tmp;
 
-  if ((tmp = my_allocat(path, name, 0)) == NULL)
-    return (84);
-  if ((tmp = my_allocat(tmp, "_map.png", 0)) == NULL)
+  tmp = concat(3, path, name, "_map.png");
+  if (!tmp)
     return (84);
   map->map = sfSprite_create();
   texture = sfTexture_createFromFile(tmp, NULL);
@@ -32,9 +32,8 @@ static int	ini_image_map(t_map *map, char *path, char *name)
 {
   char		*tmp;
 
-  if ((tmp = my_allocat(path, name, 0)) == NULL)
-    return (84);
-  if ((tmp = my_allocat(tmp, "_back.png", 0)) == NULL)
+  tmp = concat(3, path, name, "_back.png");
+  if (!tmp)
     return (84);
   map->image = sfImage_createFromFile(tmp);
   if (map->map == NULL)
@@ -46,9 +45,8 @@ static int	ini_music_map(t_map *map, char *path, char *name)
 {
   char		*tmp;
 
-  if ((tmp = my_allocat(path, name, 0)) == NULL)
-    return (84);
-  if ((tmp = my_allocat(tmp, "_map.ogg", 0)) == NULL)
+  tmp = concat(3, path, name, "_map.ogg");
+  if (!tmp)
     return (84);
   map->theme = sfMusic_createFromFile(tmp);
   if (map->theme == NULL)

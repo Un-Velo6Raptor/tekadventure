@@ -1,11 +1,11 @@
 /*
 ** init_tuto.c for init_tuto.c in /home/romain.melin/delivery/Graphics/tekad
-** 
+**
 ** Made by Romain Melin
 ** Login   <romain.melin@epitech.net>
-** 
+**
 ** Started on  Thu May 25 11:31:05 2017 Romain Melin
-** Last update Thu May 25 14:18:49 2017 Romain Melin
+** Last update Sat May 27 22:05:56 2017 Sahel Lucas--Saoudi
 */
 
 #include		<SFML/Graphics.h>
@@ -31,7 +31,8 @@ sfTexture		**load_image()
   if (image == NULL)
     return (NULL);
   image[0] = sfTexture_createFromFile("ressources/tuto/sommaire.jpg", NULL);
-  image[1] = sfTexture_createFromFile("ressources/tuto/informations_utiles.jpg", NULL);
+  image[1] = sfTexture_createFromFile("ressources/tuto/informations_utiles.jpg"
+				      , NULL);
   image[2] = sfTexture_createFromFile("ressources/tuto/charlotte.jpg", NULL);
   image[3] = sfTexture_createFromFile("ressources/tuto/Sasel.jpg", NULL);
   image[4] = sfTexture_createFromFile("ressources/tuto/l'enfant.jpg", NULL);

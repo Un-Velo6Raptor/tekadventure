@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Fri May 26 22:04:58 2017 Martin Januario
+** Last update Sat May 27 21:47:52 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -21,7 +21,8 @@ static t_needs	*ini_needs(t_mode_game *mode)
 {
   t_needs	*needs;
   char          *name[5] = {"Martin", "Romain", "Hugo", "Sahel", NULL};
-  char          *path[5] = {"ressources/sentences/", "ressources/music/", "ressources/select/", "ressources/player/", NULL};
+  char          *path[5] = {"ressources/sentences/", "ressources/music/",
+			    "ressources/select/", "ressources/player/", NULL};
 
   needs = malloc(sizeof(t_needs) * 1);
   if (needs == NULL)

@@ -1,11 +1,11 @@
 /*
 ** room.c for tekadventure in /home/heychsea/MUL/tekadventure
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sat May 27 19:06:35 2017 Hugo Cousin
+** Last update Sat May 27 22:50:51 2017 Sahel Lucas--Saoudi
 */
 
 #include	"lib.h"
@@ -55,7 +55,7 @@ sfVector2i	room_move(t_needs *needs, sfEvent event)
   t_char	*player;
   t_map		*map;
   sfVector2i	to;
-  sfVector2i	from;;
+  sfVector2i	from;
 
   map = needs->map[needs->current_map];
   player = needs->player[needs->current_player];

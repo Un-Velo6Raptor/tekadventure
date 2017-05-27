@@ -1,11 +1,11 @@
 /*
 ** bar_create.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Thu May 25 16:03:20 2017 Martin Januario
+** Last update Sat May 27 23:39:08 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -54,8 +54,9 @@ static void		update_dir_bar(int *c_moove,
 static int		ini_color_bar(t_needs *needs, sfTexture **tr,
 				      sfSprite **tmp)
 {
-  if ((*tr = sfTexture_create(WIDTH, HEIGHT)) == NULL ||
-      (*tmp = sfSprite_create()) == NULL)
+  *tr = sfTexture_create(WIDTH, HEIGHT);
+  *tmp = sfSprite_create();
+  if (*tr == NULL || *tmp == NULL)
     return (84);
   sfRenderWindow_setFramerateLimit(needs->window, 1000);
   sfSprite_setTexture(*tmp, *tr, sfTrue);
@@ -72,8 +73,9 @@ int			bar_create(t_needs *needs, int diff)
   int			move;
   int			c_moove;
 
-  if ((move = ini_sprite_bar(&design, &pattern, &cursor)) == 84 ||
-      (c_moove = ini_color_bar(needs, &tr, &tmp)) == 84)
+  move = ini_sprite_bar(&design, &pattern, &cursor);
+  c_moove = ini_color_bar(needs, &tr, &tmp);
+  if (move == 84 || c_moove == 84)
     return (0);
   fill_square(pattern, diff);
   sfSprite_setPosition(cursor, vector_2f(((WIDTH - 620) / 2 + 15), 735));
@@ -81,8 +83,7 @@ int			bar_create(t_needs *needs, int diff)
   while (sfRenderWindow_isOpen(needs->window))
     {
       sfRenderWindow_clear(needs->window, sfWhite);
-      if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue ||
-	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+      if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
       update_dir_bar(&c_moove, &move, cursor);
       sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
