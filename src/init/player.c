@@ -5,12 +5,13 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sat May 27 23:39:31 2017 Sahel Lucas--Saoudi
+** Last update Sat May 27 22:14:24 2017 Lucas Sahel
 */
 
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 #include "player.h"
+#include "boss.h"
 #include "lib.h"
 #include "funcs.h"
 #include "display.h"
@@ -76,7 +77,7 @@ t_char		**init_player(char **path, char **name)
   t_char	**player;
   t_player	*sentences;
 
-  sentences = get_sentences(path[0], NB_PLAYER);
+  sentences = get_sentences(path[0], NB_PLAYER + NB_BOSS);
   if (!sentences)
     return (NULL);
   player = malloc(sizeof(t_char) * (NB_PLAYER));

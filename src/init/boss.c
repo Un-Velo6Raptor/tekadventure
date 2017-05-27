@@ -5,26 +5,33 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sat May 27 22:55:18 2017 Sahel Lucas--Saoudi
+** Last update Sat May 27 22:11:21 2017 Lucas Sahel
 */
 
 #include <stdlib.h>
 #include <SFML/Graphics.h>
 #include "boss.h"
-/*
-t_char		**init_boss()
+#include "player.h"
+#include "funcs.h"
+#include "character.h"
+
+t_char		**init_boss(char **path, char **name)
 {
   t_char	**boss;
+  t_player	*sentences;
 
+  sentences = get_sentences(path[0], NB_BOSS + NB_PLAYER);
   boss = malloc(sizeof(t_char) * NB_BOSS);
   if (!boss)
     return (NULL);
-   boss[MIKE] = new_char(MIKE_FILE, MIKE_NAME, MIKE_POS_X, MIKE_POS_Y);
-  boss[MALEX] = new_char(MALEX_FILE, MALEX_NAME, MALEX_POS_X, MALEX_POS_Y);
-  boss[CHLOE] = new_char(CHLOE_FILE, CHLOE_NAME, CHLOE_POS_X, CHLOE_POS_Y);
-  boss[REMI] = new_char(REMI_FILE, REMI_NAME, REMI_POS_X, REMI_POS_Y);
-  if (!boss[MIKE] || !boss[MALEX] || !boss[CHLOE] || !boss[REMI])
+  boss[MIKE] = new_player(path, "mike", sentences, name[MIKE]);
+  boss[MALEX] = new_player(path, "malex", sentences, name[MALEX]);
+  boss[CHLOE] = new_player(path, "chloe", sentences, name[CHLOE]);
+  boss[REMI] = new_player(path, "remi", sentences, name[REMI]);
+  boss[ARTHUR] = new_player(path, "arthur", sentences, name[ARTHUR]);
+  if (!boss[MIKE] || !boss[MALEX] || !boss[CHLOE] ||
+      !boss[REMI] || !boss[ARTHUR])
     return (NULL);
   return (boss);
 }
-*/
+

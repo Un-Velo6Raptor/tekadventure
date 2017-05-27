@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:04 2017 Sahel Lucas--Saoudi
-** Last update Sat May 27 22:49:45 2017 Sahel Lucas--Saoudi
+** Last update Sat May 27 22:11:56 2017 Lucas Sahel
 */
 
 #ifndef CHARACTER_H_
@@ -38,5 +38,6 @@ typedef struct s_char		t_char;
 
 t_char				*new_char(char *, char *,
 					  sfVector2f, t_text *);
+t_char				*new_player(char **, char *, t_player *, char *);
 
 #endif /* !CHARACTER_H_ */
