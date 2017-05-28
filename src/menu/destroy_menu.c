@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 19 20:06:40 2017 Martin Januario
-** Last update Sat May 20 21:06:14 2017 Martin Januario
+** Last update Sun May 28 19:43:06 2017 Hugo Cousin
 */
 
 #include	"menu.h"
@@ -54,7 +54,7 @@ void		destroy_music(t_core *needs, int opt,
 	  needs->music[idx] = NULL;
 	}
       idx++;
-    } 
+    }
   if (opt == 0)
     {
       sfMusic_destroy(needs->music[JOKE_MENU]);

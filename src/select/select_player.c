@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu May 25 17:08:39 2017 Martin Januario
-** Last update Sun May 28 09:36:08 2017 Martin Januario
+** Last update Sun May 28 20:28:34 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -50,50 +50,22 @@ static void	display_select(t_needs *needs, sfSprite **sprite, int opt)
   sfRenderWindow_display(needs->window);
 }
 
-static sfSprite	*create_sprite(char *path)
+static int	event_select(t_needs *needs, sfEvent event, int current,
+			     int tmp)
 {
-  sfTexture		*texture;
-  sfSprite              *tmp;
-
-  tmp = sfSprite_create();
-  if (tmp == NULL)
-    return (NULL);
-  texture = sfTexture_createFromFile(path, NULL);
-  if (texture == NULL)
-    return (NULL);
-  sfSprite_setTexture(tmp, texture, sfTrue);
-  return (tmp);
-}
-
-static sfSprite	**ini_sprite_select(t_needs *needs)
-{
-  sfSprite	**sprite;
-  int		idx;
-  int		tmp;
-
-  idx = 0;
-  sprite = malloc(sizeof(sfSprite *) * 8);
-  if (sprite == NULL)
-    return (NULL);
-  sprite[0] = create_sprite("ressources/character/plage.jpg");
-  sprite[1] = needs->player[2]->select;
-  sprite[2] = needs->player[1]->select;
-  sprite[3] = needs->player[0]->select;
-  sprite[4] = needs->player[3]->select;
-  sprite[5] = create_sprite("ressources/character/select_title.png");
-  sprite[6] = create_sprite("ressources/character/confirm.png");
-  sprite[7] = NULL;
-  while (sprite[idx] != NULL)
+  while (sfRenderWindow_pollEvent(needs->window, &event))
     {
-      tmp = (idx != 2 && idx != 3) ? (250) : (300);
-      sfSprite_setPosition(sprite[idx], vector_2f((idx - 1) * 200 + 20 *
-						  (idx - 1) + 20, tmp));
-      idx++;
+      tmp = current;
+      if (event.type == sfEvtClosed ||
+	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	sfRenderWindow_close(needs->window);
+      else if (event.type == sfEvtMouseButtonPressed &&
+	       event.mouseButton.button == sfMouseLeft)
+	current = click_select(vector_2i(event.mouseButton.x,
+					 event.mouseButton.y),
+			       needs, tmp);
     }
-  if (idx != 7)
-    return (NULL);
-  place_select(sprite);
-  return (sprite);
+  return (current);
 }
 
 int		select_player(t_needs *needs)
@@ -113,17 +85,7 @@ int		select_player(t_needs *needs)
       while (sfRenderWindow_isOpen(needs->window) && current != -1)
 	{
 	  sfRenderWindow_clear(needs->window, sfBlack);
-	  while (sfRenderWindow_pollEvent(needs->window, &event))
-	    {
-	      tmp = current;
-	      if (event.type == sfEvtClosed ||
-		  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-		sfRenderWindow_close(needs->window);
-	      else if (event.type == sfEvtMouseButtonPressed &&
-		       event.mouseButton.button == sfMouseLeft)
-		current = click_select(vector_2i(event.mouseButton.x,
-						 event.mouseButton.y), needs, tmp);
-	    }
+	  current = event_select(needs, event, current, tmp);
 	  display_select(needs, sprite, current);
 	}
     }
