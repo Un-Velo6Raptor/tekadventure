@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:15:37 2017 Martin Januario
-** Last update Sun May 28 21:34:22 2017 Hugo Cousin
+** Last update Sun May 28 21:35:41 2017 Hugo Cousin
 */
 
 #ifndef	GAME_H_
@@ -13,8 +13,13 @@
 
 # include	<display.h>
 
-# define WIDTH 900
-# define HEIGHT 900
+# ifndef WIDTH
+#  define WIDTH 900
+# endif /* ! WIDTH */
+
+# ifndef HEIGHT
+#  define HEIGHT 900
+# endif /* ! HEIGHT */
 
 int		loop_game(t_needs *);
 sfVector2i	move_map(sfSprite *, sfVector2i, sfVector2i, int);
