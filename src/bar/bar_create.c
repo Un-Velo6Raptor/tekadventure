@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Sun May 28 20:19:56 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 20:32:20 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -74,6 +74,7 @@ int			bar_create(t_needs *needs, int diff,
   sfSprite		*tmp;
   int			move;
   int			c_moove;
+  sfEvent		event;
 
   move = ini_sprite_bar(&design, &pattern, &cursor);
   c_moove = ini_color_bar(needs, &tr, &tmp);
@@ -90,6 +91,10 @@ int			bar_create(t_needs *needs, int diff,
       update_sprite_bar(needs, tmp, design, cursor);
       if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
+      while (sfRenderWindow_pollEvent(needs->window, &event))
+	if (event.type == sfEvtClosed ||
+	    sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	  sfRenderWindow_close(needs->window);
     }
   return (0);
 }
