@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 21:11:49 2017 Sahel Lucas--Saoudi
+## Last update Sun May 28 21:53:49 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -52,6 +52,9 @@ TUTO	=	src/tuto/clean_tuto.c		\
 		src/tuto/tuto.c
 
 GAME	=	src/game/loop_game.c		\
+		src/game/draw_game.c		\
+		src/game/first_part.c		\
+		src/game/get_mouse_pos.c	\
 		src/game/room.c
 
 MECHS	=	src/moves/moves.c		\
@@ -86,7 +89,7 @@ OBJ	=	$(SRC:.c=.o)			\
 		$(SELECT:.c=.o)			\
 		$(TUTO:.c=.o)
 
-CFLAGS	=	-g -Wall -Wextra -I include
+CFLAGS	=	-Wall -Wextra -I include
 
 LDFLAGS	=	-L lib -lmy -lc_graph_prog_full -lm
 

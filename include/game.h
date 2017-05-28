@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:15:37 2017 Martin Januario
-** Last update Sun May 28 21:35:41 2017 Hugo Cousin
+** Last update Sun May 28 21:58:46 2017 Martin Januario
 */
 
 #ifndef	GAME_H_
@@ -32,5 +32,10 @@ void		get_player_move(t_needs *, sfVector2i);
 void		refresh_room(t_needs *, int);
 sfVector2i	move_player(t_char *, sfVector2i, sfVector2i, int);
 void		final_fight(t_needs *);
+sfVector2i	get_map_move(sfSprite *, sfVector2i, sfVector2i, sfSprite *);
+void		draw_game(t_needs *, sfVector2i *, int *);
+sfVector2i	check_move_map(sfVector2i, t_needs *, sfVector2i, sfVector2i);
+void		get_mouse_pos(t_needs *, sfVector2i *, sfEvent *);
+int		first_part(t_needs *, int *, sfVector2i *);
 
 #endif		/* !GAME_H_ */

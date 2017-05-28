@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Sun May 28 20:36:30 2017 Martin Januario
+** Last update Sun May 28 21:40:18 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -65,5 +65,9 @@ int		window_game(t_needs *needs)
   loop_game(needs);
   if (needs->mode->sound == 0)
     sfMusic_stop(needs->map[0]->theme);
+  if (!needs->current_veleda)
+    final_fight(needs);
+  else
+    launch_anim(needs->window, "ressources/defeat/", needs->mode->sound, 1);
   return (0);
 }
