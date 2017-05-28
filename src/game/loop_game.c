@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sun May 28 19:31:33 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 20:22:45 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -61,8 +61,10 @@ int                     loop_game(t_needs *needs)
 	 && needs->current_veleda)
     {
       check = 0;
+      music_pause(needs->map[0]->theme, needs);
       if (start_select(needs) == 84)
 	return (84);
+      music_start(needs->map[0]->theme, needs);
       needs->pos = vector_2i(1560, 1152);
       to = vector_2i(1560, 1152);
       update_rect(needs->map[needs->current_map]->map,
@@ -98,6 +100,7 @@ int                     loop_game(t_needs *needs)
 	  sfRenderWindow_display(needs->window);
 	}
     }
+  music_pause(needs->map[0]->theme, needs);
   if (!needs->current_veleda)
     final_fight(needs);
   else

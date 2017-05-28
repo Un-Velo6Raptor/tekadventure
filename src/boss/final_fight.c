@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Sun May 28 11:36:31 2017 Martin Januario
-** Last update Sun May 28 19:33:59 2017 Hugo Cousin
+** Last update Sun May 28 20:20:55 2017 Martin Januario
 */
 
 #include	<stdio.h>
@@ -41,6 +41,11 @@ static void	fight_mike(t_needs *needs)
   idx = 0;
   save = -1;
   cpt = 0;
+  if (needs->mode->sound == 0)
+    {
+      sfMusic_play(needs->boss[0]->music);
+      sfMusic_setLoop(needs->boss[0]->music, sfTrue);
+    }
   while (sfRenderWindow_isOpen(needs->window) && idx != 10)
     {
       if (cpt % 100000 == 0)
@@ -57,6 +62,8 @@ static void	fight_mike(t_needs *needs)
 	}
       cpt++;
     }
+  if (needs->mode->sound == 0)
+    sfMusic_stop(needs->boss[0]->music);
   launch_anim(needs->window, "ressources/victory/", needs->mode->sound, 1);
 }
 

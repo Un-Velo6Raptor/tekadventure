@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Sun May 28 18:47:29 2017 Hugo Cousin
+** Last update Sun May 28 19:28:29 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -57,5 +57,13 @@ int		window_game(t_needs *needs)
     return (my_puterror("Can't create the window.\n"));
   sfRenderWindow_setFramerateLimit(needs->window, 60);
   launch_anim(needs->window, "ressources/story/", needs->mode->sound, 2);
-  return (loop_game(needs));
+  if (needs->mode->sound == 0)
+    {
+      sfMusic_play(needs->map[0]->theme);
+      sfMusic_setLoop(needs->map[0]->theme, sfTrue);
+    }
+  loop_game(needs);
+  if (needs->mode->sound == 0)
+    sfMusic_stop(needs->map[0]->theme);
+  return (0);
 }
