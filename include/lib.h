@@ -1,11 +1,11 @@
 /*
 ** lib.h for tekadventure in /home/heychsea/MUL/tekadventure
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Tue May 23 11:15:16 2017 Hugo Cousin
-** Last update Tue May 23 11:20:56 2017 Hugo Cousin
+** Last update Sun May 28 19:36:01 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef LIB_H_
@@ -42,7 +42,7 @@ int		getnb(const char *);
 int		u_getnb(const char *);
 int		my_strcmp(const char *, const char *);
 int		my_strcasecmp(const char *, const char *);
-int		my_strncmp(const char *, const char *, size_t );
+int		my_strncmp(const char *, const char *, size_t);
 int		alnum(char);
 int		str_num(const char *);
 int		my_puterror(char *);

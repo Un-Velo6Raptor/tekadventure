@@ -1,11 +1,11 @@
 /*
 ** menu.h for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Fri May 19 16:37:41 2017 Martin Januario
-** Last update Fri May 26 11:28:12 2017 Martin Januario
+** Last update Sun May 28 19:35:48 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef		MENU_H_
@@ -30,6 +30,7 @@
 /*
 **	m_sprite[0]: title.png
 */
+
 typedef struct		s_sprite_menu
 {
   sfSprite		*m_sprite[2];
@@ -62,7 +63,8 @@ int		ini_sprite_menu(t_sprite_menu *, t_core *);
 int		ini_text_menu(t_text_menu *, t_core *);
 void		draw_sprite_menu(t_sprite_menu *, t_core *, t_text_menu *);
 void		place_sprite_menu(t_sprite_menu *);
-int		destroy_menu(t_core *, t_sprite_menu *, t_text_menu *, t_mode_game *);
+int		destroy_menu(t_core *, t_sprite_menu *, t_text_menu *,
+			     t_mode_game *);
 void		gest_mouse_menu(t_mode_game *, sfEvent *,
 				t_text_menu *, t_core *);
 int		ini_music_menu(t_core *);
