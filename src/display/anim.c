@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 14:16:34 2017 Hugo Cousin
-** Last update Thu May 25 17:45:31 2017 Hugo Cousin
+** Last update Sat May 27 19:03:21 2017 Hugo Cousin
 */
 
 #include	<SFML/Graphics.h>
@@ -94,22 +94,16 @@ sfTexture	**get_textures(const char *dir_path,
 }
 
 void		display_textures(sfRenderWindow *window, sfTexture **textures,
-				 sfSprite *sprite, int sleep)
+				 sfSprite *sprite)
 {
   size_t	index;
-  int		timer;
 
   index = 0;
   while (textures[index] && sfRenderWindow_isOpen(window) &&
 	 sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
     {
       sfSprite_setTexture(sprite, textures[index], sfTrue);
-      sfRenderWindow_clear(window, sfBlack);
-      sfRenderWindow_drawSprite(window, sprite, NULL);
-      sfRenderWindow_display(window);
-      timer = time(NULL);
-      while (time(NULL) != timer + sleep &&
-	     sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse);
+      shade_sprite(window, sprite);
       index++;
     }
   index = 0;
@@ -118,8 +112,7 @@ void		display_textures(sfRenderWindow *window, sfTexture **textures,
   free(textures);
 }
 
-int		launch_anim(sfRenderWindow *window, const char *dir_path,
-			    int sleep)
+int		launch_anim(sfRenderWindow *window, const char *dir_path)
 {
   sfSprite	*sprite;
   sfTexture	**textures;
@@ -139,7 +132,7 @@ int		launch_anim(sfRenderWindow *window, const char *dir_path,
     return (0);
   sprite = sfSprite_create();
   back_music(dir_path, files);
-  display_textures(window, textures, sprite, sleep);
+  display_textures(window, textures, sprite);
   back_music(dir_path, files);
   sfSprite_destroy(sprite);
   tabfree(files);

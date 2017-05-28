@@ -5,7 +5,7 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Thu May 25 11:38:00 2017 Romain Melin
-** Last update Thu May 25 11:49:13 2017 Romain Melin
+** Last update Sat May 27 19:00:15 2017 Martin Januario
 */
 
 #include		<SFML/Graphics.h>
@@ -28,7 +28,7 @@ void                    free_image(sfTexture **image)
   i = 0;
   while (image[i] != NULL)
     {
-      free(image[i]);
+      sfTexture_destroy(image[i]);
       i++;
     }
   free(image);

@@ -5,12 +5,13 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Wed May 24 16:10:23 2017 Hugo Cousin
+** Last update Sun May 28 16:22:25 2017 Hugo Cousin
 */
 
 #include	<math.h>
 #include	"lib.h"
 #include	"game.h"
+#include	"refresh.h"
 
 static int		check_color(t_map *map, sfVector2i pos)
 {
@@ -19,8 +20,8 @@ static int		check_color(t_map *map, sfVector2i pos)
   if (pos.x < 0 || pos.x >= (int) map->size.x ||
       pos.y < 0 || pos.y >= (int) map->size.y)
     return (0);
-  color = sfImage_getPixel(map->map, pos.x, pos.y);
-  if (color.r != 255 || color.g != 255 || color.b != 255)
+  color = sfImage_getPixel(map->image, pos.x, pos.y);
+  if (color.r == color.g && color.g == color.b && color.r < 255)
     return (0);
   return (1);
 }
@@ -92,11 +93,6 @@ sfVector2i		move_map(sfSprite *sprite, sfVector2i from,
   update_rect(sprite, from);
   return (from);
 }
-
-#define UP 8
-#define DOWN 10
-#define LEFT 9
-#define RIGHT 11
 
 void			player_refresh(sfSprite *sprite, sfVector2f pos,
 				       sfVector2i from, sfVector2i to)

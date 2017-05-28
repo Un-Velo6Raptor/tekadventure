@@ -5,13 +5,14 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Thu May 25 16:03:20 2017 Martin Januario
+** Last update Sun May 28 16:55:24 2017 Martin Januario
 */
 
 #include	<stdlib.h>
 #include	<time.h>
 #include	"bar.h"
 #include	"game.h"
+#include	"refresh.h"
 
 static int			ini_sprite_bar(sfSprite **sprite,
 					       t_framebuffer **pattern,
@@ -62,7 +63,21 @@ static int		ini_color_bar(t_needs *needs, sfTexture **tr,
   return (1);
 }
 
-int			bar_create(t_needs *needs, int diff)
+static void		disp_player_boss(t_needs *needs)
+{
+  sfSprite_setPosition(needs->player[needs->current_player]->sprite, vector_2f(100, 770));
+  sfSprite_setScale(needs->player[needs->current_player]->sprite, vector_2f(13.5, 13.5));
+  sfSprite_setPosition(needs->boss[needs->map[needs->current_map]->boss]->sprite, vector_2f(800, -100));
+  sfSprite_setScale(needs->boss[needs->map[needs->current_map]->boss]->sprite, vector_2f(13.5, 13.5));
+}
+
+static void		display_mike(t_needs *needs)
+{
+  sfRenderWindow_drawSprite(needs->window, needs->boss[0]->select, NULL);
+}
+
+int			bar_create(t_needs *needs, int diff,
+				   sfVector2i __attribute__ ((unused)) to, int opt)
 {
   static sfSprite	*design = NULL;
   static t_framebuffer	*pattern = NULL;
@@ -78,15 +93,24 @@ int			bar_create(t_needs *needs, int diff)
   fill_square(pattern, diff);
   sfSprite_setPosition(cursor, vector_2f(((WIDTH - 620) / 2 + 15), 735));
   sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
+  disp_player_boss(needs);
+  print_text(needs);
   while (sfRenderWindow_isOpen(needs->window))
     {
       sfRenderWindow_clear(needs->window, sfWhite);
+      refresh_room(needs, 1);
+      if (needs->texte != NULL)
+	sfRenderWindow_drawText(needs->window, needs->texte, NULL);
+      update_dir_bar(&c_moove, &move, cursor);
+      sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
+      if (opt == 0)
+	display_fight(needs);
+      else
+	display_mike(needs);
+      update_sprite_bar(needs, tmp, design, cursor);
       if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue ||
 	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
 	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
-      update_dir_bar(&c_moove, &move, cursor);
-      sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
-      update_sprite_bar(needs, tmp, design, cursor);
     }
   return (0);
 }

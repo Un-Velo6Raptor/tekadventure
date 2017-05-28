@@ -5,13 +5,14 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon May 22 14:43:49 2017 Hugo Cousin
-** Last update Wed May 24 16:04:59 2017 Hugo Cousin
+** Last update Sat May 27 18:06:05 2017 Hugo Cousin
 */
 
 #include		<stdlib.h>
 #include		<SFML/Graphics.h>
 #include		"refresh.h"
 #include		"lib.h"
+#include		"display.h"
 
 static void		update_keep(t_refresh *keep, sfSprite *sprite,
 				    int mode)

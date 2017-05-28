@@ -5,32 +5,39 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:04 2017 Sahel Lucas--Saoudi
-** Last update Wed May 24 16:57:57 2017 Sahel Lucas--Saoudi
+** Last update Sat May 27 22:11:56 2017 Lucas Sahel
 */
 
 #ifndef CHARACTER_H_
 # define CHARACTER_H_
 
 # include <SFML/Graphics.h>
+# include <SFML/Audio.h>
+# include "struct.h"
 
-struct                  s_char
+# ifndef ALIVE
+#  define ALIVE 0
+# endif /* !ALIVE */
+
+# ifndef DEAD
+#  define DEAD 1
+# endif /* !DEAD */
+
+struct				s_char
 {
-  char                  *name;
-  sfSprite              *sprite;
-  sfVector2i            pos;
+  char				*name;
+  sfSprite			*sprite;
+  sfSprite			*select;
+  sfVector2f			pos;
+  t_text			*phrase;
+  int				death;
+  sfMusic			*music;
 };
 
 typedef struct s_char		t_char;
 
-struct				s_character
-{
-  t_char			**boss;
-  t_char			**player;
-};
-
-typedef struct s_character	t_character;
-
-t_character			*init_character();
-t_char				*new_char(char *, char *, int, int);
+t_char				*new_char(char *, char *,
+					  sfVector2f, t_text *);
+t_char				*new_player(char **, char *, t_player *, char *);
 
 #endif /* !CHARACTER_H_ */

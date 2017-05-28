@@ -1,11 +1,11 @@
 /*
 ** lib.h for LIB in /home/heychsea/PSU/PSU_2016_minishell2
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Wed Apr 19 18:53:28 2017 Hugo Cousin
-** Last update Tue May 23 11:22:41 2017 Hugo Cousin
+** Last update Sat May 27 22:50:28 2017 Sahel Lucas--Saoudi
 */
 
 #ifndef MIN_H_
@@ -34,7 +34,7 @@ char		*my_strcat(char *, const char *);
 char		*my_strcpy(char *, const char *);
 size_t		my_strlen(const char *);
 size_t		tablen(char **);
-int		my_strncmp(const char *, const char *, size_t );
+int		my_strncmp(const char *, const char *, size_t);
 char		*get_next_line(const int);
 void		strclean(char *);
 int		alnum(char);

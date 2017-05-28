@@ -5,23 +5,41 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:34:05 2017 Sahel Lucas--Saoudi
-** Last update Wed May 24 16:50:23 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 06:36:36 2017 Martin Januario
 */
 
 #ifndef BOSS_H_
 # define BOSS_H_
 
 # ifndef NB_BOSS
-#  define NB_BOSS 4
+#  define NB_BOSS 5
 # endif /* !NB_BOSS */
 
+# ifndef MIKE
+#  define MIKE 0
+# endif /* !MIKE */
+
+# ifndef MALEX
+#  define MALEX 1
+# endif /* !MALEX */
+
+# ifndef CHLOE
+#  define CHLOE 2
+# endif /* !CHLOE */
+
+# ifndef REMI
+#  define REMI 3
+# endif /* !REMI */
+
+# ifndef ARTHUR
+#  define ARTHUR 4
+# endif /* !ARTHUR */
+
 # include <SFML/Graphics.h>
-# include "mike.h"
-# include "chloe.h"
-# include "malex.h"
-# include "remi.h"
 # include "character.h"
+# include "display.h"
 
 t_char			**init_boss();
+int			check_map_boss(t_needs *, sfVector2i);
 
 #endif /* !BOSS_H_ */

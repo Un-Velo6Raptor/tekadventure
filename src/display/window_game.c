@@ -5,32 +5,55 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Wed May 24 16:04:25 2017 Hugo Cousin
+** Last update Sun May 28 15:36:08 2017 Martin Januario
 */
 
 #include	"lib.h"
 #include	"game.h"
+#include	"select.h"
 
-static int	ini_map_game(t_needs *map)
+int		start_select(t_needs *needs)
 {
-  map->map.map = sfImage_createFromFile("ressources/map/map.png");
-  if (map->map.map == NULL)
+  sfMusic	*music;
+
+  music = NULL;
+  if (needs->mode->sound == 0)
+    {
+      music = sfMusic_createFromFile("ressources/menu/theme.ogg");
+      if (music != NULL)
+	{
+	  sfMusic_play(music);
+	  sfMusic_setLoop(music, sfTrue);
+	}
+    }
+  needs->current_player = select_player(needs);
+  if (needs->current_player < 0)
     return (84);
-  map->map.size = sfImage_getSize(map->map.map);
+  if (music != NULL)
+    sfMusic_destroy(music);
   return (0);
 }
 
-int		window_game(t_mode_game *mode)
+int		count_dead_player(t_needs *needs)
 {
-  t_needs	needs;
+  int		tmp;
+  int		idx;
 
-  needs.window = create_window("Game <-> Move Backward.", WIDTH, HEIGHT);
-  if (needs.window == NULL)
+  idx = 0;
+  tmp = 0;
+  while (idx < 4)
+    {
+      tmp += needs->player[idx]->death;
+      idx++;
+    }
+  return (tmp);
+}
+
+int		window_game(t_needs *needs)
+{
+  needs->window = create_window("Game <-> Move Backward.", WIDTH, HEIGHT);
+  if (needs->window == NULL)
     return (my_puterror("Can't create the window.\n"));
-  sfRenderWindow_setFramerateLimit(needs.window, 60);
-  needs.sprite = sfSprite_create();
-  needs.texture = NULL;
-  if (ini_map_game(&needs) == 84)
-    return (84);
-  return (loop_game(mode, &needs));
+  sfRenderWindow_setFramerateLimit(needs->window, 60);
+  return (loop_game(needs));
 }
