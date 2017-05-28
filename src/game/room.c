@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 **
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 21:13:38 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 22:06:50 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -114,7 +114,8 @@ int		room_main(t_needs *needs, int *check)
   to.y = needs->player[needs->current_player]->pos.y;
   *check = check_map_boss(needs, to);
   music_start(needs->map[0]->theme, needs);
-  while (needs->current_map && !*check && sfRenderWindow_isOpen(needs->window))
+  while (needs->current_map &&
+	 !*check && sfRenderWindow_isOpen(needs->window))
     {
       refresh_room(needs, 0);
       event_handler(needs, &to);
