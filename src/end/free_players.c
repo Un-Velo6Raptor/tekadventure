@@ -1,12 +1,11 @@
-
 /*
 ** free_players.c for tekadventure in /home/heychsea/MUL/ceciesttemporaire
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Thu Apr 13 15:03:36 2017 Hugo Cousin
-** Last update Thu Apr 13 17:24:51 2017 Hugo Cousin
+** Last update Sun May 28 19:32:23 2017 Sahel Lucas--Saoudi
 */
 
 #include <stdlib.h>

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sun May 28 19:16:39 2017 Hugo Cousin
+** Last update Sun May 28 19:31:33 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -57,7 +57,8 @@ int                     loop_game(t_needs *needs)
   sfEvent               event;
   int			check;
 
-  while (count_dead_player(needs) != 4 && sfRenderWindow_isOpen(needs->window) && needs->current_veleda)
+  while (count_dead_player(needs) != 4 && sfRenderWindow_isOpen(needs->window)
+	 && needs->current_veleda)
     {
       check = 0;
       if (start_select(needs) == 84)
@@ -65,8 +66,10 @@ int                     loop_game(t_needs *needs)
       needs->pos = vector_2i(1560, 1152);
       to = vector_2i(1560, 1152);
       update_rect(needs->map[needs->current_map]->map,
-		  vector_2i(needs->pos.x - WIDTH / 2, needs->pos.y - HEIGHT / 2));
-      while (check == 0 && sfRenderWindow_isOpen(needs->window) && needs->current_veleda)
+		  vector_2i(needs->pos.x - WIDTH / 2,
+			    needs->pos.y - HEIGHT / 2));
+      while (check == 0 && sfRenderWindow_isOpen(needs->window)
+	     && needs->current_veleda)
 	{
 	  player_refresh(needs->player[needs->current_player]->sprite,
 			 vector_2f(450, 450), needs->pos, to);
@@ -83,14 +86,14 @@ int                     loop_game(t_needs *needs)
 				    needs, needs->pos, to);
 	    }
 	  to = check_room(needs, needs->pos, to, &check);
-	  needs->pos = get_map_move(needs->map[needs->current_map]->map,
-				    needs->pos, to,
-				    needs->player[needs->current_player]->sprite);
+	  needs->pos =
+	    get_map_move(needs->map[needs->current_map]->map, needs->pos, to,
+			 needs->player[needs->current_player]->sprite);
 	  sfRenderWindow_drawSprite(needs->window,
 				    needs->map[needs->current_map]->map, NULL);
 	  sfRenderWindow_drawSprite(needs->window,
-				    needs->player[needs->current_player]->sprite,
-				    NULL);
+				    needs->player[needs->current_player]
+				    ->sprite, NULL);
 	  display_status(needs);
 	  sfRenderWindow_display(needs->window);
 	}

@@ -1,11 +1,11 @@
 /*
 ** get_set_pixel.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Thu May 25 14:37:12 2017 Martin Januario
-** Last update Sun May 28 19:12:50 2017 Hugo Cousin
+** Last update Sun May 28 19:32:54 2017 Sahel Lucas--Saoudi
 */
 
 #include	<time.h>
@@ -22,7 +22,8 @@ static void	print_text2(t_needs *needs)
   int		cpt;
 
   srand(time(NULL));
-  cpt = rand() % count_sentence(needs->player[needs->current_player]->phrase) - 1;
+  cpt = rand() %
+    count_sentence(needs->player[needs->current_player]->phrase) - 1;
   if (cpt < 0)
     cpt = 0;
   if (needs->player[needs->current_player]->phrase[cpt].sentence == NULL)
@@ -42,16 +43,21 @@ static void	print_text2(t_needs *needs)
   sfText_setColor(needs->texte, sfBlack);
 }
 
-int		is_on_green(t_needs *needs, t_framebuffer *frame_buffer, int pos)
+int		is_on_green(t_needs *needs, t_framebuffer *frame_buffer,
+			    int pos)
 {
   sfColor               color;
   int			idx;
 
   sfRenderWindow_setFramerateLimit(needs->window, 120);
-  color.r = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4];
-  color.g = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 1];
-  color.b = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 2];
-  color.a = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 3];
+  color.r =
+    frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4];
+  color.g =
+    frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 1];
+  color.b =
+    frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 2];
+  color.a =
+    frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 3];
   idx = 1;
   if (color.g == 255)
     {
