@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon May 22 14:34:35 2017 Hugo Cousin
-** Last update Sun May 28 21:33:05 2017 Hugo Cousin
+** Last update Sun May 28 21:37:15 2017 Hugo Cousin
 */
 
 #ifndef REFRESH_H_
@@ -21,10 +21,21 @@
 #  define SPRITE_H 64
 # endif /* ! SPRITE_H */
 
-#define UP 8
-#define DOWN 10
-#define LEFT 9
-#define RIGHT 11
+# ifndef UP
+#  define UP 8
+# endif /* ! RIGHT */
+
+# ifndef DOWN
+#  define DOWN 10
+# endif /* ! RIGHT */
+
+# ifndef LEFT
+#  define LEFT 9
+# endif /* ! RIGHT */
+
+# ifndef RIGHT
+#  define RIGHT 11
+# endif /* ! RIGHT */
 
 typedef struct	s_refresh
 {
