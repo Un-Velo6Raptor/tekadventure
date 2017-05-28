@@ -1,11 +1,11 @@
 /*
 ** display_fight.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Sun May 28 06:30:40 2017 Martin Januario
-** Last update Sun May 28 16:57:59 2017 Martin Januario
+** Last update Sun May 28 20:22:14 2017 Sahel Lucas--Saoudi
 */
 
 #include	<time.h>
@@ -32,13 +32,15 @@ void		print_text(t_needs *needs)
   int		cpt;
 
   srand(time(NULL));
-  cpt = rand() % count_sentence(needs->boss[needs->map[needs->current_map]->boss]->phrase) - 1;
+  cpt = rand() % count_sentence(needs->boss[needs->map[needs->current_map]
+					    ->boss]->phrase) - 1;
   if (cpt < 0)
     cpt = 0;
-  if (needs->boss[needs->map[needs->current_map]->boss]->phrase[cpt].sentence == NULL)
+  if (!needs->boss[needs->map[needs->current_map]->boss]->phrase[cpt].sentence)
     return ;
-  tmp = concat(3, needs->boss[needs->map[needs->current_map]->boss]->name, ": ",
-	       needs->boss[needs->map[needs->current_map]->boss]->phrase[cpt].sentence);
+  tmp = concat(3, needs->boss[needs->map[needs->current_map]->boss]->name,
+	       ": ", needs->boss[needs->map[needs->current_map]->boss]
+	       ->phrase[cpt].sentence);
   if (tmp == NULL)
     return ;
   needs->texte = sfText_create();
@@ -61,7 +63,9 @@ void		display_fight(t_needs *needs)
   tmp.top = RIGHT * SPRITE_H;
   sfSprite_setTextureRect(needs->player[needs->current_player]->sprite, tmp);
   sfRenderWindow_drawSprite(needs->window,
-			    needs->boss[needs->map[needs->current_map]->boss]->sprite, NULL);
+			    needs->boss[needs->map[needs->current_map]->boss]
+			    ->sprite, NULL);
   sfRenderWindow_drawSprite(needs->window,
-			    needs->player[needs->current_player]->sprite, NULL);
+			    needs->player[needs->current_player]->sprite,
+			    NULL);
 }

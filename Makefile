@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 17:34:55 2017 Hugo Cousin
+## Last update Sun May 28 20:15:19 2017 Sahel Lucas--Saoudi
 ##
 
 .PHONY:		all clean fclean re
@@ -61,7 +61,8 @@ BAR	=	src/bar/bar_create.c            \
 		src/bar/fill_square.c           \
 		src/bar/update_sprite_bar.c     \
 		src/bar/display_fight.c		\
-		src/bar/reset_frame.c
+		src/bar/reset_frame.c		\
+		src/bar/disp.c
 
 SELECT	=	src/select/select_player.c	\
 		src/select/click_select.c	\
