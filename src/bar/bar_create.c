@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Sun May 28 15:39:53 2017 Martin Januario
+** Last update Sun May 28 16:55:24 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -94,13 +94,13 @@ int			bar_create(t_needs *needs, int diff,
   sfSprite_setPosition(cursor, vector_2f(((WIDTH - 620) / 2 + 15), 735));
   sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
   disp_player_boss(needs);
+  print_text(needs);
   while (sfRenderWindow_isOpen(needs->window))
     {
       sfRenderWindow_clear(needs->window, sfWhite);
       refresh_room(needs, 1);
-      if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue ||
-	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
+      if (needs->texte != NULL)
+	sfRenderWindow_drawText(needs->window, needs->texte, NULL);
       update_dir_bar(&c_moove, &move, cursor);
       sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
       if (opt == 0)
@@ -108,6 +108,9 @@ int			bar_create(t_needs *needs, int diff,
       else
 	display_mike(needs);
       update_sprite_bar(needs, tmp, design, cursor);
+      if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue ||
+	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
     }
   return (0);
 }
