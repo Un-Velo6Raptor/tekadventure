@@ -1,11 +1,11 @@
 /*
 ** room.c for tekadventure in /home/heychsea/MUL/tekadventure
-** 
+**
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-** 
+**
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 19:52:12 2017 Martin Januario
+** Last update Sun May 28 21:13:38 2017 Sahel Lucas--Saoudi
 */
 
 #include	"lib.h"
@@ -34,26 +34,6 @@ void		change_sprite(t_needs *needs, int mode)
       sfRenderWindow_setFramerateLimit(needs->window, 60);
       needs->current_map = 0;
     }
-}
-
-void		refresh_room(t_needs *needs, int opt)
-{
-  float		scale;
-
-  sfRenderWindow_drawSprite(needs->window,
-			    needs->map[needs->current_map]->map, NULL);
-  if (opt != 1)
-    {
-      sfRenderWindow_drawSprite(needs->window,
-				needs->player[needs->current_player]->sprite,
-				NULL);
-      display_status(needs);
-      sfRenderWindow_display(needs->window);
-      scale = (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
-      sfSprite_setScale(needs->player[needs->current_player]->sprite,
-			vector_2f(scale, scale));
-    }
-
 }
 
 sfVector2i	room_move(t_needs *needs, sfEvent event)
@@ -111,31 +91,22 @@ sfVector2i		move_player(t_char *player, sfVector2i from,
   return (from);
 }
 
-void		get_player_move(t_needs *needs, sfVector2i to)
+static void	event_handler(t_needs *needs, sfVector2i *to)
 {
-  t_char	*player;
-  sfVector2i	pos;
-  sfColor	color;
+  sfEvent	event;
 
-  player = needs->player[needs->current_player];
-  pos.x = player->pos.x;
-  pos.y = player->pos.y;
-  if (pos.x != to.x || pos.y != to.y)
-    pos = move_player(player, pos, to, 0);
-  else
-    pos = move_player(player, pos, to, 1);
-  player->pos.x = pos.x;
-  player->pos.y = pos.y;
-  sfSprite_setPosition(player->sprite, player->pos);
-  color = sfImage_getPixel(needs->map[needs->current_map]->image,
-			   pos.x, pos.y);
-  if (color.r == 255 && color.g == 0)
-    needs->current_map = 0;
+  while (sfRenderWindow_pollEvent(needs->window, &event))
+    {
+      if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	sfRenderWindow_close(needs->window);
+      if (event.type == sfEvtMouseButtonPressed &&
+	  event.mouseButton.button == sfMouseLeft)
+	*to = room_move(needs, event);
+    }
 }
 
 int		room_main(t_needs *needs, int *check)
 {
-  sfEvent	event;
   sfVector2i	to;
 
   change_sprite(needs, 0);
@@ -146,15 +117,7 @@ int		room_main(t_needs *needs, int *check)
   while (needs->current_map && !*check && sfRenderWindow_isOpen(needs->window))
     {
       refresh_room(needs, 0);
-      while (sfRenderWindow_pollEvent(needs->window, &event))
-	{
-	  if (event.type == sfEvtClosed ||
-	      sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-	    sfRenderWindow_close(needs->window);
-	  if (event.type == sfEvtMouseButtonPressed &&
-	      event.mouseButton.button == sfMouseLeft)
-	    to = room_move(needs, event);
-	}
+      event_handler(needs, &to);
       get_player_move(needs, to);
     }
   music_pause(needs->map[0]->theme, needs);

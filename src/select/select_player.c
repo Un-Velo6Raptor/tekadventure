@@ -1,11 +1,11 @@
 /*
 ** select_player.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Thu May 25 17:08:39 2017 Martin Januario
-** Last update Sun May 28 20:28:34 2017 Hugo Cousin
+** Last update Sun May 28 20:45:07 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -51,11 +51,11 @@ static void	display_select(t_needs *needs, sfSprite **sprite, int opt)
 }
 
 static int	event_select(t_needs *needs, sfEvent event, int current,
-			     int tmp)
+			     int *tmp)
 {
   while (sfRenderWindow_pollEvent(needs->window, &event))
     {
-      tmp = current;
+      *tmp = current;
       if (event.type == sfEvtClosed ||
 	  sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
 	sfRenderWindow_close(needs->window);
@@ -63,7 +63,7 @@ static int	event_select(t_needs *needs, sfEvent event, int current,
 	       event.mouseButton.button == sfMouseLeft)
 	current = click_select(vector_2i(event.mouseButton.x,
 					 event.mouseButton.y),
-			       needs, tmp);
+			       needs, *tmp);
     }
   return (current);
 }
@@ -76,7 +76,8 @@ int		select_player(t_needs *needs)
   int		tmp;
 
   tmp = -2;
-  if ((sprite = ini_sprite_select(needs)) == NULL)
+  sprite = ini_sprite_select(needs);
+  if (!sprite)
     return (0);
   while (tmp == -2 && sfRenderWindow_isOpen(needs->window))
     {
@@ -85,9 +86,11 @@ int		select_player(t_needs *needs)
       while (sfRenderWindow_isOpen(needs->window) && current != -1)
 	{
 	  sfRenderWindow_clear(needs->window, sfBlack);
-	  current = event_select(needs, event, current, tmp);
+	  current = event_select(needs, event, current, &tmp);
 	  display_select(needs, sprite, current);
 	}
     }
-  return ((tmp <= -1) ? 0 : tmp);
+  if (tmp <= -1)
+    return (0);
+  return (tmp);
 }

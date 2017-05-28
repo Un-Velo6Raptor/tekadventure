@@ -1,4 +1,3 @@
-
 /*
 ** main.c for  in /home/januar_m/delivery/graphical/tekadventure
 **
@@ -6,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Sun May 28 17:21:12 2017 Hugo Cousin
+** Last update Sun May 28 20:35:52 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>

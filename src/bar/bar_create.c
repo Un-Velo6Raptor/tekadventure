@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Sun May 28 20:32:20 2017 Martin Januario
+** Last update Sun May 28 20:59:44 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -63,6 +63,16 @@ static int		ini_color_bar(t_needs *needs, sfTexture **tr,
   return (1);
 }
 
+static void		set_pos_and_disp(sfSprite *cursor,
+					 sfTexture *tr,
+					 t_framebuffer *pattern,
+					 t_needs *needs)
+{
+  sfSprite_setPosition(cursor, vector_2f(((WIDTH - 620) / 2 + 15), 735));
+  sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
+  disp_boss_text(needs);
+}
+
 int			bar_create(t_needs *needs, int diff,
 				   sfVector2i __attribute__ ((unused)) to,
 				   int opt)
@@ -74,16 +84,13 @@ int			bar_create(t_needs *needs, int diff,
   sfSprite		*tmp;
   int			move;
   int			c_moove;
-  sfEvent		event;
 
   move = ini_sprite_bar(&design, &pattern, &cursor);
   c_moove = ini_color_bar(needs, &tr, &tmp);
   if (move == 84 || c_moove == 84)
     return (0);
   fill_square(pattern, diff);
-  sfSprite_setPosition(cursor, vector_2f(((WIDTH - 620) / 2 + 15), 735));
-  sfTexture_updateFromPixels(tr, pattern->pixels, WIDTH, HEIGHT, 0, 0);
-  disp_boss_text(needs);
+  set_pos_and_disp(cursor, tr, pattern, needs);
   while (sfRenderWindow_isOpen(needs->window))
     {
       disp_text_and_bar(needs, &move, &c_moove, cursor);
@@ -91,10 +98,8 @@ int			bar_create(t_needs *needs, int diff,
       update_sprite_bar(needs, tmp, design, cursor);
       if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 	return (is_on_green(needs, pattern, (WIDTH - 620) / 2 + 15 + move));
-      while (sfRenderWindow_pollEvent(needs->window, &event))
-	if (event.type == sfEvtClosed ||
-	    sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
-	  sfRenderWindow_close(needs->window);
+      if (sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	sfRenderWindow_close(needs->window);
     }
   return (0);
 }
