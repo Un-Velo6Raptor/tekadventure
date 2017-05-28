@@ -1,11 +1,11 @@
 /*
-** reset_frame.c for  in /home/januar_m/delivery/graphical/wolf3d
+** reset_frame.c for  in /home/januar_m/delivery/graphical/tekadventure
 ** 
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
 ** 
-** Started on  Mon Dec 26 21:48:43 2016 
-** Last update Wed May 24 16:33:57 2017 Martin Januario
+** Started on  Sun May 28 23:18:11 2017 Martin Januario
+** Last update Sun May 28 23:18:12 2017 Martin Januario
 */
 
 #include	"bar.h"

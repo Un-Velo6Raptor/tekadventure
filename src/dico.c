@@ -1,11 +1,11 @@
 /*
-** dico.c for minishell2 in /home/sahel/rendu/PSU/PSU_2016_minishell2
-**
-** Made by Sahel Lucas--Saoudi
-** Login   <sahel.lucas-saoudi@epitech.eu>
-**
-** Started on  Sat Mar 25 12:55:41 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 22:39:01 2017 Martin Januario
+** dico.c for  in /home/januar_m/delivery/graphical/tekadventure
+** 
+** Made by Martin Januario
+** Login   <martin.januario@epitech.eu>
+** 
+** Started on  Sun May 28 23:13:48 2017 Martin Januario
+** Last update Sun May 28 23:13:49 2017 Martin Januario
 */
 
 #include <stdlib.h>

@@ -1,11 +1,11 @@
 /*
-** check_env.c for  in /home/januar_m/delivery/graphical/scroller
+** check_env.c for  in /home/januar_m/delivery/graphical/tekadventure
 ** 
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
 ** 
-** Started on  Sun Apr  2 19:04:26 2017 Martin Januario
-** Last update Fri May 19 16:26:08 2017 Martin Januario
+** Started on  Sun May 28 23:16:22 2017 Martin Januario
+** Last update Sun May 28 23:16:23 2017 Martin Januario
 */
 
 #include	<stdlib.h>
