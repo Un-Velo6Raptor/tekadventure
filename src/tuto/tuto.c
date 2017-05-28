@@ -5,11 +5,8 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Wed May 24 15:24:31 2017 Romain Melin
-** Last update Fri May 26 17:08:55 2017 Martin Januario
+** Last update Sun May 28 19:38:30 2017 Hugo Cousin
 */
-
-# define		SCREEN_WIDTH 1163
-# define		SCREEN_HEIGHT 800
 
 #include		<stdlib.h>
 #include		<SFML/Graphics.h>
@@ -19,7 +16,8 @@
 #include		"tuto.h"
 #include		"display.h"
 
-static void	       	display_window(sfRenderWindow *window, sfTexture **image, sfSprite *sprite)
+static void	       	display_window(sfRenderWindow *window,
+				       sfTexture **image, sfSprite *sprite)
 {
   int			i;
 
@@ -78,7 +76,7 @@ int			tuto(t_mode_game mode)
   sfRenderWindow	*window;
   sfMusic		*music;
 
-  window = create_window("SFML Winodw", SCREEN_WIDTH, SCREEN_HEIGHT);
+  window = create_window("Game <-> Tutorial", 1163, 800);
   sfRenderWindow_setFramerateLimit(window, 1);
   if (window == NULL)
     return (84);

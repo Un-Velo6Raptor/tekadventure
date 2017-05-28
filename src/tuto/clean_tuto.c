@@ -5,15 +5,15 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Thu May 25 11:38:00 2017 Romain Melin
-** Last update Sat May 27 19:00:15 2017 Martin Januario
+** Last update Sun May 28 19:35:28 2017 Hugo Cousin
 */
 
-#include		<SFML/Graphics.h>
-#include		<stdlib.h>
+#include	<SFML/Graphics.h>
+#include	<stdlib.h>
 
-void                    is_closed(sfRenderWindow *window)
+void		is_closed(sfRenderWindow *window)
 {
-  sfEvent               event;
+  sfEvent	event;
 
   while (sfRenderWindow_pollEvent(window, &event))
     if (event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)
@@ -21,9 +21,9 @@ void                    is_closed(sfRenderWindow *window)
       sfRenderWindow_close(window);
 }
 
-void                    free_image(sfTexture **image)
+void		free_image(sfTexture **image)
 {
-  int                   i;
+  int		i;
 
   i = 0;
   while (image[i] != NULL)

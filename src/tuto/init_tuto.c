@@ -5,7 +5,7 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Thu May 25 11:31:05 2017 Romain Melin
-** Last update Sun May 28 17:12:59 2017 Romain Melin
+** Last update Sun May 28 19:36:35 2017 Hugo Cousin
 */
 
 #include		<SFML/Graphics.h>
@@ -31,7 +31,8 @@ sfTexture		**load_image()
   if (image == NULL)
     return (NULL);
   image[0] = sfTexture_createFromFile("ressources/tuto/tutoriel.png", NULL);
-  image[1] = sfTexture_createFromFile("ressources/tuto/informations_utiles.png", NULL);
+  image[1] = sfTexture_createFromFile("ressources/tuto/informations.png",
+				      NULL);
   image[2] = sfTexture_createFromFile("ressources/tuto/charlotte.png", NULL);
   image[3] = sfTexture_createFromFile("ressources/tuto/Sasel.png", NULL);
   image[4] = sfTexture_createFromFile("ressources/tuto/l'enfant.png", NULL);
