@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sun May 28 15:14:36 2017 Martin Januario
+** Last update Sun May 28 17:49:38 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -90,6 +90,7 @@ int                     loop_game(t_needs *needs)
 	  sfRenderWindow_drawSprite(needs->window,
 				    needs->player[needs->current_player]->sprite,
 				    NULL);
+	  display_status(needs);
 	  sfRenderWindow_display(needs->window);
 	}
     }

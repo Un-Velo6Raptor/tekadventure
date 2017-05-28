@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 11:36:10 2017 Martin Januario
+## Last update Sun May 28 17:34:55 2017 Hugo Cousin
 ##
 
 .PHONY:		all clean fclean re
@@ -21,7 +21,8 @@ SRC	=	src/main.c			\
 		src/init/map.c			\
 		src/init/config.c		\
 		src/concat.c			\
-		src/init/player.c
+		src/init/player.c		\
+		src/init/velleda.c
 
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/create_window.c	\
@@ -29,7 +30,8 @@ DISPLAY	=	src/display/window_menu.c	\
 		src/display/window_game.c	\
 		src/display/anim.c		\
 		src/display/shade.c		\
-		src/display/utils.c
+		src/display/utils.c		\
+		src/display/velleda.c
 
 MENU	=	src/menu/loop_menu.c		\
 		src/menu/draw_sprite_menu.c	\

@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 16:32:08 2017 Hugo Cousin
+** Last update Sun May 28 17:53:45 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -46,6 +46,7 @@ void		refresh_room(t_needs *needs, int opt)
       sfRenderWindow_drawSprite(needs->window,
 				needs->player[needs->current_player]->sprite,
 				NULL);
+      display_status(needs);
       sfRenderWindow_display(needs->window);
       scale = (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
       sfSprite_setScale(needs->player[needs->current_player]->sprite,

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Sun May 28 15:37:21 2017 Martin Januario
+** Last update Sun May 28 18:00:28 2017 Hugo Cousin
 */
 
 #ifndef			DISPLAY_H_
@@ -21,17 +21,17 @@
 # include		"config.h"
 # include		"character.h"
 
-typedef struct  s_map
+typedef struct		s_map
 {
-  char          *name;
-  sfSprite      *map;
-  sfImage       *image;
-  sfVector2i    pos_map;
-  int           veleda;
-  int           boss;
-  sfVector2u	size;
-  sfMusic       *theme;
-}               t_map;
+  char			*name;
+  sfSprite		*map;
+  sfImage		*image;
+  sfVector2i		pos_map;
+  int			veleda;
+  int			boss;
+  sfVector2u		size;
+  sfMusic	       *theme;
+}			t_map;
 
 typedef struct		s_needs
 {
@@ -44,6 +44,9 @@ typedef struct		s_needs
   sfVector2i		pos;
   t_char		**player;
   t_char		**boss;
+  sfSprite		*veleda_sprite;
+  sfText		*nb_veleda;
+  sfText		*texte;
   struct s_mode_game	*mode;
 }			t_needs;
 
@@ -74,5 +77,6 @@ sfVector2f		vector_2f(float, float);
 sfVector2i		vector_2i(int, int);
 sfColor			color(int, int, int);
 int			config(t_needs *);
+void			display_status(t_needs *);
 
 #endif			/* !DISPLAY_H_ */

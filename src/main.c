@@ -1,3 +1,4 @@
+
 /*
 ** main.c for  in /home/januar_m/delivery/graphical/tekadventure
 **
@@ -5,7 +6,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Sun May 28 15:45:00 2017 Martin Januario
+** Last update Sun May 28 17:21:12 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -17,12 +18,13 @@
 #include	"config.h"
 #include	"player.h"
 #include	"boss.h"
+#include	"velleda.h"
 
 static t_needs	*ini_needs(t_mode_game *mode)
 {
   t_needs	*needs;
   char          *name[5] = {"Martin", "Romain", "Hugo", "Sahel", NULL};
-  char          *boss_name[6] = {"Mike", "Malex", "Chloe", "Remi", "Arthur", NULL};  
+  char          *boss[6] = {"Mike", "Malex", "Chloe", "Remi", "Arthur", NULL};
   char          *path[5] = {"ressources/sentences/", "ressources/music/",
 			    "ressources/select/", "ressources/player/", NULL};
 
@@ -30,7 +32,7 @@ static t_needs	*ini_needs(t_mode_game *mode)
   if (needs == NULL)
     return (NULL);
   needs->player = init_player(path, name);
-  needs->boss = init_boss(path, boss_name);
+  needs->boss = init_boss(path, boss);
   if (!needs->player || !needs->boss)
     return (NULL);
   if (config(needs) == 84)
@@ -42,6 +44,8 @@ static t_needs	*ini_needs(t_mode_game *mode)
   needs->current_map = 0;
   needs->pos = vector_2i(1560, 1152);
   needs->current_veleda = 4;
+  if (init_velleda(needs) == 84)
+    return (NULL);
   return (needs);
 }
 
