@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 16:19:39 2017 Hugo Cousin
-** Last update Thu May 25 17:43:47 2017 Hugo Cousin
+** Last update Sun May 28 17:43:18 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -30,7 +30,7 @@ size_t			get_images_nb(char **tab)
   return (number);
 }
 
-int			back_music(const char *dir_path, char **tab)
+int			back_music(const char *dir_path, char **tab, int sound)
 {
   static sfMusic	*music = NULL;
   size_t		i;
@@ -41,7 +41,7 @@ int			back_music(const char *dir_path, char **tab)
     i++;
   if (!tab || !tab[i])
     return (0);
-  if (!music)
+  if (!music && sound == 0)
     {
       my_strcpy(path, dir_path);
       my_strcat(path, tab[i]);
@@ -81,7 +81,7 @@ void			my_sort_wordtab(char **tab)
       index = 0;
       while (tab[index + 1])
 	{
-	  if (my_strcmp(tab[index], tab[index + 1]) < 0)
+	  if (my_strcmp(tab[index], tab[index + 1]) > 0)
 	    {
 	      tmp = tab[index];
 	      tab[index] = tab[index + 1];

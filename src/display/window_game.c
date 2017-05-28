@@ -5,12 +5,13 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Sun May 28 15:36:08 2017 Martin Januario
+** Last update Sun May 28 17:41:08 2017 Martin Januario
 */
 
 #include	"lib.h"
 #include	"game.h"
 #include	"select.h"
+#include	"anim.h"
 
 int		start_select(t_needs *needs)
 {
@@ -55,5 +56,6 @@ int		window_game(t_needs *needs)
   if (needs->window == NULL)
     return (my_puterror("Can't create the window.\n"));
   sfRenderWindow_setFramerateLimit(needs->window, 60);
+  launch_anim(needs->window, "ressources/story/", needs->mode->sound);
   return (loop_game(needs));
 }
