@@ -1,11 +1,11 @@
 /*
 ** window_game.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Sun May 28 21:40:18 2017 Martin Januario
+** Last update Sun May 28 22:07:25 2017 Sahel Lucas--Saoudi
 */
 
 #include	"lib.h"
@@ -69,5 +69,6 @@ int		window_game(t_needs *needs)
     final_fight(needs);
   else
     launch_anim(needs->window, "ressources/defeat/", needs->mode->sound, 1);
+  free_needs(needs);
   return (0);
 }
