@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sun May 28 17:49:38 2017 Hugo Cousin
+** Last update Sun May 28 18:29:38 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -56,7 +56,7 @@ int                     loop_game(t_needs *needs)
   sfEvent               event;
   int			check;
 
-  while (count_dead_player(needs) != 4 && sfRenderWindow_isOpen(needs->window))
+  while (count_dead_player(needs) != 4 && sfRenderWindow_isOpen(needs->window) && needs->current_veleda)
     {
       check = 0;
       if (start_select(needs) == 84)
@@ -65,7 +65,7 @@ int                     loop_game(t_needs *needs)
       to = vector_2i(1560, 1152);
       update_rect(needs->map[needs->current_map]->map,
 		  vector_2i(needs->pos.x - WIDTH / 2, needs->pos.y - HEIGHT / 2));
-      while (check == 0 && sfRenderWindow_isOpen(needs->window))
+      while (check == 0 && sfRenderWindow_isOpen(needs->window) && needs->current_veleda)
 	{
 	  player_refresh(needs->player[needs->current_player]->sprite,
 			 vector_2f(450, 450), needs->pos, to);
@@ -94,5 +94,7 @@ int                     loop_game(t_needs *needs)
 	  sfRenderWindow_display(needs->window);
 	}
     }
+  if (!needs->current_veleda)
+    final_fight(needs);
   return (0);
 }
