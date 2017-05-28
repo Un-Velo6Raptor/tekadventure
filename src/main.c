@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Sun May 28 22:48:38 2017 Martin Januario
+** Last update Sun May 28 23:30:36 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -52,11 +52,11 @@ int		main(int __attribute__ ((unused)) argc,
   t_needs	*needs;
   t_mode_game	mode;
 
+  if (check_env(env) == 1)
+    return (my_puterror("Error in ENV.\n"));
   needs = ini_needs();
   if (needs == NULL)
     return (84);
-  if (check_env(env) == 1)
-    return (my_puterror("Error in ENV.\n"));
   needs->mode = &mode;
   needs->current_player = 0;
   needs->current_map = 0;
