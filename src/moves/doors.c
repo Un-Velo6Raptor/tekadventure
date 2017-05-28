@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 17:54:15 2017 Hugo Cousin
-** Last update Sun May 28 08:22:40 2017 Martin Januario
+** Last update Sun May 28 18:24:41 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
