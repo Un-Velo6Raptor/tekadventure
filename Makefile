@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 20:15:19 2017 Sahel Lucas--Saoudi
+## Last update Sun May 28 20:24:38 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -21,6 +21,7 @@ SRC	=	src/main.c			\
 		src/init/map.c			\
 		src/init/config.c		\
 		src/concat.c			\
+		src/music.c			\
 		src/init/player.c		\
 		src/init/velleda.c
 

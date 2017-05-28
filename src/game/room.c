@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 19:01:00 2017 Hugo Cousin
+** Last update Sun May 28 19:52:12 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -142,6 +142,7 @@ int		room_main(t_needs *needs, int *check)
   to.x = needs->player[needs->current_player]->pos.x + 1;
   to.y = needs->player[needs->current_player]->pos.y;
   *check = check_map_boss(needs, to);
+  music_start(needs->map[0]->theme, needs);
   while (needs->current_map && !*check && sfRenderWindow_isOpen(needs->window))
     {
       refresh_room(needs, 0);
@@ -156,6 +157,7 @@ int		room_main(t_needs *needs, int *check)
 	}
       get_player_move(needs, to);
     }
+  music_pause(needs->map[0]->theme, needs);
   if (!needs->current_map)
     launch_anim(needs->window, "ressources/door/", needs->mode->sound, 5);
   change_sprite(needs, 1);
