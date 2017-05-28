@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 17:54:15 2017 Hugo Cousin
-** Last update Sun May 28 18:24:41 2017 Hugo Cousin
+** Last update Sun May 28 18:47:01 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -24,7 +24,8 @@ int			choose_room(t_needs *needs, sfColor color, int *check)
     {
       if (index == (size_t)color.b)
 	{
-	  //launch_anim(needs->window, "ressources/tuto/", 1);
+	  launch_anim(needs->window, "ressources/door/",
+		      needs->mode->sound, 5);
 	  needs->current_map = index;
 	  room_main(needs, check);
 	  return (1);

@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 14:16:34 2017 Hugo Cousin
-** Last update Sun May 28 17:44:00 2017 Martin Januario
+** Last update Sun May 28 18:48:03 2017 Hugo Cousin
 */
 
 #include	<SFML/Graphics.h>
@@ -94,7 +94,7 @@ sfTexture	**get_textures(const char *dir_path,
 }
 
 void		display_textures(sfRenderWindow *window, sfTexture **textures,
-				 sfSprite *sprite)
+				 sfSprite *sprite, int speed)
 {
   size_t	index;
 
@@ -103,7 +103,7 @@ void		display_textures(sfRenderWindow *window, sfTexture **textures,
 	 sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
     {
       sfSprite_setTexture(sprite, textures[index], sfTrue);
-      shade_sprite(window, sprite);
+      shade_sprite(window, sprite, speed);
       index++;
     }
   index = 0;
@@ -112,7 +112,8 @@ void		display_textures(sfRenderWindow *window, sfTexture **textures,
   free(textures);
 }
 
-int		launch_anim(sfRenderWindow *window, const char *dir_path, int sound)
+int		launch_anim(sfRenderWindow *window, const char *dir_path,
+			    int sound, int speed)
 {
   sfSprite	*sprite;
   sfTexture	**textures;
@@ -132,7 +133,7 @@ int		launch_anim(sfRenderWindow *window, const char *dir_path, int sound)
     return (0);
   sprite = sfSprite_create();
   back_music(dir_path, files, sound);
-  display_textures(window, textures, sprite);
+  display_textures(window, textures, sprite, speed);
   back_music(dir_path, files, sound);
   sfSprite_destroy(sprite);
   tabfree(files);
