@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Thu May 25 14:37:12 2017 Martin Januario
-** Last update Sun May 28 17:02:32 2017 Martin Januario
+** Last update Sun May 28 19:12:50 2017 Hugo Cousin
 */
 
 #include	<time.h>
@@ -47,7 +47,7 @@ int		is_on_green(t_needs *needs, t_framebuffer *frame_buffer, int pos)
   sfColor               color;
   int			idx;
 
-  sfRenderWindow_setFramerateLimit(needs->window, 60);
+  sfRenderWindow_setFramerateLimit(needs->window, 120);
   color.r = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4];
   color.g = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 1];
   color.b = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 2];

@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 17:53:45 2017 Hugo Cousin
+** Last update Sun May 28 19:01:00 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -13,6 +13,7 @@
 #include	"refresh.h"
 #include	"game.h"
 #include	"boss.h"
+#include	"anim.h"
 
 void		change_sprite(t_needs *needs, int mode)
 {
@@ -155,6 +156,8 @@ int		room_main(t_needs *needs, int *check)
 	}
       get_player_move(needs, to);
     }
+  if (!needs->current_map)
+    launch_anim(needs->window, "ressources/door/", needs->mode->sound, 5);
   change_sprite(needs, 1);
   return (1);
 }
