@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Sun May 28 22:07:38 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 22:35:23 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 22:36:23 2017 Sahel Lucas--Saoudi
 */
 
 #include <stdlib.h>
@@ -55,16 +55,10 @@ void	free_needs(t_needs *needs)
   free(needs->map);
   i = 0;
   while (i < NB_PLAYER)
-    {
-      free_char(needs->player[i]);
-      i++;
-      }
+    free_char(needs->player[i++]);
   i = 0;
   while (i < NB_BOSS)
-    {
-      free_char(needs->boss[i]);
-      i++;
-    }
+    free_char(needs->boss[i++]);
   free(needs->player);
   free(needs->boss);
   sfSprite_destroy(needs->veleda_sprite);
