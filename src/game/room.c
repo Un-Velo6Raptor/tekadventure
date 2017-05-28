@@ -1,17 +1,18 @@
 /*
 ** room.c for tekadventure in /home/heychsea/MUL/tekadventure
-**
+** 
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
-**
+** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sat May 27 22:50:51 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 08:36:20 2017 Martin Januario
 */
 
 #include	"lib.h"
 #include	"display.h"
 #include	"refresh.h"
 #include	"game.h"
+#include	"boss.h"
 
 void		change_sprite(t_needs *needs, int mode)
 {
@@ -34,19 +35,22 @@ void		change_sprite(t_needs *needs, int mode)
     }
 }
 
-static void	refresh_room(t_needs *needs)
+void		refresh_room(t_needs *needs, int opt)
 {
   float		scale;
 
   sfRenderWindow_drawSprite(needs->window,
 			    needs->map[needs->current_map]->map, NULL);
-  sfRenderWindow_drawSprite(needs->window,
-			    needs->player[needs->current_player]->sprite,
-			    NULL);
-  sfRenderWindow_display(needs->window);
-  scale =  (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
-  sfSprite_setScale(needs->player[needs->current_player]->sprite,
-		    vector_2f(scale, scale));
+  if (opt != 1)
+    {
+      sfRenderWindow_drawSprite(needs->window,
+				needs->player[needs->current_player]->sprite,
+				NULL);
+      sfRenderWindow_display(needs->window);
+      scale =  (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
+      sfSprite_setScale(needs->player[needs->current_player]->sprite,
+			vector_2f(scale, scale));
+    }
 
 }
 
@@ -55,7 +59,7 @@ sfVector2i	room_move(t_needs *needs, sfEvent event)
   t_char	*player;
   t_map		*map;
   sfVector2i	to;
-  sfVector2i	from;
+  sfVector2i	from;;
 
   map = needs->map[needs->current_map];
   player = needs->player[needs->current_player];
@@ -120,27 +124,35 @@ void		get_player_move(t_needs *needs, sfVector2i to)
     needs->current_map = 0;
 }
 
-int		room_main(t_needs *needs)
+int		room_main(t_needs *needs, int *check)
 {
+  int		idx;
   sfEvent	event;
   sfVector2i	to;
 
   change_sprite(needs, 0);
   to.x = needs->player[needs->current_player]->pos.x + 1;
   to.y = needs->player[needs->current_player]->pos.y;
-  while (needs->current_map != 0 &&
-	 sfKeyboard_isKeyPressed(sfKeyEscape) == sfFalse)
+  idx = 0;
+  while (needs->current_map != 0 && *check == 0 &&
+	 sfRenderWindow_isOpen(needs->window))
     {
-      refresh_room(needs);
+      refresh_room(needs, 0);
+      if (idx == 0)
+	*check = check_map_boss(needs, to);
       while (sfRenderWindow_pollEvent(needs->window, &event))
 	{
+	  if (event.type == sfEvtClosed ||
+	      sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+	    sfRenderWindow_close(needs->window);
 	  if (event.type == sfEvtMouseButtonPressed &&
-		   event.mouseButton.button == sfMouseLeft)
+	      event.mouseButton.button == sfMouseLeft)
 	    to = room_move(needs, event);
 	}
       get_player_move(needs, to);
-      if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
+      if (sfKeyboard_isKeyPressed(sfKeyDown) == sfTrue)
 	needs->current_map = 0;
+      idx = 1;
     }
   change_sprite(needs, 1);
   return (1);

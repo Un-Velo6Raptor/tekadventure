@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sat May 27 22:39:58 2017 Sahel Lucas--Saoudi
+## Last update Sun May 28 11:36:10 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -20,8 +20,8 @@ SRC	=	src/main.c			\
 		src/init/character.c		\
 		src/init/map.c			\
 		src/init/config.c		\
-		src/init/player.c		\
-		src/concat.c
+		src/concat.c			\
+		src/init/player.c
 
 DISPLAY	=	src/display/window_menu.c	\
 		src/display/create_window.c	\
@@ -58,12 +58,15 @@ BAR	=	src/bar/bar_create.c            \
 		src/bar/get_set_pixel.c         \
 		src/bar/fill_square.c           \
 		src/bar/update_sprite_bar.c     \
+		src/bar/display_fight.c		\
 		src/bar/reset_frame.c
 
 SELECT	=	src/select/select_player.c	\
 		src/select/click_select.c	\
-		src/select/place_select.c	\
-		src/select/init_sprite.c
+		src/select/place_select.c
+
+BOSS	=	src/boss/check_map_boss.c	\
+		src/boss/final_fight.c
 
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\
@@ -71,6 +74,7 @@ OBJ	=	$(SRC:.c=.o)			\
 		$(GAME:.c=.o)			\
 		$(MECHS:.c=.o)			\
 		$(LIB:.c=.o)			\
+		$(BOSS:.c=.o)			\
 		$(BAR:.c=.o)			\
 		$(SELECT:.c=.o)			\
 		$(TUTO:.c=.o)

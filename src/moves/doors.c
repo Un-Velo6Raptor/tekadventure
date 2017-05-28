@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 17:54:15 2017 Hugo Cousin
-** Last update Sat May 27 19:04:15 2017 Hugo Cousin
+** Last update Sun May 28 08:22:40 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -15,7 +15,7 @@
 #include	"game.h"
 #include	"refresh.h"
 
-int			choose_room(t_needs *needs, sfColor color)
+int			choose_room(t_needs *needs, sfColor color, int *check)
 {
   size_t		index;
 
@@ -26,7 +26,7 @@ int			choose_room(t_needs *needs, sfColor color)
 	{
 	  //launch_anim(needs->window, "ressources/tuto/", 1);
 	  needs->current_map = index;
-	  room_main(needs);
+	  room_main(needs, check);
 	  return (1);
 	}
       index++;
@@ -42,7 +42,7 @@ static int		diff_color(sfColor a, sfColor b)
 }
 
 sfVector2i		check_room(t_needs *needs,
-				   sfVector2i last, sfVector2i to)
+				   sfVector2i last, sfVector2i to, int *check)
 {
   sfColor		color;
   static sfColor	save = {255, 255, 255, 255};
@@ -55,7 +55,7 @@ sfVector2i		check_room(t_needs *needs,
 			   needs->pos.x, needs->pos.y);
   if (color.r == 255 && color.g == 0 && !diff_color(save, color))
     {
-      choose_room(needs, color);
+      choose_room(needs, color, check);
       to.x = last.x;
       to.y = last.y;
     }

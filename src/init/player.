@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 01:03:22 2017 Martin Januario
+** Last update Sat May 27 22:14:24 2017 Lucas Sahel
 */
 
 #include <stdlib.h>
@@ -21,7 +21,7 @@ t_text		*get_player_text(t_player *sentences, char *name)
   int		i;
 
   i = 0;
-  while (i < NB_PLAYER + NB_BOSS)
+  while (i < NB_PLAYER)
     {
       if (match(sentences[i].name, name))
 	return (sentences[i].text);

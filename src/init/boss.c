@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sat May 27 22:11:21 2017 Lucas Sahel
+** Last update Sun May 28 00:48:59 2017 Martin Januario
 */
 
 #include <stdlib.h>
@@ -34,4 +34,3 @@ t_char		**init_boss(char **path, char **name)
     return (NULL);
   return (boss);
 }
-

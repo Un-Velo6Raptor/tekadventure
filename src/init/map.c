@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 26 11:52:16 2017 Martin Januario
-** Last update Sat May 27 22:55:51 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 10:37:32 2017 Martin Januario
 */
 
 #include	"map.h"
@@ -54,7 +54,7 @@ static int	ini_music_map(t_map *map, char *path, char *name)
   return (0);
 }
 
-static t_map	*ini_map(char *path, char *name)
+static t_map	*ini_map(char *path, char *name, int boss)
 {
   t_map		*map;
 
@@ -70,7 +70,7 @@ static t_map	*ini_map(char *path, char *name)
     return (NULL);
   map->pos_map = vector_2i(0, 0);
   map->veleda = (my_strcmp(name, "byron") != 0) ? 1 : 0;
-  map->boss = (my_strcmp(name, "pascal") != 0) ? 1 : 0;
+  map->boss = boss;
   map->size = sfImage_getSize(map->image);
   if (ini_music_map(map, path, name) == 84)
     return (NULL);
@@ -86,12 +86,12 @@ t_map		**ini_all_map(char *path)
   map = malloc(sizeof(t_map *) * 7);
   if (map == NULL)
     return (NULL);
-  map[0] = ini_map(path, "couloir");
-  map[1] = ini_map(path, "pascal");
-  map[2] = ini_map(path, "babbage");
-  map[3] = ini_map(path, "cray");
-  map[4] = ini_map(path, "byron");
-  map[5] = ini_map(path, "turing");
+  map[0] = ini_map(path, "couloir", 0);
+  map[1] = ini_map(path, "turing", 1);
+  map[2] = ini_map(path, "pascal", 0);
+  map[3] = ini_map(path, "babbage", 2);
+  map[4] = ini_map(path, "byron", 4);
+  map[5] = ini_map(path, "cray", 3);
   map[6] = NULL;
   while (map[idx] != NULL)
     idx++;

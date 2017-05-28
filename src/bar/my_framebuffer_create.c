@@ -1,11 +1,11 @@
 /*
 ** my_framebuffer_create.c for  in /home/januar_m/delivery/graphical/bswireframe
-**
+** 
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-**
-** Started on  Thu Dec  8 13:58:19 2016
-** Last update Sat May 27 22:52:10 2017 Sahel Lucas--Saoudi
+** 
+** Started on  Thu Dec  8 13:58:19 2016 
+** Last update Wed May 24 16:35:22 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -17,13 +17,12 @@ t_framebuffer		*framebuffer_create(int width, int height)
   int			idx;
 
   idx = 0;
-  frame_buf = malloc(sizeof(t_framebuffer));
-  if (!frame_buf)
+  if ((frame_buf = malloc(sizeof(t_framebuffer))) == NULL)
     return (NULL);
   frame_buf->width = width;
   frame_buf->height = height;
-  frame_buf->pixels = malloc(width * height * 4 * sizeof(frame_buf->pixels));
-  if (!frame_buf->pixels)
+  if ((frame_buf->pixels =
+       malloc(width * height * 4 * sizeof(frame_buf->pixels))) == NULL)
     return (NULL);
   while (idx < width * height * 4)
     {

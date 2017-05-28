@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:13:45 2017 Martin Januario
-** Last update Fri May 26 22:07:31 2017 Martin Januario
+** Last update Sun May 28 15:36:08 2017 Martin Januario
 */
 
 #include	"lib.h"
@@ -34,13 +34,26 @@ int		start_select(t_needs *needs)
   return (0);
 }
 
+int		count_dead_player(t_needs *needs)
+{
+  int		tmp;
+  int		idx;
+
+  idx = 0;
+  tmp = 0;
+  while (idx < 4)
+    {
+      tmp += needs->player[idx]->death;
+      idx++;
+    }
+  return (tmp);
+}
+
 int		window_game(t_needs *needs)
 {
   needs->window = create_window("Game <-> Move Backward.", WIDTH, HEIGHT);
   if (needs->window == NULL)
     return (my_puterror("Can't create the window.\n"));
   sfRenderWindow_setFramerateLimit(needs->window, 60);
-  if (start_select(needs) == 84)
-    return (84);
   return (loop_game(needs));
 }

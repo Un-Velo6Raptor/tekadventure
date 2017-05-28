@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:34:05 2017 Sahel Lucas--Saoudi
-** Last update Sat May 27 22:13:57 2017 Lucas Sahel
+** Last update Sun May 28 06:36:36 2017 Martin Januario
 */
 
 #ifndef BOSS_H_
@@ -37,7 +37,9 @@
 
 # include <SFML/Graphics.h>
 # include "character.h"
+# include "display.h"
 
 t_char			**init_boss();
+int			check_map_boss(t_needs *, sfVector2i);
 
 #endif /* !BOSS_H_ */

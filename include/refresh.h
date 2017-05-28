@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Mon May 22 14:34:35 2017 Hugo Cousin
-** Last update Sat May 27 19:04:51 2017 Hugo Cousin
+** Last update Sun May 28 15:22:48 2017 Martin Januario
 */
 
 #ifndef REFRESH_H_
@@ -23,6 +23,11 @@ typedef struct	s_refresh
 
 # define SPRITE_W 64
 # define SPRITE_H 64
+
+#define UP 8
+#define DOWN 10
+#define LEFT 9
+#define RIGHT 11
 
 void	refresh_sprite(sfSprite *, sfVector2f, int, int);
 void	player_refresh(sfSprite *, sfVector2f, sfVector2i, sfVector2i);

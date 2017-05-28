@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Sat May 27 21:47:52 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 06:37:28 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -16,11 +16,13 @@
 #include	"map.h"
 #include	"config.h"
 #include	"player.h"
+#include	"boss.h"
 
 static t_needs	*ini_needs(t_mode_game *mode)
 {
   t_needs	*needs;
   char          *name[5] = {"Martin", "Romain", "Hugo", "Sahel", NULL};
+  char          *boss_name[6] = {"Mike", "Malex", "Chloe", "Remi", "Arthur", NULL};  
   char          *path[5] = {"ressources/sentences/", "ressources/music/",
 			    "ressources/select/", "ressources/player/", NULL};
 
@@ -28,7 +30,8 @@ static t_needs	*ini_needs(t_mode_game *mode)
   if (needs == NULL)
     return (NULL);
   needs->player = init_player(path, name);
-  if (!needs->player)
+  needs->boss = init_boss(path, boss_name);
+  if (!needs->player || !needs->boss)
     return (NULL);
   if (config(needs) == 84)
     return (NULL);
@@ -37,7 +40,7 @@ static t_needs	*ini_needs(t_mode_game *mode)
   needs->mode = mode;
   needs->current_player = 0;
   needs->current_map = 0;
-  needs->pos = vector_2i(138, 1476);
+  needs->pos = vector_2i(1560, 1152);
   needs->current_veleda = 4;
   return (needs);
 }

@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Tue May 23 16:40:42 2017 Hugo Cousin
-** Last update Sat May 27 18:04:14 2017 Hugo Cousin
+** Last update Sun May 28 15:22:37 2017 Martin Januario
 */
 
 #include	<math.h>
@@ -93,11 +93,6 @@ sfVector2i		move_map(sfSprite *sprite, sfVector2i from,
   update_rect(sprite, from);
   return (from);
 }
-
-#define UP 8
-#define DOWN 10
-#define LEFT 9
-#define RIGHT 11
 
 void			player_refresh(sfSprite *sprite, sfVector2f pos,
 				       sfVector2i from, sfVector2i to)

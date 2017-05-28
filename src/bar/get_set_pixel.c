@@ -1,30 +1,25 @@
 /*
 ** get_set_pixel.c for  in /home/januar_m/delivery/graphical/tekadventure
-**
+** 
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-**
+** 
 ** Started on  Thu May 25 14:37:12 2017 Martin Januario
-** Last update Sat May 27 22:46:04 2017 Sahel Lucas--Saoudi
+** Last update Thu May 25 16:03:14 2017 Martin Januario
 */
 
 #include	"bar.h"
 #include	"game.h"
 
-int		is_on_green(t_needs *needs, t_framebuffer *frame_buffer,
-			    int pos)
+int		is_on_green(t_needs *needs, t_framebuffer *frame_buffer, int pos)
 {
   sfColor               color;
 
   sfRenderWindow_setFramerateLimit(needs->window, 60);
-  color.r = frame_buffer->pixels[(frame_buffer->width * 760 +
-				  (pos + 25)) * 4];
-  color.g = frame_buffer->pixels[(frame_buffer->width * 760 +
-				  (pos + 25)) * 4 + 1];
-  color.b = frame_buffer->pixels[(frame_buffer->width * 760 +
-				  (pos + 25)) * 4 + 2];
-  color.a = frame_buffer->pixels[(frame_buffer->width * 760 +
-				  (pos + 25)) * 4 + 3];
+  color.r = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4];
+  color.g = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 1];
+  color.b = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 2];
+  color.a = frame_buffer->pixels[(frame_buffer->width * 760 + (pos + 25)) * 4 + 3];
   if (color.g == 255)
     return (1);
   return (0);

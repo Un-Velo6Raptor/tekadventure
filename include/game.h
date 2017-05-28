@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Tue May 23 17:15:37 2017 Martin Januario
-** Last update Sat May 27 19:02:47 2017 Hugo Cousin
+** Last update Sun May 28 08:23:35 2017 Martin Januario
 */
 
 #ifndef		GAME_H_
@@ -21,7 +21,7 @@ sfVector2i	move_map(sfSprite *, sfVector2i, sfVector2i, int);
 int		check_path(t_map *, sfVector2i, sfVector2i);
 void		update_rect(sfSprite *, sfVector2i);
 void		player_refresh(sfSprite *, sfVector2f, sfVector2i, sfVector2i);
-sfVector2i	check_room(t_needs *, sfVector2i, sfVector2i);
-int		room_main(t_needs *);
+sfVector2i	check_room(t_needs *, sfVector2i, sfVector2i, int *);
+int		room_main(t_needs *, int *);
 
 #endif		/* !GAME_H_ */
