@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Fri May 26 20:58:04 2017 Hugo Cousin
-** Last update Sun May 28 08:36:20 2017 Martin Januario
+** Last update Sun May 28 16:32:08 2017 Hugo Cousin
 */
 
 #include	"lib.h"
@@ -47,7 +47,7 @@ void		refresh_room(t_needs *needs, int opt)
 				needs->player[needs->current_player]->sprite,
 				NULL);
       sfRenderWindow_display(needs->window);
-      scale =  (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
+      scale = (float)needs->player[needs->current_player]->pos.y / 200.0 + 1.5;
       sfSprite_setScale(needs->player[needs->current_player]->sprite,
 			vector_2f(scale, scale));
     }
@@ -59,14 +59,21 @@ sfVector2i	room_move(t_needs *needs, sfEvent event)
   t_char	*player;
   t_map		*map;
   sfVector2i	to;
-  sfVector2i	from;;
+  sfVector2i	from;
+  sfColor	color;
 
   map = needs->map[needs->current_map];
   player = needs->player[needs->current_player];
   to.x = event.mouseButton.x;
   to.y = event.mouseButton.y;
+  color = sfImage_getPixel(map->image, to.x, to.y);
   from.x = player->pos.x;
   from.y = player->pos.y;
+  if (!color.r && !color.g && color.b == 255 && from.y < 500 && map->veleda)
+    {
+      map->veleda = 0;
+      needs->current_veleda--;
+    }
   if (check_path(map, from, to) != 0)
     return (to);
   to.x = player->pos.x;
@@ -126,20 +133,16 @@ void		get_player_move(t_needs *needs, sfVector2i to)
 
 int		room_main(t_needs *needs, int *check)
 {
-  int		idx;
   sfEvent	event;
   sfVector2i	to;
 
   change_sprite(needs, 0);
   to.x = needs->player[needs->current_player]->pos.x + 1;
   to.y = needs->player[needs->current_player]->pos.y;
-  idx = 0;
-  while (needs->current_map != 0 && *check == 0 &&
-	 sfRenderWindow_isOpen(needs->window))
+  *check = check_map_boss(needs, to);
+  while (needs->current_map && !*check && sfRenderWindow_isOpen(needs->window))
     {
       refresh_room(needs, 0);
-      if (idx == 0)
-	*check = check_map_boss(needs, to);
       while (sfRenderWindow_pollEvent(needs->window, &event))
 	{
 	  if (event.type == sfEvtClosed ||
@@ -150,9 +153,6 @@ int		room_main(t_needs *needs, int *check)
 	    to = room_move(needs, event);
 	}
       get_player_move(needs, to);
-      if (sfKeyboard_isKeyPressed(sfKeyDown) == sfTrue)
-	needs->current_map = 0;
-      idx = 1;
     }
   change_sprite(needs, 1);
   return (1);
