@@ -1,11 +1,11 @@
 /*
 ** bar_create.c for  in /home/januar_m/delivery/graphical/tekadventure
-** 
+**
 ** Made by Martin Januario
 ** Login   <martin.januario@epitech.eu>
-** 
+**
 ** Started on  Wed May 24 16:15:11 2017 Martin Januario
-** Last update Sun May 28 16:55:24 2017 Martin Januario
+** Last update Sun May 28 19:34:31 2017 Sahel Lucas--Saoudi
 */
 
 #include	<stdlib.h>
@@ -65,10 +65,14 @@ static int		ini_color_bar(t_needs *needs, sfTexture **tr,
 
 static void		disp_player_boss(t_needs *needs)
 {
-  sfSprite_setPosition(needs->player[needs->current_player]->sprite, vector_2f(100, 770));
-  sfSprite_setScale(needs->player[needs->current_player]->sprite, vector_2f(13.5, 13.5));
-  sfSprite_setPosition(needs->boss[needs->map[needs->current_map]->boss]->sprite, vector_2f(800, -100));
-  sfSprite_setScale(needs->boss[needs->map[needs->current_map]->boss]->sprite, vector_2f(13.5, 13.5));
+  sfSprite_setPosition(needs->player[needs->current_player]->sprite,
+		       vector_2f(100, 770));
+  sfSprite_setScale(needs->player[needs->current_player]->sprite,
+		    vector_2f(13.5, 13.5));
+  sfSprite_setPosition(needs->boss[needs->map[needs->current_map]->boss]
+		       ->sprite, vector_2f(800, -100));
+  sfSprite_setScale(needs->boss[needs->map[needs->current_map]->boss]
+		    ->sprite, vector_2f(13.5, 13.5));
 }
 
 static void		display_mike(t_needs *needs)
@@ -77,7 +81,8 @@ static void		display_mike(t_needs *needs)
 }
 
 int			bar_create(t_needs *needs, int diff,
-				   sfVector2i __attribute__ ((unused)) to, int opt)
+				   sfVector2i __attribute__ ((unused)) to,
+				   int opt)
 {
   static sfSprite	*design = NULL;
   static t_framebuffer	*pattern = NULL;
