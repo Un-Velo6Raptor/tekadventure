@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Thu May 25 17:08:39 2017 Martin Januario
-** Last update Sun May 28 20:45:07 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 22:59:30 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
@@ -26,13 +26,13 @@ static char	*center_text(char *name)
 
 static void	display_select(t_needs *needs, sfSprite **sprite, int opt)
 {
-  sfFont	*font;
   sfText	*text;
   int		idx;
+  sfFont	*font;
 
   idx = 0;
-  font = sfFont_createFromFile("ressources/font/FFF_Tusj.ttf");
   text = sfText_create();
+  font = sfFont_createFromFile("ressources/font/FFF_Tusj.ttf");
   while (sprite[idx] != NULL)
     {
       sfRenderWindow_drawSprite(needs->window, sprite[idx], NULL);
@@ -48,6 +48,8 @@ static void	display_select(t_needs *needs, sfSprite **sprite, int opt)
     }
   sfRenderWindow_drawText(needs->window, text, NULL);
   sfRenderWindow_display(needs->window);
+  sfText_destroy(text);
+  sfFont_destroy(font);
 }
 
 static int	event_select(t_needs *needs, sfEvent event, int current,
