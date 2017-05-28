@@ -5,11 +5,11 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Sun May 28 20:19:39 2017 Martin Januario
+** Last update Sun May 28 21:21:28 2017 Hugo Cousin
 */
 
-#ifndef			DISPLAY_H_
-# define		DISPLAY_H_
+#ifndef	DISPLAY_H_
+# define DISPLAY_H_
 
 # include		<SFML/Graphics/RenderWindow.h>
 # include		<SFML/Graphics/Sprite.h>

@@ -5,11 +5,11 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:46:54 2017 Martin Januario
-** Last update Fri May 26 14:14:52 2017 Martin Januario
+** Last update Sun May 28 21:21:56 2017 Hugo Cousin
 */
 
-#ifndef		MAP_H_
-# define	MAP_H_
+#ifndef MAP_H_
+# define MAP_H_
 
 # include	"display.h"
 

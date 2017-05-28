@@ -5,11 +5,14 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:47:49 2017 Sahel Lucas--Saoudi
-** Last update Fri May 26 16:30:21 2017 Martin Januario
+** Last update Sun May 28 21:31:22 2017 Hugo Cousin
 */
 
 #ifndef PLAYER_H_
 # define PLAYER_H_
+
+# include		<SFML/Graphics.h>
+# include		"character.h"
 
 # ifndef NB_PLAYER
 #  define NB_PLAYER 4
@@ -30,9 +33,6 @@
 # ifndef SAHEL
 #  define SAHEL 3
 # endif /* !SAHEL */
-
-# include <SFML/Graphics.h>
-# include "character.h"
 
 t_char			**init_player(char **, char **);
 

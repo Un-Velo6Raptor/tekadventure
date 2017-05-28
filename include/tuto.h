@@ -5,11 +5,11 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Thu May 25 11:40:35 2017 Romain Melin
-** Last update Thu May 25 14:49:02 2017 Romain Melin
+** Last update Sun May 28 21:21:04 2017 Hugo Cousin
 */
 
-#ifndef		TUTO_H_
-# define	TUTO_H_
+#ifndef	TUTO_H_
+# define TUTO_H_
 
 # include	<SFML/Graphics.h>
 # include	"display.h"

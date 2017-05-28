@@ -5,11 +5,11 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Wed May 24 16:15:38 2017 Martin Januario
-** Last update Sun May 28 20:20:12 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 21:21:13 2017 Hugo Cousin
 */
 
-#ifndef		BAR_H_
-# define	BAR_H_
+#ifndef	BAR_H_
+# define BAR_H_
 
 # include	"display.h"
 # include	"game.h"
