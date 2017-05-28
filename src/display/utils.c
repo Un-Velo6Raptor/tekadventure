@@ -5,7 +5,7 @@
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Thu May 25 16:19:39 2017 Hugo Cousin
-** Last update Sun May 28 17:43:18 2017 Martin Januario
+** Last update Sun May 28 21:11:12 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -49,7 +49,6 @@ int			back_music(const char *dir_path, char **tab, int sound)
       if (!music)
 	return (0);
       sfMusic_play(music);
-      sfMusic_setLoop(music, sfTrue);
     }
   else if (music)
     {
