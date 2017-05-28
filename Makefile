@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 20:24:38 2017 Martin Januario
+## Last update Sun May 28 20:26:36 2017 Hugo Cousin
 ##
 
 .PHONY:		all clean fclean re
@@ -67,7 +67,8 @@ BAR	=	src/bar/bar_create.c            \
 
 SELECT	=	src/select/select_player.c	\
 		src/select/click_select.c	\
-		src/select/place_select.c
+		src/select/place_select.c	\
+		src/select/select_init.c
 
 BOSS	=	src/boss/check_map_boss.c	\
 		src/boss/final_fight.c
