@@ -5,7 +5,7 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:34:05 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 06:36:36 2017 Martin Januario
+** Last update Sun May 28 20:46:33 2017 Hugo Cousin
 */
 
 #ifndef BOSS_H_
@@ -41,5 +41,6 @@
 
 t_char			**init_boss();
 int			check_map_boss(t_needs *, sfVector2i);
+void			fight_mike(t_needs *);
 
 #endif /* !BOSS_H_ */

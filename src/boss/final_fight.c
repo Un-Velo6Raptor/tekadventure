@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Sun May 28 11:36:31 2017 Martin Januario
-** Last update Sun May 28 20:20:55 2017 Martin Januario
+** Last update Sun May 28 20:45:20 2017 Hugo Cousin
 */
 
 #include	<stdio.h>
@@ -32,43 +32,9 @@ static sfSprite	*create_theme(char *path, int opt)
 
 }
 
-static void	fight_mike(t_needs *needs)
-{
-  int		idx;
-  int		save;
-  int		cpt;
-
-  idx = 0;
-  save = -1;
-  cpt = 0;
-  if (needs->mode->sound == 0)
-    {
-      sfMusic_play(needs->boss[0]->music);
-      sfMusic_setLoop(needs->boss[0]->music, sfTrue);
-    }
-  while (sfRenderWindow_isOpen(needs->window) && idx != 10)
-    {
-      if (cpt % 100000 == 0)
-	{
-	  save = idx;
-	  idx += bar_create(needs, count_dead_player(needs),
-			    vector_2i(0, 0), 1);
-	}
-      if (idx == save)
-	{
-	  launch_anim(needs->window, "ressources/defeat/",
-		      needs->mode->sound, 1);
-	  return ;
-	}
-      cpt++;
-    }
-  if (needs->mode->sound == 0)
-    sfMusic_stop(needs->boss[0]->music);
-  launch_anim(needs->window, "ressources/victory/", needs->mode->sound, 1);
-}
-
 static void	drawer(t_needs *needs, int tmpx, int tmpy, int idx)
 {
+
   if (needs->player[idx]->death == 0)
     {
       player_refresh(needs->player[idx]->sprite,
