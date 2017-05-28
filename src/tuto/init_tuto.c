@@ -5,7 +5,7 @@
 ** Login   <romain.melin@epitech.net>
 ** 
 ** Started on  Thu May 25 11:31:05 2017 Romain Melin
-** Last update Thu May 25 14:18:49 2017 Romain Melin
+** Last update Sun May 28 17:12:59 2017 Romain Melin
 */
 
 #include		<SFML/Graphics.h>
@@ -30,13 +30,13 @@ sfTexture		**load_image()
   image = malloc(sizeof(sfTexture *) * 8);
   if (image == NULL)
     return (NULL);
-  image[0] = sfTexture_createFromFile("ressources/tuto/sommaire.jpg", NULL);
-  image[1] = sfTexture_createFromFile("ressources/tuto/informations_utiles.jpg", NULL);
-  image[2] = sfTexture_createFromFile("ressources/tuto/charlotte.jpg", NULL);
-  image[3] = sfTexture_createFromFile("ressources/tuto/Sasel.jpg", NULL);
-  image[4] = sfTexture_createFromFile("ressources/tuto/l'enfant.jpg", NULL);
-  image[5] = sfTexture_createFromFile("ressources/tuto/douceur.jpg", NULL);
-  image[6] = sfTexture_createFromFile("ressources/tuto/begin.jpg", NULL);
+  image[0] = sfTexture_createFromFile("ressources/tuto/tutoriel.png", NULL);
+  image[1] = sfTexture_createFromFile("ressources/tuto/informations_utiles.png", NULL);
+  image[2] = sfTexture_createFromFile("ressources/tuto/charlotte.png", NULL);
+  image[3] = sfTexture_createFromFile("ressources/tuto/Sasel.png", NULL);
+  image[4] = sfTexture_createFromFile("ressources/tuto/l'enfant.png", NULL);
+  image[5] = sfTexture_createFromFile("ressources/tuto/douceur.png", NULL);
+  image[6] = sfTexture_createFromFile("ressources/tuto/begin.png", NULL);
   image[7] = NULL;
   return (check_image(image));
 }
