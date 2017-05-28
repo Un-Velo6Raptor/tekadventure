@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 22:15:49 2017 Sahel Lucas--Saoudi
+## Last update Sun May 28 22:38:41 2017 Martin Januario
 ##
 
 .PHONY:		all clean fclean re
@@ -18,6 +18,7 @@ SRC	=	src/main.c			\
 		src/init/sentences.c		\
 		src/init/boss.c			\
 		src/init/character.c		\
+		src/dico.c			\
 		src/init/map.c			\
 		src/init/config.c		\
 		src/concat.c			\

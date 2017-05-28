@@ -5,12 +5,11 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Sat Mar 25 12:55:41 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 22:37:19 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 22:39:01 2017 Martin Januario
 */
 
 #include <stdlib.h>
 #include <stdarg.h>
-#include "basic.h"
 
 char		**c_dico(int nb_arg, ...)
 {

@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:18:37 2017 Martin Januario
-** Last update Sun May 28 21:21:28 2017 Hugo Cousin
+** Last update Sun May 28 22:56:57 2017 Martin Januario
 */
 
 #ifndef	DISPLAY_H_
@@ -69,6 +69,8 @@ int			count_dead_player(t_needs *);
 int			start_select(t_needs *);
 void			music_pause(sfMusic *, t_needs *);
 void			music_start(sfMusic *, t_needs *);
+char			**c_dico(int, ...);
+void			free_needs(t_needs *);
 
 /*
 **			Prototypes of file's sources.

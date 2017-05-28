@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Fri May 19 15:27:55 2017 Martin Januario
-** Last update Sun May 28 20:35:52 2017 Sahel Lucas--Saoudi
+** Last update Sun May 28 22:48:38 2017 Martin Januario
 */
 
 #include	<stdlib.h>
@@ -19,14 +19,17 @@
 #include	"boss.h"
 #include	"velleda.h"
 
-static t_needs	*ini_needs(t_mode_game *mode)
+static t_needs	*ini_needs(void)
 {
   t_needs	*needs;
-  char          *name[5] = {"Martin", "Romain", "Hugo", "Sahel", NULL};
-  char          *boss[6] = {"Mike", "Malex", "Chloe", "Remi", "Arthur", NULL};
-  char          *path[5] = {"ressources/sentences/", "ressources/music/",
-			    "ressources/select/", "ressources/player/", NULL};
+  char          **name;
+  char          **boss;
+  char          **path;
 
+  name = c_dico(4, "Martin", "Romain", "Hugo", "Sahel");
+  boss = c_dico(5, "Mike", "Malex", "Chloe", "Remi", "Arthur");
+  path = c_dico(4, "ressources/sentences/", "ressources/music/",
+		"ressources/select/", "ressources/player/");
   needs = malloc(sizeof(t_needs) * 1);
   if (needs == NULL)
     return (NULL);
@@ -38,11 +41,6 @@ static t_needs	*ini_needs(t_mode_game *mode)
     return (NULL);
   if ((needs->map = ini_all_map(needs->dirs[MAP])) == NULL)
     return (NULL);
-  needs->mode = mode;
-  needs->current_player = 0;
-  needs->current_map = 0;
-  needs->pos = vector_2i(1560, 1152);
-  needs->current_veleda = 4;
   if (init_velleda(needs) == 84)
     return (NULL);
   return (needs);
@@ -54,16 +52,20 @@ int		main(int __attribute__ ((unused)) argc,
   t_needs	*needs;
   t_mode_game	mode;
 
-  needs = ini_needs(&mode);
+  needs = ini_needs();
   if (needs == NULL)
     return (84);
   if (check_env(env) == 1)
     return (my_puterror("Error in ENV.\n"));
+  needs->mode = &mode;
+  needs->current_player = 0;
+  needs->current_map = 0;
+  needs->pos = vector_2i(1560, 1152);
+  needs->current_veleda = 4;
   if (window_menu(&mode) == 84)
     return (my_puterror("See you later !"));
   if (mode.play != 1)
     return (0);
-  needs->mode = &mode;
   if (tuto(mode) == 84)
     return (my_puterror("Error\n"));
   return (window_game(needs));
