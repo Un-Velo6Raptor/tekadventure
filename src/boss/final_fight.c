@@ -5,7 +5,7 @@
 ** Login   <martin.januario@epitech.eu>
 ** 
 ** Started on  Sun May 28 11:36:31 2017 Martin Januario
-** Last update Sun May 28 19:10:12 2017 Hugo Cousin
+** Last update Sun May 28 19:33:59 2017 Hugo Cousin
 */
 
 #include	<stdio.h>
@@ -60,38 +60,43 @@ static void	fight_mike(t_needs *needs)
   launch_anim(needs->window, "ressources/victory/", needs->mode->sound, 1);
 }
 
-static void	draw_player(t_needs *needs, sfMusic *music, int cpt)
-  {
-    static int	tmpx = 110;
-    static int	tmpy = 470;
-    int		idx;
+static void	drawer(t_needs *needs, int tmpx, int tmpy, int idx)
+{
+  if (needs->player[idx]->death == 0)
+    {
+      player_refresh(needs->player[idx]->sprite,
+		     vector_2f(tmpx, tmpy + 40 * idx),
+		     vector_2i(100, 10), vector_2i(1000, 100));
+      sfRenderWindow_drawSprite(needs->window,
+				needs->player[idx]->sprite, NULL);
+    }
+}
 
-    idx = 0;
-    while (idx < 4)
-      {
-	if (needs->player[idx]->death == 0)
-	  {
-	    player_refresh(needs->player[idx]->sprite,
-			   vector_2f(tmpx, tmpy + 40 * idx),
-			   vector_2i(100, 10), vector_2i(1000, 100));
-	    sfRenderWindow_drawSprite(needs->window,
-				      needs->player[idx]->sprite, NULL);
-	  }
-	idx++;
-      }
-    sfRenderWindow_display(needs->window);
-    if (cpt % 2 == 0)
-      tmpx++;
-    if (tmpx % 10 == 0)
-      tmpy--;
-    if (tmpx > 924)
-      {
-	if (needs->mode->sound == 0)
-	  sfMusic_stop(music);
-	fight_mike(needs);
-	sfRenderWindow_close(needs->window);
-      }
-  }
+static void	draw_player(t_needs *needs, sfMusic *music, int cpt)
+{
+  static int	tmpx = 110;
+  static int	tmpy = 470;
+  int		idx;
+
+  idx = 0;
+  while (idx < 4)
+    {
+      drawer(needs, tmpx, tmpy, idx);
+      idx++;
+    }
+  sfRenderWindow_display(needs->window);
+  if (cpt % 2 == 0)
+    tmpx++;
+  if (tmpx % 10 == 0)
+    tmpy--;
+  if (tmpx > 924)
+    {
+      if (needs->mode->sound == 0)
+	sfMusic_stop(music);
+      fight_mike(needs);
+      sfRenderWindow_close(needs->window);
+    }
+}
 
 void		final_fight(t_needs *needs)
 {
