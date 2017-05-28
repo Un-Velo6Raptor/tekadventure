@@ -5,13 +5,14 @@
 ** Login   <martin.januario@epitech.eu>
 **
 ** Started on  Tue May 23 17:18:19 2017 Martin Januario
-** Last update Sun May 28 18:29:38 2017 Hugo Cousin
+** Last update Sun May 28 19:16:39 2017 Hugo Cousin
 */
 
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	"game.h"
 #include	"refresh.h"
+#include	"anim.h"
 
 static sfVector2i	check_move_map(sfVector2i to, t_needs *needs,
 				       sfVector2i from,
@@ -96,5 +97,7 @@ int                     loop_game(t_needs *needs)
     }
   if (!needs->current_veleda)
     final_fight(needs);
+  else
+    launch_anim(needs->window, "ressources/defeat/", needs->mode->sound, 1);
   return (0);
 }
