@@ -5,7 +5,7 @@
 ## Login   <martin.januario@epitech.eu>
 ## 
 ## Started on  Fri May 19 15:09:40 2017 Martin Januario
-## Last update Sun May 28 20:26:36 2017 Hugo Cousin
+## Last update Sun May 28 20:45:51 2017 Hugo Cousin
 ##
 
 .PHONY:		all clean fclean re
@@ -71,7 +71,8 @@ SELECT	=	src/select/select_player.c	\
 		src/select/select_init.c
 
 BOSS	=	src/boss/check_map_boss.c	\
-		src/boss/final_fight.c
+		src/boss/final_fight.c		\
+		src/boss/mike.c
 
 OBJ	=	$(SRC:.c=.o)			\
 		$(DISPLAY:.c=.o)		\
