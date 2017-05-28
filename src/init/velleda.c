@@ -1,11 +1,11 @@
 /*
-1;4803;0c** velleda.c for tekadventure in /home/heychsea/MUL/tekadventure
+** velleda.c for tekadventure in /home/heychsea/MUL/tekadventure
 ** 
 ** Made by Hugo Cousin
 ** Login   <hugo.cousin@epitech.eu>
 ** 
 ** Started on  Sun May 28 17:05:02 2017 Hugo Cousin
-** Last update Sun May 28 17:55:07 2017 Hugo Cousin
+** Last update Sun May 28 19:28:05 2017 Hugo Cousin
 */
 
 #include	"display.h"

@@ -5,16 +5,16 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 01:03:22 2017 Martin Januario
+** Last update Sun May 28 19:29:54 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
-#include <SFML/Graphics.h>
-#include "player.h"
-#include "boss.h"
-#include "lib.h"
-#include "funcs.h"
-#include "display.h"
+#include	<stdlib.h>
+#include	<SFML/Graphics.h>
+#include	"player.h"
+#include	"boss.h"
+#include	"lib.h"
+#include	"funcs.h"
+#include	"display.h"
 
 t_text		*get_player_text(t_player *sentences, char *name)
 {

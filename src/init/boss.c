@@ -5,15 +5,15 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 15:40:34 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 00:48:59 2017 Martin Januario
+** Last update Sun May 28 19:29:33 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
-#include <SFML/Graphics.h>
-#include "boss.h"
-#include "player.h"
-#include "funcs.h"
-#include "character.h"
+#include	<stdlib.h>
+#include	<SFML/Graphics.h>
+#include	"boss.h"
+#include	"player.h"
+#include	"funcs.h"
+#include	"character.h"
 
 t_char		**init_boss(char **path, char **name)
 {

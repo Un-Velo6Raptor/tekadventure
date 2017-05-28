@@ -5,17 +5,17 @@
 ** Login   <sahel.lucas-saoudi@epitech.eu>
 **
 ** Started on  Wed May 24 16:08:44 2017 Sahel Lucas--Saoudi
-** Last update Sun May 28 01:04:04 2017 Martin Januario
+** Last update Sun May 28 19:28:43 2017 Hugo Cousin
 */
 
-#include <stdlib.h>
-#include "character.h"
-#include "boss.h"
-#include "player.h"
+#include	<stdlib.h>
+#include	"character.h"
+#include	"boss.h"
+#include	"player.h"
 #include	"display.h"
-#include "lib.h"
+#include	"lib.h"
 
-t_char  *new_char(char *path, char *name, sfVector2f pos, t_text *text)
+t_char		*new_char(char *path, char *name, sfVector2f pos, t_text *text)
 {
   t_char        *character;
   sfTexture     *texture;

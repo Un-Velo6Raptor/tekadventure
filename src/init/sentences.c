@@ -5,18 +5,18 @@
 ** Login   <hugo.cousin@epitech.eu>
 **
 ** Started on  Thu Apr 13 15:01:26 2017 Hugo Cousin
-** Last update Fri May 26 16:29:52 2017 Martin Januario
+** Last update Sun May 28 19:29:16 2017 Hugo Cousin
 */
 
-#include <dirent.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include "funcs.h"
-#include "lib.h"
+#include	<dirent.h>
+#include	<fcntl.h>
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<sys/stat.h>
+#include	<sys/types.h>
+#include	<unistd.h>
+#include	"funcs.h"
+#include	"lib.h"
 
 int		get_text(int fd, t_player *player)
 {
